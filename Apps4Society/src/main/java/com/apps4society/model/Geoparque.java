@@ -7,12 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-public class AtrativoNatural extends AtratativoTuristico{
-	/*
-	 * Essa clase herda da AtratativoTuristico
-	 * Ela é um tipo de atratativo para o modelo;
-	 * 
-	 * @Id
+public class Geoparque extends AtrativoNatural{
+	
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
@@ -22,12 +19,9 @@ public class AtrativoNatural extends AtratativoTuristico{
 	public Long getId() {
 		return id;
 	}
-	 */
 	
-	public AtrativoNatural() {
+	public Geoparque() {
 		super();
 	}
-	
-	
 
 }

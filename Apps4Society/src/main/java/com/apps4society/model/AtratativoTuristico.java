@@ -1,10 +1,17 @@
 package com.apps4society.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
+
 
 @Entity
 @Table(name="atrativosTuristicos")
@@ -20,13 +27,15 @@ public class AtratativoTuristico {
 	public Long getId() {
 		return id;
 	}
+
 	
 	private String nome;
-	private int latitude;
-	private int longitude;
 	private String comoChegar;
-	private String site;
+	private String descricao;
 	private String infoContato;
+	private double latitude;
+	private double longitude;
+	private String site;
 	
 	public String getNome() {
 		return nome;
@@ -35,17 +44,17 @@ public class AtratativoTuristico {
 		this.nome = nome;
 	}
 
-	public int getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(int latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public int getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(int longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 	public String getComoChegar() {
@@ -66,8 +75,17 @@ public class AtratativoTuristico {
 	public void setInfoContato(String infoContato) {
 		this.infoContato = infoContato;
 	}
+	
 
-	public AtratativoTuristico() {}
+	public AtratativoTuristico() {
+		
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	
 
 }

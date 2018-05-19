@@ -20,11 +20,19 @@ public class Municipios {
 		return id;
 	}
 	
+	private String cep;
 	
+	public void setCep(String cep) {
+		this.cep=cep;
+	}
+	public String getCep() {
+		return cep;
+	}
+	private String areaTerritorial;
 	private String nome;
 	private int populacao;
-	private int latitude;
-	private int longitude;
+	private double latitude;
+	private double longitude;
 	private String estado;
 	private String site;
 	
@@ -41,10 +49,10 @@ public class Municipios {
 	public void setPopulacao(int populacao) {
 		this.populacao = populacao;
 	}
-	public int getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(int latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 	public String getEstado() {
@@ -59,13 +67,19 @@ public class Municipios {
 	public void setSite(String site) {
 		this.site = site;
 	}
-	public int getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(int longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 	
 	public Municipios() {}
+	public String getAreaTerritorial() {
+		return areaTerritorial;
+	}
+	public void setAreaTerritorial(String areaTerritorial) {
+		this.areaTerritorial = areaTerritorial;
+	}
 
 }

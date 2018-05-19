@@ -13,34 +13,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apps4society.model.AtratativoTuristico;
 import com.apps4society.model.Municipios;
-import com.apps4society.repository.AtrativoTuristicoRepository;
+import com.apps4society.model.Praia;
+import com.apps4society.repository.PraiaRepository;
 
 @RestController
-public class AtrativoTuristicoControler {
+public class Praia_controler {
 	
 	@Autowired
-	AtrativoTuristicoRepository r;
+	PraiaRepository repo;
 	
-	@GetMapping("/atrativosTuristicos")
-	public List<AtratativoTuristico> getAtratativoTuristico() {
-		return r.findAll();
+	@GetMapping("/praias")
+	public List<Praia> getPraia() {
+		return repo.findAll();
 	}
 	
-	@GetMapping("/atrativoTuristicoSearch/{id}")
-	public Optional<AtratativoTuristico> getAtratativoTuristico(@PathVariable Long id) {
+	@GetMapping("/praiasSearch/{id}")
+	public Optional<Praia> getPraias(@PathVariable Long id) {
 		/*OK
 		 * Procura um atratativoTuristico especifico pelo ID
 		 */
-		return r.findById(id);
+		return repo.findById(id);
 	}
 	
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/atrativoTuristico/{id}")
-	public boolean deleteAtratativoTuristico(@PathVariable Long id) {
+	@DeleteMapping("/praias/{id}")
+	public boolean deletePraias(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
-		 * DELETA UM atratativoTuristico PELO SEU ID
+		 * DELETA UMA PRAIA  PELO SEU ID
 		 */
-		r.deleteById(id);
+		repo.deleteById(id);
 		return true;
 	}
 
