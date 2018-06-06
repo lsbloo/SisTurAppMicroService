@@ -19,7 +19,15 @@ public class Municipios {
 	public long getId() {
 		return id;
 	}
+	private String date;
 	
+	public void setDate(String date) {
+		this.date=date;
+	}
+	
+	public String getDate() {
+		return date;
+	}
 	private String cep;
 	
 	public void setCep(String cep) {

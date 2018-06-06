@@ -37,6 +37,16 @@ public class AtratativoTuristico {
 	private double longitude;
 	private String site;
 	
+	private String date;
+	
+	public void setDate(String date) {
+		this.date=date;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
