@@ -19,7 +19,24 @@ public class Municipios {
 	public long getId() {
 		return id;
 	}
-	private String date;
+	
+	private String date; // 0
+	private String nome; // 1
+	private String descricao; // 2
+	private String areaTerritorial; // 3
+	private double latitude; // 4
+	private double longitude; // 5
+	private String estado; // 6
+	private int populacao; // 7 
+	private String site; // 8
+	private String informacoesRelevantes; // 9
+	private String email_responsavel; // 10
+	private String nome_responsavel; // 11
+	private String contatos_responsavel; // 12
+	private String fonte_informacoes; // 13
+	
+	
+	
 	
 	public void setDate(String date) {
 		this.date=date;
@@ -36,13 +53,6 @@ public class Municipios {
 	public String getCep() {
 		return cep;
 	}
-	private String areaTerritorial;
-	private String nome;
-	private int populacao;
-	private double latitude;
-	private double longitude;
-	private String estado;
-	private String site;
 	
 	
 	public String getNome() {
@@ -88,6 +98,36 @@ public class Municipios {
 	}
 	public void setAreaTerritorial(String areaTerritorial) {
 		this.areaTerritorial = areaTerritorial;
+	}
+	public String getInformacoesRelevantes() {
+		return informacoesRelevantes;
+	}
+	public void setInformacoesRelevantes(String informacoesRelevantes) {
+		this.informacoesRelevantes = informacoesRelevantes;
+	}
+	public String getEmail_responsavel() {
+		return email_responsavel;
+	}
+	public void setEmail_responsavel(String email_responsavel) {
+		this.email_responsavel = email_responsavel;
+	}
+	public String getNome_responsavel() {
+		return nome_responsavel;
+	}
+	public void setNome_responsavel(String nome_responsavel) {
+		this.nome_responsavel = nome_responsavel;
+	}
+	public String getFonte_informacoes() {
+		return fonte_informacoes;
+	}
+	public void setFonte_informacoes(String fonte_informacoes) {
+		this.fonte_informacoes = fonte_informacoes;
+	}
+	public String getContatos_responsavel() {
+		return contatos_responsavel;
+	}
+	public void setContatos_responsavel(String contatos_responsavel) {
+		this.contatos_responsavel = contatos_responsavel;
 	}
 
 }
