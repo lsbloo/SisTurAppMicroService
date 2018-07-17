@@ -28,24 +28,24 @@ public class AtratativoTuristico {
 		return id;
 	}
 
-	private String date;
-	private String nome;
-	private String comoChegar;
-	private String descricao;
-	private String infoContato;
-	private double latitude;
-	private double longitude;
-	private String site;
-	private String cidade;
-	private String estado;
-	private String informacoes_relevantes;
-	private String email_responsavel;
-	private String nome_responsavel_preenchimento;
-	private String contato_responsavel_preenchimento;
-	private String fonte_informacoes;
-	private String nome_responsavel_atrativo;
-	private String contato_responsavel_atrativo;
-	private String email_reponsavel_atrativo;
+	private String date; // 0
+	private String nome_atrativo; // 1
+	private String comoChegar; // 2
+	private String descricao; // 3
+	private String infoContato; // 4
+	private double latitude; // 5
+	private double longitude; // 6 
+	private String site; // 7
+	private String cidade; // 8
+	private String estado; // 9
+	private String informacoes_relevantes; // 10
+	private String email_responsavel; // 11
+	private String nome_responsavel_preenchimento; // 12
+	private String contato_responsavel_preenchimento; // 13
+	private String fonte_informacoes; // 14
+	private String nome_responsavel_atrativo; // 15
+	private String contato_responsavel_atrativo; // 16
+	private String email_reponsavel_atrativo; // 17
 	
 	
 	
@@ -58,10 +58,10 @@ public class AtratativoTuristico {
 	}
 	
 	public String getNome() {
-		return nome;
+		return nome_atrativo;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome_atrativo = nome;
 	}
 
 	public double getLatitude() {

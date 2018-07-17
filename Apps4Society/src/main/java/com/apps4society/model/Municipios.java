@@ -21,7 +21,7 @@ public class Municipios {
 	}
 	
 	private String date; // 0
-	private String nome; // 1
+	private String nome_cidade; // 1
 	private String descricao; // 2
 	private String areaTerritorial; // 3
 	private double latitude; // 4
@@ -30,9 +30,9 @@ public class Municipios {
 	private int populacao; // 7 
 	private String site; // 8
 	private String informacoesRelevantes; // 9
-	private String email_responsavel; // 10
-	private String nome_responsavel; // 11
-	private String contatos_responsavel; // 12
+	private String email_responsavel_preenchimento; // 10
+	private String nome_responsavel_preenchimento; // 11
+	private String contatos_responsavel_preenchimento; // 12
 	private String fonte_informacoes; // 13
 	
 	
@@ -55,11 +55,11 @@ public class Municipios {
 	}
 	
 	
-	public String getNome() {
-		return nome;
+	public String getNomecidade() {
+		return nome_cidade;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomecidade(String nome) {
+		this.nome_cidade = nome;
 	}
 	public int getPopulacao() {
 		return populacao;
@@ -106,16 +106,16 @@ public class Municipios {
 		this.informacoesRelevantes = informacoesRelevantes;
 	}
 	public String getEmail_responsavel() {
-		return email_responsavel;
+		return email_responsavel_preenchimento;
 	}
 	public void setEmail_responsavel(String email_responsavel) {
-		this.email_responsavel = email_responsavel;
+		this.email_responsavel_preenchimento = email_responsavel;
 	}
 	public String getNome_responsavel() {
-		return nome_responsavel;
+		return nome_responsavel_preenchimento;
 	}
 	public void setNome_responsavel(String nome_responsavel) {
-		this.nome_responsavel = nome_responsavel;
+		this.nome_responsavel_preenchimento = nome_responsavel;
 	}
 	public String getFonte_informacoes() {
 		return fonte_informacoes;
@@ -124,10 +124,10 @@ public class Municipios {
 		this.fonte_informacoes = fonte_informacoes;
 	}
 	public String getContatos_responsavel() {
-		return contatos_responsavel;
+		return contatos_responsavel_preenchimento;
 	}
 	public void setContatos_responsavel(String contatos_responsavel) {
-		this.contatos_responsavel = contatos_responsavel;
+		this.contatos_responsavel_preenchimento = contatos_responsavel;
 	}
 
 }
