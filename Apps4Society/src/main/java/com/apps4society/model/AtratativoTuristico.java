@@ -29,23 +29,24 @@ public class AtratativoTuristico {
 	}
 
 	private String date; // 0
-	private String nome_atrativo; // 1
-	private String comoChegar; // 2
-	private String descricao; // 3
-	private String infoContato; // 4
-	private double latitude; // 5
-	private double longitude; // 6 
-	private String site; // 7
-	private String cidade; // 8
-	private String estado; // 9
-	private String informacoes_relevantes; // 10
-	private String email_responsavel; // 11
-	private String nome_responsavel_preenchimento; // 12
-	private String contato_responsavel_preenchimento; // 13
-	private String fonte_informacoes; // 14
-	private String nome_responsavel_atrativo; // 15
-	private String contato_responsavel_atrativo; // 16
-	private String email_reponsavel_atrativo; // 17
+	private String codValidacao; // 1
+	private String nome_atrativo; // 2
+	private String comoChegar; // 3
+	private String descricao; // 4
+	private String infoContato; // 5
+	private double latitude; // 6
+	private double longitude; // 7 
+	private String site; // 8
+	private String cidade; // 9
+	private String estado; // 10
+	private String informacoes_relevantes; // 11
+	private String email_responsavel_preenchimento; // 12
+	private String nome_responsavel_preenchimento; // 13
+	private String contato_responsavel_preenchimento; // 14
+	private String fonte_informacoes; // 15
+	private String nome_responsavel_atrativo; // 16
+	private String contato_responsavel_atrativo; // 17
+	private String email_atrativo; // 18
 	
 	
 	
@@ -125,10 +126,10 @@ public class AtratativoTuristico {
 		this.informacoes_relevantes = informacoes_relevantes;
 	}
 	public String getEmail_responsavel() {
-		return email_responsavel;
+		return email_responsavel_preenchimento;
 	}
 	public void setEmail_responsavel(String email_responsavel) {
-		this.email_responsavel = email_responsavel;
+		this.email_responsavel_preenchimento = email_responsavel;
 	}
 	public String getNome_responsavel_preenchimento() {
 		return nome_responsavel_preenchimento;
@@ -161,10 +162,16 @@ public class AtratativoTuristico {
 		this.contato_responsavel_atrativo = contato_responsavel_atrativo;
 	}
 	public String getEmail_reponsavel_atrativo() {
-		return email_reponsavel_atrativo;
+		return email_atrativo;
 	}
 	public void setEmail_reponsavel_atrativo(String email_reponsavel_atrativo) {
-		this.email_reponsavel_atrativo = email_reponsavel_atrativo;
+		this.email_atrativo = email_reponsavel_atrativo;
+	}
+	public String getCodValidacao() {
+		return codValidacao;
+	}
+	public void setCodValidacao(String codValidacao) {
+		this.codValidacao = codValidacao;
 	}
 	
 

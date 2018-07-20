@@ -53,7 +53,7 @@ public class UserControler {
 	@PostMapping("/useradd")
 	public User createCliente(@RequestBody User user) {
 		user.setNome("osvaldo");
-		user.setSobrenome("airon");
+		//user.setSobrenome("airon");
 		return c.save(user);
 	}
 	@PutMapping("/user")
@@ -64,7 +64,6 @@ public class UserControler {
 	  public User hello() {
 	    final User person = new User();
 	    person.setNome("John");
-	    person.setSobrenome("airon");
 	    return person;
 	  }
 	
@@ -73,7 +72,7 @@ public class UserControler {
 		User user = new User();
 		 users = new HashMap<Integer,User>();
 		user.setNome("osvaldo");
-		user.setSobrenome("airon");
+		//user.setSobrenome("airon");
 		users.put(1, user);
 
 		return new ResponseEntity<List<User>>(new ArrayList<User>(users.values()), HttpStatus.OK);

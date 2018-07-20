@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name="usuarios")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,27 +21,45 @@ public class User {
 		this.id = id;
 	}
 	
-	private String nome;
-	private String sobrenome;
+	private String nome; // 0
+	private String email; // 1
+	private String codigo; // 2
+	private String login; // 3
+	private String pass; // 4
+	
+	public void setNome(String nome) {
+		this.nome=nome;
+	}
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setEmail(String email) {
+		this.email=email;
 	}
-	public String getSobrenome() {
-		return sobrenome;
-	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public String getEmail() {
+		return email;
 	}
 	
-	public User(String nome, String sobrenome) {
-		setNome(nome);
-		setSobrenome(sobrenome);
-	}
 	public User() {
 		
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	
 }
