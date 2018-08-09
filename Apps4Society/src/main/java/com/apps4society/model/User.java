@@ -26,6 +26,7 @@ public class User {
 	private String codigo; // 2
 	private String login; // 3
 	private String pass; // 4
+	private String date_acesso;
 	
 	public void setNome(String nome) {
 		this.nome=nome;
@@ -60,6 +61,12 @@ public class User {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	public String getDate_acesso() {
+		return date_acesso;
+	}
+	public void setDate_acesso(String date_acesso) {
+		this.date_acesso = date_acesso;
 	}
 	
 }
