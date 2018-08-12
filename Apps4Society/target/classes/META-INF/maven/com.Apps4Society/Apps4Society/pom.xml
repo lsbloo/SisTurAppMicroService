@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>Apps4Society</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Application Apps4Society</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -17,9 +17,12 @@
 		<version>2.0.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
+	 
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.build.timestamp.format>yyyyMMddHHmmssSSS</maven.build.timestamp.format>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
@@ -33,7 +36,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -44,6 +52,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -52,8 +66,52 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.19.1</version>
+        </plugin>
+         <plugin>
+   			<groupId>com.microsoft.azure</groupId>
+   			<artifactId>azure-webapp-maven-plugin</artifactId>
+   			<!-- Check latest version on Maven Central -->
+   			<version>1.1.0</version>
+ 			</plugin>
+ 			<plugin>
+   <groupId>com.microsoft.azure</groupId>
+   <artifactId>azure-webapp-maven-plugin</artifactId>
+   <!-- Check latest version on Maven Central -->
+   <version>1.1.0</version>
+   <configuration>
+      <resourceGroup>maven-projects</resourceGroup>
+      <appName>${project.artifactId}-${maven.build.timestamp}</appName>
+      <region>westus</region>
+      <javaVersion>1.8</javaVersion>
+      <deploymentType>war</deploymentType>
+   		</configuration>
+ 		</plugin>
+        
 		</plugins>
 	</build>
+
+	<repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 
 </project>

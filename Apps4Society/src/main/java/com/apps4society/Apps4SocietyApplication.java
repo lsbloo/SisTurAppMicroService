@@ -5,9 +5,11 @@ package com.apps4society;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
-
+@Controller
 @SpringBootApplication
 public class Apps4SocietyApplication {
 
@@ -21,6 +23,6 @@ public class Apps4SocietyApplication {
 	
 	@RequestMapping("/home")
 	public String indexHTML() {
-		return "index";
+		return "/src/main/resources/templates/index.html";
 	}
 }
