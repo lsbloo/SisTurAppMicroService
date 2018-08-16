@@ -1,10 +1,6 @@
 server:
   port: 8080
 spring:
-  mvc:
-    view:
-      prefix: src/main/resources
-      suffix: .html
   datasource:
     url: jdbc:sqlserver://apps4society-2018.database.windows.net:1433;database=apps4Society;user=SuperSecreto;password=SuperSecreto;encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30
   jpa:
@@ -14,7 +10,3 @@ spring:
       hiberEnate:
         temp:
           use_jdbc_metadata_defaults: false
-  
-
-
-          

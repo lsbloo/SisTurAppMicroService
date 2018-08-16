@@ -6,10 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
-@Controller
 @SpringBootApplication
 public class Apps4SocietyApplication {
 
@@ -21,8 +22,5 @@ public class Apps4SocietyApplication {
 		return app.sources(Apps4SocietyApplication.class);
 	}
 	
-	@RequestMapping("/home")
-	public String indexHTML() {
-		return "/src/main/resources/templates/index.html";
-	}
+	
 }
