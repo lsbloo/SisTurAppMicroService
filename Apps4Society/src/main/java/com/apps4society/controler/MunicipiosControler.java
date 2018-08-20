@@ -20,13 +20,19 @@ import com.apps4society.model.User;
 import com.apps4society.repository.MunicipioRepository;
 import com.apps4society.repository.UserRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value="API REST Municipios")
 @RestController
 public class MunicipiosControler {
 	
 	@Autowired
 	private MunicipioRepository m;
 	
-	@GetMapping("/municipios")
+	
+	@ApiOperation(value="Retorna todos os municipios")
+	@GetMapping("/rest_municipios")
 	public List<Municipios> getMunicipio() {
 		/*OK
 		 * Retorna toda a lista de municipios
@@ -34,7 +40,8 @@ public class MunicipiosControler {
 		return m.findAll();
 	}
 	
-	@GetMapping("/municipioSearch/{id}")
+	@ApiOperation(value="Procura um minicipio pelo ID especifico")
+	@GetMapping("/rest_municipioSearch/{id}")
 	public Optional<Municipios> getCliente(@PathVariable Long id) {
 		/*OK
 		 * Procura um municipio especifico pelo ID
@@ -42,8 +49,9 @@ public class MunicipiosControler {
 		return m.findById(id);
 	}
 	
+	@ApiOperation(value="Deleta um municipio pelo ID especifico")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/municipiodel/{id}")
+	@DeleteMapping("/rest_municipiodel/{id}")
 	public boolean deleteMunicipio(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM MUNICIPIO PELO SEU ID

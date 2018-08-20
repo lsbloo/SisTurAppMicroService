@@ -13,7 +13,7 @@ public class Funcoes implements GrantedAuthority{
 	@Id
 	private String nomeFuncoes;
 	
-	@ManyToMany(mappedBy="funcoes")
+	@ManyToMany
 	private List<User> users;
 	
 	@Override

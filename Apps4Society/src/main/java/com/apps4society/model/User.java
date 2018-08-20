@@ -1,5 +1,6 @@
 package com.apps4society.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name="usuarios")
-public class User implements UserDetails{
+public class User implements UserDetails,Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

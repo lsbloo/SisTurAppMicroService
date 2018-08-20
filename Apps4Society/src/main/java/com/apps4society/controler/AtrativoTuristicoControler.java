@@ -15,27 +15,33 @@ import com.apps4society.model.AtratativoTuristico;
 import com.apps4society.model.Municipios;
 import com.apps4society.repository.AtrativoTuristicoRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value="API REST Atrativos")
 @RestController
 public class AtrativoTuristicoControler {
 	
 	@Autowired
 	AtrativoTuristicoRepository r;
 	
-	@GetMapping("/atrativosTuristicos")
+	@ApiOperation(value="Retorna todos os Atrativos Turisticos Cadastrados")
+	@GetMapping("/rest_atrativosTuristicos")
 	public List<AtratativoTuristico> getAtratativoTuristico() {
 		return r.findAll();
 	}
 	
-	@GetMapping("/atrativoTuristicoSearch/{id}")
+	@ApiOperation(value="Procura um atrativo especifico pelo ID")
+	@GetMapping("/rest_atrativoTuristicoSearch/{id}")
 	public Optional<AtratativoTuristico> getAtratativoTuristico(@PathVariable Long id) {
 		/*OK
 		 * Procura um atratativoTuristico especifico pelo ID
 		 */
 		return r.findById(id);
 	}
-	
+	@ApiOperation(value="Deleta um atrativo especifico pelo ID")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/atrativoTuristicodel/{id}")
+	@DeleteMapping("/rest_atrativoTuristicodel/{id}")
 	public boolean deleteAtratativoTuristico(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM atratativoTuristico PELO SEU ID
