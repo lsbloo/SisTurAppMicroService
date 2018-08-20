@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8"/>
+<link rel="sylesheet" type="text/css" href="styleindex.css"/>
+
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+</head>
+<body>
+	<h3>Informações dos Municipios</h3>
+	<br>
+	<div class="container">
+	<table class="striped"  >
+		<thead>
+			<tr>
+				<th>Nome do Municipio</th>
+				<th>Estado</th>
+				<th>Codigo de Validação</th>
+				<th>Descrição</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+				<th>População</th>
+				<th>Informações</th>
+				<th>Fonte de Informações</th>
+				<th>Email do responsavel preenchimento</th>
+				<th>Site</th>	
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="municipio : ${municipios}">
+			<td><span th:text="${municipio.nomecidade}" ></span></td>
+			<td><span th:text="${municipio.estado}" ></span></td>
+			<td><span th:text="${municipio.codValidacao}" ></span></td>
+			<td><span th:text="${municipio.descricao}" ></span></td>
+			<td><span th:text="${municipio.latitude}" ></span></td>
+			<td><span th:text="${municipio.longitude}" ></span></td>
+			<td><span th:text="${municipio.populacao}" ></span></td>
+			<td><span th:text="${municipio.informacoesRelevantes}" ></span></td>
+			<td><span th:text="${municipio.fonte_informacoes}" ></span></td>
+			<td><span th:text="${municipio.email_responsavel}" ></span></td>
+			<td><span th:text="${municipio.site}" ></span></td>
+			</tr>
+		</tbody>
+	
+	</table>
+	</div>
+ <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>

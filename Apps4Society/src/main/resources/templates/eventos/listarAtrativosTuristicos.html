@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8"/>
+<link rel="sylesheet" type="text/css" href="styleindex.css"/>
+
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+</head>
+<body>
+	<h3>Informações dos Atrativos Turisticos</h3>
+	<br>
+	<div class="container">
+	<table class="striped"  >
+		<thead>
+			<tr>
+				<th>Nome do Atrativo</th>
+				<th>Como chegar</th>
+				<th>Descrição</th>
+				<th>Email do Atrativo</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+				<th>Informações para Contato</th>
+				<th>Informações Adicionais</th>
+				<th>Fonte de Informações</th>
+				<th>Email do responsavel preenchimento</th>
+				<th>Site</th>	
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="atrativo : ${atrativos}">
+			<td><span th:text="${atrativo.nome}" ></span></td>
+			<td><span th:text="${atrativo.comoChegar}" ></span></td>
+			<td><span th:text="${atrativo.descricao}" ></span></td>
+			<td><span th:text="${atrativo.email_responsavel}" ></span></td>
+			<td><span th:text="${atrativo.latitude}" ></span></td>
+			<td><span th:text="${atrativo.longitude}" ></span></td>
+			<td><span th:text="${atrativo.contato_responsavel_atrativo}" ></span></td>
+			<td><span th:text="${atrativo.informacoes_relevantes}" ></span></td>
+			<td><span th:text="${atrativo.fonte_informacoes}" ></span></td>
+			<td><span th:text="${atrativo.email_responsavel}" ></span></td>
+			<td><span th:text="${atrativo.site}" ></span></td>
+			</tr>
+		</tbody>
+	
+	</table>
+	</div>
+ <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>

@@ -43,7 +43,7 @@ public class MunicipiosControler {
 	}
 	
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/municipio/{id}")
+	@DeleteMapping("/municipiodel/{id}")
 	public boolean deleteMunicipio(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM MUNICIPIO PELO SEU ID

@@ -44,7 +44,7 @@ public class UserControler {
 	public Optional<User> getCliente(@PathVariable Long id) {
 		return c.findById(id);
 	}
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/userdel/{id}")
 	public boolean deleteUser(@PathVariable Long id) {
 		c.deleteById(id);
 		return true;

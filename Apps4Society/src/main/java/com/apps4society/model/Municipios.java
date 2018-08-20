@@ -1,10 +1,14 @@
 package com.apps4society.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name="municipios")
@@ -20,20 +24,62 @@ public class Municipios {
 		return id;
 	}
 	
+	@NotNull
+	@Column(columnDefinition="text")
 	private String date; // 0
-	private String nome_cidade; // 1
-	private String descricao; // 2
-	private String areaTerritorial; // 3
-	private double latitude; // 4
-	private double longitude; // 5
-	private String estado; // 6
-	private int populacao; // 7 
-	private String site; // 8
-	private String informacoesRelevantes; // 9
-	private String email_responsavel_preenchimento; // 10
-	private String nome_responsavel_preenchimento; // 11
-	private String contatos_responsavel_preenchimento; // 12
-	private String fonte_informacoes; // 13
+	
+	@NotNull
+	@Column(columnDefinition="text")
+	private String imgUrl; // 1
+	
+	@NotNull
+	@Column(columnDefinition="text")
+
+	private String codValidacao; // 2
+	
+	@NotNull
+	@Column(columnDefinition="text")
+	
+	private String nome_cidade; // 3
+	
+	@NotNull
+	@Column(columnDefinition="text")
+
+	private String descricao; // 4
+	@NotNull
+	@Column(columnDefinition="text")
+	
+	
+	private String areaTerritorial; // 5
+	
+	@NotNull
+	private double latitude; // 6
+	@NotNull
+	private double longitude; // 7
+	@NotNull
+	@Column(columnDefinition="text")
+	private String estado; // 8
+	@NotNull
+	@Column(columnDefinition="text")
+	private int populacao; // 9 
+	@NotNull
+	@Column(columnDefinition="text")
+	private String site; // 10
+	@NotNull
+	@Column(columnDefinition="text")
+	private String informacoesRelevantes; // 11
+	@NotNull
+	@Column(columnDefinition="text")
+	private String email_responsavel_preenchimento; // 12
+	@NotNull
+	@Column(columnDefinition="text")
+	private String nome_responsavel_preenchimento; // 13
+	@NotNull
+	@Column(columnDefinition="text")
+	private String contatos_responsavel_preenchimento; // 14
+	@NotNull
+	@Column(columnDefinition="text")
+	private String fonte_informacoes; // 15
 	
 	
 	
@@ -128,6 +174,24 @@ public class Municipios {
 	}
 	public void setContatos_responsavel(String contatos_responsavel) {
 		this.contatos_responsavel_preenchimento = contatos_responsavel;
+	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+	public String getCodValidacao() {
+		return codValidacao;
+	}
+	public void setCodValidacao(String codValidacao) {
+		this.codValidacao = codValidacao;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 }

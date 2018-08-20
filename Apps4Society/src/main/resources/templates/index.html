@@ -1,8 +1,38 @@
 <html>
 <head>
+<meta charset="UTF-8"/>
+<link rel="sylesheet" type="text/css" href="styleindex.css"/>
+
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <div class="row">
+      <h1 class="card-panel teal accent-3">SisTur</h1>
+    <div class="col s8 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="imagens/turtwo.jpg">
+          <span class="card-title">SisTur</span>
+        </div>
+        <div class="card-content">
+          <p>SisTur é um projeto da UFPB.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </head>
 <body>
-
-Apps4Society
+	<div> <!-- Essa parte so tem acesso o ADMIN -->
+	<h3> <a href="/listarMunicipios" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i>Visualizar todos os Municipios</a></h3>
+	<h3> <a href="/listarAtrativos" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i>Visualizar todos os Atrativos</a></h3>
+	</div>
+	 <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    </body>
 </body>
 </html>

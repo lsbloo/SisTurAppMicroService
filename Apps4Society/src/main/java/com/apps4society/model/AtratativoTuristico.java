@@ -1,6 +1,7 @@
 package com.apps4society.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import java.util.List;
 
 
@@ -28,25 +31,64 @@ public class AtratativoTuristico {
 		return id;
 	}
 
+	@NotNull
+	@Column(columnDefinition="text")
 	private String date; // 0
-	private String codValidacao; // 1
-	private String nome_atrativo; // 2
-	private String comoChegar; // 3
-	private String descricao; // 4
-	private String infoContato; // 5
-	private double latitude; // 6
-	private double longitude; // 7 
-	private String site; // 8
-	private String cidade; // 9
-	private String estado; // 10
-	private String informacoes_relevantes; // 11
-	private String email_responsavel_preenchimento; // 12
-	private String nome_responsavel_preenchimento; // 13
-	private String contato_responsavel_preenchimento; // 14
-	private String fonte_informacoes; // 15
-	private String nome_responsavel_atrativo; // 16
-	private String contato_responsavel_atrativo; // 17
-	private String email_atrativo; // 18
+	@NotNull
+	@Column(columnDefinition="text")
+	private String imgURL; // 1
+	@NotNull
+	@Column(columnDefinition="text")
+	private String codValidacao; // 2
+	@NotNull
+	@Column(columnDefinition="text")
+	private String nome_atrativo; // 3
+	@NotNull
+	@Column(columnDefinition="text")
+	private String comoChegar; // 4
+	@NotNull
+	@Column(columnDefinition="text")
+	private String descricao; // 5
+	@NotNull
+	@Column(columnDefinition="text")
+	private String infoContato; // 6
+	@NotNull
+	private double latitude; // 7
+	@NotNull
+	private double longitude; // 8 
+	@NotNull
+	@Column(columnDefinition="text")
+	private String site; // 9
+	@NotNull
+	@Column(columnDefinition="text")
+	private String cidade; // 10
+	@NotNull
+	@Column(columnDefinition="text")
+	private String estado; // 11
+	@NotNull
+	@Column(columnDefinition="text")
+	private String informacoes_relevantes; // 12
+	@NotNull
+	@Column(columnDefinition="text")
+	private String email_responsavel_preenchimento; // 13
+	@NotNull
+	@Column(columnDefinition="text")
+	private String nome_responsavel_preenchimento; // 14
+	@NotNull
+	@Column(columnDefinition="text")
+	private String contato_responsavel_preenchimento; // 15
+	@NotNull
+	@Column(columnDefinition="text")
+	private String fonte_informacoes; // 16
+	@NotNull
+	@Column(columnDefinition="text")
+	private String nome_responsavel_atrativo; // 17
+	@NotNull
+	@Column(columnDefinition="text")
+	private String contato_responsavel_atrativo; // 18
+	@NotNull
+	@Column(columnDefinition="text")
+	private String email_atrativo; // 19
 	
 	
 	
@@ -172,6 +214,12 @@ public class AtratativoTuristico {
 	}
 	public void setCodValidacao(String codValidacao) {
 		this.codValidacao = codValidacao;
+	}
+	public String getImgURL() {
+		return imgURL;
+	}
+	public void setImgURL(String imgURL) {
+		this.imgURL = imgURL;
 	}
 	
 
