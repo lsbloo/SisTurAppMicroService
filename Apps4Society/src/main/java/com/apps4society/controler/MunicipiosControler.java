@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.apps4society.repository.UserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @Api(value="API REST Municipios")
 @RestController
 public class MunicipiosControler {
@@ -51,7 +53,7 @@ public class MunicipiosControler {
 	
 	@ApiOperation(value="Deleta um municipio pelo ID especifico")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/rest_municipiodel/{id}")
+	@DeleteMapping("/del_rest_municipiodel/{id}")
 	public boolean deleteMunicipio(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM MUNICIPIO PELO SEU ID

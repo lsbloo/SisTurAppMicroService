@@ -3,6 +3,8 @@ package com.apps4society.controler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,18 +28,35 @@ import com.apps4society.repository.UserRepository;
 import com.apps4society.model.User;
 
 
-@RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@Controller
 public class UserControler {
 	private static Map<Integer,User> users;
-	
+	private static BCryptPasswordEncoder encoder;
 	
 	@Autowired
 	private UserRepository c;
 	
-	@GetMapping("/users")
+	@RequestMapping(value="/users",method=RequestMethod.GET)
 	public List<User> getUser() {
-		return c.findAll();
+		return (List<User>) c.findAll();
+	}
+	
+	@RequestMapping(value="/userADD",method=RequestMethod.GET)
+	public String createUsuarioGET() {
+		return "/eventos/caduser";
+	}
+	
+	@RequestMapping(value="/userADD",method=RequestMethod.POST)
+	public String createUsuario(User user) {
+	
+		String pass = user.getPass();
+		System.out.println("SENHA FODA!"+pass);
+		System.out.println("Login"+user.getLogin());
+		System.out.println(user.getNome());
+		System.out.println(user.getEmail());
+		user.setPass(new BCryptPasswordEncoder().encode(pass)); 
+		c.save(user);
+		return "index";
 	}
 	
 	@GetMapping("/user/{id}")

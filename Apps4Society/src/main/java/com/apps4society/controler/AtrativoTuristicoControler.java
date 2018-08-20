@@ -41,7 +41,7 @@ public class AtrativoTuristicoControler {
 	}
 	@ApiOperation(value="Deleta um atrativo especifico pelo ID")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/rest_atrativoTuristicodel/{id}")
+	@DeleteMapping("/del_rest_atrativoTuristicodel/{id}")
 	public boolean deleteAtratativoTuristico(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM atratativoTuristico PELO SEU ID

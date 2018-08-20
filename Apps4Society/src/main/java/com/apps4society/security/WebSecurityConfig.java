@@ -1,6 +1,7 @@
 package com.apps4society.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,31 +11,70 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+	/*
+	 * Classe principal para a realização de autenticações;
+	 * Utiliza o JPA(Persistencia); postgresql
+	 * Metodo configure(HttpSecurity http): define quais Urls estão disponiveis para todos "public"
+	 * para users (algumas que vou definir ainda.)
+	 * pra admin(visualização de dados e alteração)
+	 * irei deixar o swagger public pra quem quiser visualizar.
+	 * 
+	 * 
+	 */
 
 	@Autowired
 	private UserDetailService us;
+	@Autowired
+	private SucessHandlerUser is;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/municipios").permitAll().antMatchers(HttpMethod.GET,"/atrativosTuristicos").permitAll().antMatchers(HttpMethod.GET, "/").permitAll().anyRequest().authenticated()
-		.and().formLogin().permitAll().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		/*
+		 * Define as urls de acesso (user,admin) or public
+		 * cria o recurso de login e loggout a partir de um sucessHandler
+		 * Handler esse que realizaça uma operação especefica; de autenticacação 
+		 * e redirecinonamento de pagina
+		 *  ÇÇ ainda nao esta completamente implementado;
+		 */
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login").permitAll().antMatchers(HttpMethod.POST,"swagger-ui#/**").permitAll()
+		.antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll().antMatchers(HttpMethod.POST,"/userADD").permitAll().antMatchers(HttpMethod.GET,"/userADD")
+		.permitAll().antMatchers(HttpMethod.GET,"/rest_municipios").permitAll().antMatchers(HttpMethod.GET,"/rest_atrativosTuristicos").permitAll().antMatchers(HttpMethod.GET, "/")
+		.permitAll().anyRequest().authenticated()
+		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().logout()
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
 	}
 	
+	 @Bean
+	    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+	        return new SucessHandlerUser();
+	    }
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		/*
+		 * realiza a autenticação do usuario se o mesmo existir e se a sua senha
+		 * criptografada for compativel com a mesma q ele colocou no cad;
+		 */
 		auth.userDetailsService(us).passwordEncoder(new BCryptPasswordEncoder());
 		
 		
 	}
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**");
+		/*
+		 * Define o que o security deve ignorar 
+		 * importante: caminhos não presentes aqui nao seram reconhecidos
+		 * inclusive arquivos html,css,javascrript; jpg etc;
+		 * 
+		 */
+		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**","/templates/fragments/**");
 	}
 }

@@ -1,9 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8"/>
 <link rel="sylesheet" type="text/css" href="styleindex.css"/>
 
-<!--Import Google Icon Font-->
+	<!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -27,9 +29,9 @@
   </div>
 </head>
 <body>
-	<div> <!-- Essa parte so tem acesso o ADMIN -->
-	<h3> <a href="/listarMunicipios" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i>Visualizar todos os Municipios</a></h3>
-	<h3> <a href="/listarAtrativos" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i>Visualizar todos os Atrativos</a></h3>
+	<div> 
+	<h3> <a href="/userADD" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i>Cadastre-se</a></h3>
+	<h3> <a href="/login" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i>Entrar</a></h3>
 	</div>
 	 <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>

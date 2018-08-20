@@ -17,7 +17,7 @@ public class Apps4SocietyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Apps4SocietyApplication.class, args);
-		System.out.println(new BCryptPasswordEncoder().encode("123"));
+		
 	}
 	
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder app) {

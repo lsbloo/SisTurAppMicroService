@@ -42,10 +42,7 @@ public class User implements UserDetails,Serializable{
 	@NotNull
 	@Column(columnDefinition="text")
 	private String email; // 1
-	@NotNull
-	@Column(columnDefinition="text")
 	
-	private String codigo; // 2
 	
 	@NotNull
 	@Column(columnDefinition="text")
@@ -55,9 +52,7 @@ public class User implements UserDetails,Serializable{
 	@NotNull
 	@Column(columnDefinition="text")
 	private String pass; // 4
-	@NotNull
-	@Column(columnDefinition="text")
-	private String date_acesso;
+	
 	
 	public void setNome(String nome) {
 		this.nome=nome;
@@ -75,12 +70,7 @@ public class User implements UserDetails,Serializable{
 	public User() {
 		
 	}
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
+	
 	public String getLogin() {
 		return login;
 	}
@@ -93,12 +83,7 @@ public class User implements UserDetails,Serializable{
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getDate_acesso() {
-		return date_acesso;
-	}
-	public void setDate_acesso(String date_acesso) {
-		this.date_acesso = date_acesso;
-	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
