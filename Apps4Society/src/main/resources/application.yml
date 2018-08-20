@@ -6,11 +6,7 @@ spring:
       prefix: src/main/resources
       suffix: .html
   datasource:
-<<<<<<< HEAD
     url: jdbc:sqlserver://apps4society-2018.database.windows.net:1433;database=apps4Society;user='';password='';encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30
-=======
-    url: jdbc:sqlserver://apps4society-2018.database.windows.net:1433;database=apps4Society;user=SuperSecreto;password=SuperSecreto;encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30
->>>>>>> 6267073579a5adb01abe4985a6f2f4f72018a7d5
   jpa:
     hibernate:
       ddl-auto: update
