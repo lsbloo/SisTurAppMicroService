@@ -16,7 +16,14 @@ public class indexControler {
 		return "index";
 	}
 	
-
+	@RequestMapping(value="/acessUSER", method=RequestMethod.GET)
+	public String acessUser() {
+		return "/eventos/painel_user";
+	}
+	@RequestMapping(value="/acessADMIN",method=RequestMethod.GET)
+	public String acessADMIN() {
+		return "console";
+	}
 	/*
 	 *   @GetMapping("/home")
     public String home() {
@@ -38,11 +45,7 @@ public class indexControler {
 
         return "/fragments/login";
     }
-    @RequestMapping(value="/login",method=RequestMethod.POST)
-    public String loginSucess() {
-    	System.err.println("ta de brinkjs!");
-    	return "eventos/dashboarduser";
-    }
+    
 
  
 

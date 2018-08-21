@@ -20,10 +20,15 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import java.util.Collections;
 /*
  * 
  */
+@Controller
 @Configuration
 @EnableWebSecurity
 public class SucessHandlerUser implements AuthenticationSuccessHandler{
@@ -78,7 +83,9 @@ public class SucessHandlerUser implements AuthenticationSuccessHandler{
         boolean isUser = false;
         boolean isAdmin = false;
         authorities =  authentication.getAuthorities();
+        System.out.println("KASAKPOKS; !"+authorities);
         for (GrantedAuthority grantedAuthority : authorities) {
+        	
             if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
                 isUser = true;
                 break;
@@ -89,14 +96,22 @@ public class SucessHandlerUser implements AuthenticationSuccessHandler{
         }
 
         if (isUser) {
-            return "/eventos/dashboraduser";
+        	/*
+        	 * a ideia é que, quando o usuario for autenticado e tiver a permissao 
+        	 * seja redirecionado a partir do sucessHandler()
+        	 */
+        	
+        	return "/acessUSER";
         } else if (isAdmin) {
-            return "/console.html";
+        	
+        	return "/acessADMIN";
         } else {
             throw new IllegalStateException();
         }
     }
  
+    
+    
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {

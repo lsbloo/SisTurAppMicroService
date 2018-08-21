@@ -1,16 +1,27 @@
 package com.apps4society.model;
 
+import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
+
+
 @Entity
 public class Funcoes implements GrantedAuthority{
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	
 	/*
 	 * Estabelece uma funcao para um usuario "role". regra de permissão de acesso
@@ -25,25 +36,55 @@ public class Funcoes implements GrantedAuthority{
 	 * 
 	 */
 
-	@Id
-	private String nomeFuncoes;
+	@NotNull
+	@Column(columnDefinition="text")
+	private String name;
+	
+	@ManyToMany(mappedBy="roles")
+	private Collection<User> users;
 	
 	@ManyToMany
-	private List<User> users;
+	@JoinTable(
+			name="roles_privileges", joinColumns = @JoinColumn(name="funcoes_id", referencedColumnName
+			="id"), inverseJoinColumns = @JoinColumn(name="privileges_id",referencedColumnName="id"))
+	private Collection<Privilege> privileges;
 	
+	
+	public Funcoes() {
+		
+	}
+	public Funcoes(String name) {
+		
+		setNomeFuncoes(name);
+	}
+
+
 	@Override
 	public String getAuthority() {
 		// TODO Auto-generated method stub
-		return this.nomeFuncoes;
+		return this.name;
 	}
 	
 	
 	public void setNomeFuncoes(String nome) {
-		this.nomeFuncoes=nome;
+		this.name=nome;
 	}
 	
 	public String getNomeFuncoes() {
-		return nomeFuncoes;
+		return name;
+	}
+
+
+	
+	public void setPrivileges(Collection<Privilege> privileges2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Collection<? extends Privilege> getPrivileges() {
+		// TODO Auto-generated method stub
+		return privileges;
 	}
 	
 	

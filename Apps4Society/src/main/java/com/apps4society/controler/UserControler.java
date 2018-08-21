@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.apps4society.repository.FuncoesRepository;
 import com.apps4society.repository.UserRepository;
 import com.apps4society.model.User;
 
@@ -35,6 +37,8 @@ public class UserControler {
 	
 	@Autowired
 	private UserRepository c;
+	@Autowired
+	private FuncoesRepository funcoesRepository;
 	
 	@RequestMapping(value="/users",method=RequestMethod.GET)
 	public List<User> getUser() {
@@ -54,6 +58,7 @@ public class UserControler {
 		System.out.println("Login"+user.getLogin());
 		System.out.println(user.getNome());
 		System.out.println(user.getEmail());
+		user.setRoles(Arrays.asList(funcoesRepository.findByName("ROLE_USER")));
 		user.setPass(new BCryptPasswordEncoder().encode(pass)); 
 		c.save(user);
 		return "index";

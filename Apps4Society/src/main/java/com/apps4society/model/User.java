@@ -31,10 +31,12 @@ public class User implements UserDetails,Serializable{
 	@ManyToMany
 	@JoinTable(name="usuarios_role",joinColumns= @JoinColumn(
 			name="usuarios_id", referencedColumnName="id"),
-	inverseJoinColumns = @JoinColumn(name="role_id" , referencedColumnName = "nomeFuncoes"))
-	private List<Funcoes> roles;
+	inverseJoinColumns = @JoinColumn(name="role_id" , referencedColumnName = "id"))
+	private Collection<Funcoes> roles;
 	
 	
+	
+	private boolean expiracaoToken;
 	
 	@NotNull
 	@Column(columnDefinition="text")
@@ -52,6 +54,7 @@ public class User implements UserDetails,Serializable{
 	@NotNull
 	@Column(columnDefinition="text")
 	private String pass; // 4
+	
 	
 	
 	public void setNome(String nome) {
@@ -120,10 +123,17 @@ public class User implements UserDetails,Serializable{
 		return true;
 	}
 	public List<Funcoes> getRoles() {
-		return roles;
+		return (List<Funcoes>) roles;
 	}
 	public void setRoles(List<Funcoes> roles) {
 		this.roles = roles;
 	}
+	public boolean isExpiracaoToken() {
+		return expiracaoToken;
+	}
+	public void setExpiracaoToken(boolean expiracaoToken) {
+		this.expiracaoToken = expiracaoToken;
+	}
+	
 	
 }

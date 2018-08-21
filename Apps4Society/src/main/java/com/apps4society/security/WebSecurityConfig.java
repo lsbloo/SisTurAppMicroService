@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 *  ÇÇ ainda nao esta completamente implementado;
 		 */
 		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login").permitAll().antMatchers(HttpMethod.POST,"swagger-ui#/**").permitAll()
-		.antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll().antMatchers(HttpMethod.POST,"/userADD").permitAll().antMatchers(HttpMethod.GET,"/userADD")
+		.antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll().antMatchers(HttpMethod.GET,"/listarAtrativos").hasRole("ADMIN").antMatchers(HttpMethod.POST,"/userADD").permitAll().antMatchers(HttpMethod.GET,"/userADD")
 		.permitAll().antMatchers(HttpMethod.GET,"/rest_municipios").permitAll().antMatchers(HttpMethod.GET,"/rest_atrativosTuristicos").permitAll().antMatchers(HttpMethod.GET, "/")
 		.permitAll().anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().logout()
@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * criptografada for compativel com a mesma q ele colocou no cad;
 		 */
 		auth.userDetailsService(us).passwordEncoder(new BCryptPasswordEncoder());
+		
 		
 		
 	}
