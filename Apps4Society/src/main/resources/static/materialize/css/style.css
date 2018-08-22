@@ -1,0 +1,36 @@
+
+.grid-container{
+	grid-template-collums: auto;
+	padding:10px;
+	height:auto;
+	width:100%;
+}
+#h1{
+	float: left;
+}
+.content-item{
+	text-align:center;
+}	
+
+header{
+	width:100%;
+	grid-area:top;
+	-webkit-transition: -webkit-box-shadow .25s;
+  	transition: -webkit-box-shadow .25s;
+  	transition: box-shadow .25s;
+  	transition: box-shadow .25s, -webkit-box-shadow .25s;
+  	padding: 24px;
+  	margin: 0.5rem 0 1rem 0;
+  	border-radius: 2px;
+  	background-color: #1de9b6;
+}
+.content-item>img{
+	height:auto;
+	widhth:auto;
+}
+section.content-item > div{
+	texti-align:center;
+	height:auto;
+	height:auto;
+	display:flex;
+}

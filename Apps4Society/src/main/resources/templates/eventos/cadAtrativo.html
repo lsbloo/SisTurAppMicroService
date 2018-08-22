@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+	  
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <meta charset="UTF-8"/>
+      <script type="text/javascript" src="materialize/css/jquery-3.3.1.js"></script>
+	  <script type="text/javascript" src="materialize/css/jquery.mask.min.js"></script>
+	  
+	  <script type="text/javascript">
+	  
+	  $(document).ready(function(){
+		  alert("OK");
+		  
+		  $("#latitude").mask("w0x.00000000", {
+			  translation: {
+				  'w': {
+					  pattern: /[+,-]/
+				  }
+		  		'x': {
+		  			pattern: /[0-9]/
+		  		}
+			  }
+		  },{reverse: true})
+		  $("#longitude").mask("w0x.00000000", {
+			  translation: {
+				  'w': {
+					  pattern: /[+,-]/
+				  }
+		  		'x': {
+		  			pattern: /[0-9]/
+		  		}
+			  }
+		  },{reverse: true})
+	  })
+	 
+	
+	  
+	  </script>
+		
+     			
+</head>
+<body >
+	<div class="grid-container">
+			<header class="content-item">
+					<nav>
+						<div class="new-wrapper">
+								<h1><a href ="/" class="brand-logo">   SisTur</a></h1>
+						</div>
+						<div>
+							<!--JavaScript at end of body for optimized loading-->
+					      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+						</div>
+					</nav>
+			</header>
+			<section class="content-item">
+			<form method="post" name="formulario_cad" onsubmit="return validaForm(this);">
+				<div>
+        			<div class="input-field col s6">
+      				    <i class="material-icons prefix">account_circle</i>
+      				    <input id="nome" type="text" required class="validate" name="nome" maxlength="30">
+         			    <label for="icon_prefix">Nome Atrativo</label>
+      				 </div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">https</i>
+          					<input id="codValidacao" type="text" required class="validate" name="codValidacao" maxlength="10">
+         						 <label for="https">Codigo de Validação</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">linked_camera</i>
+          					<input id="imgUrl" type="text" class="validate" name="imgURL">
+         						 <label for="linked_camera">Link Imagem(URL)</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">live_help</i>
+          					<input id="comoChegar" type="text" required class="validate" name="comoChegar">
+         						 <label for="live_help">Como chegar no atrativo</label>
+        			</div>
+        			
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">description</i>
+          					<input id="description" type="text" class="validate" name="descricao">
+         						 <label for="description">Descrição do Atrativo</label>
+        			</div>
+        			
+        	
+        			
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">settings_phone</i>
+          					<input id="settings_phone" type="tel" class="validate" name="infoContato" maxlength="12">
+         						 <label for="settings_phone">Telefone do Estabelecimento(Atrativo)</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_on</i>
+          					<input id="latitude" type="text" required maxlength="11" class="validate" name="latitude" >
+         						 <label for="location_on">Latitude</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_on</i>
+          					<input id="longitude" type="text" required  maxlength="11" class="validate" name="longitude" >
+         						 <label for="location_on">Longitude</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">link</i>
+          					<input id="link" type="text" class="validate" name="site">
+         						 <label for="link">Site do Local</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_city</i>
+          					<input id="location_city" type="text" class="validate" name="cidade">
+         						 <label for="location_city">Cidade</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_on</i>
+          					<input id="location_on" required type="text" class="validate" name="estado">
+         						 <label for="location_on">Estado</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">info</i>
+          					<input id="info" type="text" class="validate" name="informacoes_relevantes">
+         						 <label for="info">Informações Relevantes do Atrativo</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">contact_mail</i>
+          					<input id="contact_mail" required type="email" class="validate" name="email_responsavel">
+         						 <label for="contact_mail">Email responsável pelo preenchimento</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">person</i>
+          					<input id="person" type="text"  class="validate" name="nome_responsavel_preenchimento">
+         						 <label for="person">Nome completo do responsável pelo preenchimento</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">contact_phone</i>
+          					<input id="contact_phone" required type="tel" class="validate" maxlength="12" name="contato_responsavel_preenchimento">
+         						 <label for="contact_phone">Contato do responsavel pelo preenchimento</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">info</i>
+          					<input id="info" type="text" class="validate" name="fonte_informacoes">
+         						 <label for="info">Fonte das Informações</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">contact_phone</i>
+          					<input id="contact_phone" type="tel" class="validate" maxlength="12" name="contato_responsavel_atrativo">
+         						 <label for="contact_phone">Contato do responsavel pelo atrativo</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">contact_mail</i>
+          					<input id="contact_mail" type="email" required class="validate" name="email_reponsavel_atrativo">
+         						 <label for="contact_mail">Email do responsável pelo atrativo</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">person_pin</i>
+          					<input id="person_pin" type="text" required class="validate" name="nome_responsavel_atrativo">
+         						 <label for="person_pin">Nome do responsável pelo atrativo</label>
+        			</div>
+        
+        		
+        			 <button type="submit" class="waves-effect waves-light btn">Cadastrar Municipio!</button>
+        			 
+        			</div>
+     			</form>
+     			
+     			</section>
+  				</div>
+  				
+  				
+  			
+		
+		
+
+      <div th:fragment="footer">
+
+    <div class="container">
+
+        <footer>
+        <!-- this is footer -->
+            <span sec:authorize="isAuthenticated()">
+                Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/logout}">Sair do Sistema</a>
+            </span>
+
+        </footer>
+    </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

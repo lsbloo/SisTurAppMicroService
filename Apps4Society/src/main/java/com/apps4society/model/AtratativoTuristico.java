@@ -31,62 +31,74 @@ public class AtratativoTuristico {
 		return id;
 	}
 
-	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String date; // 0
-	@NotNull
+	
 	@Column(columnDefinition="text")
 	private String imgURL; // 1
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
 	private String codValidacao; // 2
-	@NotNull
+	
+	
 	@Column(columnDefinition="text")
 	private String nome_atrativo; // 3
-	@NotNull
+	
+	
 	@Column(columnDefinition="text")
 	private String comoChegar; // 4
-	@NotNull
+	
 	@Column(columnDefinition="text")
 	private String descricao; // 5
-	@NotNull
+
 	@Column(columnDefinition="text")
 	private String infoContato; // 6
-	@NotNull
+	
+
 	private double latitude; // 7
-	@NotNull
+
 	private double longitude; // 8 
-	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String site; // 9
-	@NotNull
+	
 	@Column(columnDefinition="text")
 	private String cidade; // 10
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
 	private String estado; // 11
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
+	
 	private String informacoes_relevantes; // 12
-	@NotNull
+
 	@Column(columnDefinition="text")
+	
 	private String email_responsavel_preenchimento; // 13
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
 	private String nome_responsavel_preenchimento; // 14
-	@NotNull
+	
+	
 	@Column(columnDefinition="text")
 	private String contato_responsavel_preenchimento; // 15
-	@NotNull
+	
+	
 	@Column(columnDefinition="text")
 	private String fonte_informacoes; // 16
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
 	private String nome_responsavel_atrativo; // 17
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
 	private String contato_responsavel_atrativo; // 18
-	@NotNull
+	
+
 	@Column(columnDefinition="text")
 	private String email_atrativo; // 19
 	

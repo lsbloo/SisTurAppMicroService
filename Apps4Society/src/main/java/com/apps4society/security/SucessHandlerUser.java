@@ -20,6 +20,7 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -72,6 +73,8 @@ public class SucessHandlerUser implements AuthenticationSuccessHandler{
  
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
+    
+    
  
     protected String determineTargetUrl(Authentication authentication) {
     	/*
@@ -113,7 +116,7 @@ public class SucessHandlerUser implements AuthenticationSuccessHandler{
     
     
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(true);
         if (session == null) {
             return;
         }

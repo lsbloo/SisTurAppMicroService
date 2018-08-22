@@ -3,6 +3,32 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ 
+.grid-container{
+	grid-template-collums: auto;
+	height:auto;
+	width:100%;
+}
+
+.content-item{
+	text-align:left;
+}
+header{
+	width:100%;
+	grid-area:top;
+	-webkit-transition: -webkit-box-shadow .25s;
+  	transition: -webkit-box-shadow .25s;
+  	transition: box-shadow .25s;
+  	transition: box-shadow .25s, -webkit-box-shadow .25s;
+  	margin: 0.5rem 0 1rem 0;
+  	border-radius: 2px;
+}
+section.content-item > div{
+	texti-align:center;
+	height:auto;
+	height:auto;
+	display:grid;
+}
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -3397,8 +3423,8 @@ nav ul a span.badge {
   display: inline-block;
   float: none;
   margin-left: 4px;
-  line-height: 22px;
-  height: 22px;
+  line-height: 25px;
+  height: auto;
   -webkit-font-smoothing: auto;
 }
 
@@ -3469,15 +3495,18 @@ table span.badge {
 }
 
 .row {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+	grid-template-collums:auto;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-bottom: 20px;
+  	text-align:center;
 }
 
 .row:after {
   content: "";
   display: table;
   clear: both;
+  text-align: center;
 }
 
 .row .col {
@@ -4271,9 +4300,9 @@ table span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #1de9b6;
   width: 100%;
-  height: 56px;
+  height: 100%;
   line-height: 56px;
 }
 
@@ -4333,7 +4362,9 @@ nav .brand-logo {
   color: #fff;
   display: inline-block;
   font-size: 2.1rem;
-  padding: 0;
+  padding: 2px;
+  margin-left: 15px;
+
 }
 
 nav .brand-logo.center {

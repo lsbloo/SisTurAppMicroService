@@ -16,6 +16,11 @@ public class indexControler {
 		return "index";
 	}
 	
+	@RequestMapping(value="/logout",method=RequestMethod.POST)
+	public String redirectLogout() {
+		System.err.println("APSKAPSPSK LOGOUT");
+		return "/";
+	}
 	@RequestMapping(value="/acessUSER", method=RequestMethod.GET)
 	public String acessUser() {
 		return "/eventos/painel_user";

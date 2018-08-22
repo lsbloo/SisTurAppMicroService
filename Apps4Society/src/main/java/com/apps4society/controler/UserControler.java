@@ -30,7 +30,7 @@ import com.apps4society.repository.UserRepository;
 import com.apps4society.model.User;
 
 
-@Controller
+@RestController
 public class UserControler {
 	private static Map<Integer,User> users;
 	private static BCryptPasswordEncoder encoder;
@@ -44,26 +44,7 @@ public class UserControler {
 	public List<User> getUser() {
 		return (List<User>) c.findAll();
 	}
-	
-	@RequestMapping(value="/userADD",method=RequestMethod.GET)
-	public String createUsuarioGET() {
-		return "/eventos/caduser";
-	}
-	
-	@RequestMapping(value="/userADD",method=RequestMethod.POST)
-	public String createUsuario(User user) {
-	
-		String pass = user.getPass();
-		System.out.println("SENHA FODA!"+pass);
-		System.out.println("Login"+user.getLogin());
-		System.out.println(user.getNome());
-		System.out.println(user.getEmail());
-		user.setRoles(Arrays.asList(funcoesRepository.findByName("ROLE_USER")));
-		user.setPass(new BCryptPasswordEncoder().encode(pass)); 
-		c.save(user);
-		return "index";
-	}
-	
+
 	@GetMapping("/user/{id}")
 	public Optional<User> getCliente(@PathVariable Long id) {
 		return c.findById(id);

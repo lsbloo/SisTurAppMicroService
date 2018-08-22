@@ -5,17 +5,52 @@
 	<!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="UTF-8"/>
 
 </head>
-<body>
-	<h3>Hello WOrld</h3>
+<body >
+	<div class="grid-container">
+			<header class="content-item">
+					<nav>
+						<div class="new-wrapper">
+								<h1><a href ="/" class="brand-logo">   SisTur</a></h1>
+								
+								<ul id="nav-mobile" class="right hide-on-med-and-down">
+								<li><a href="/cadMunicipios" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i> Cadastrar Municipios</a>
+								<li><a href="/cadAtrativos" class="waves-effect waves-light btn"><i class="material-icons left">format_align_justify</i> Cadastrar Atrativos Turisticos</a>
+								</ul>
+							
+						</div>
+						<div>
+							<!--JavaScript at end of body for optimized loading-->
+					      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+						</div>
+					</nav>
+			</header>
+			<section class="content-item">
+					
+			</section>
+		</div>
 
 <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <div th:fragment="footer">
+
+    <div class="container">
+
+        <footer>
+        <!-- this is footer -->
+            <span sec:authorize="isAuthenticated()">
+                Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/logout}">Sair do Sistema</a>
+            </span>
+
+        </footer>
+    </div>
 </body>
 </html>

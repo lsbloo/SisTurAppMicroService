@@ -44,12 +44,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 *  ÇÇ ainda nao esta completamente implementado;
 		 */
 		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login").permitAll().antMatchers(HttpMethod.POST,"swagger-ui#/**").permitAll()
-		.antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll().antMatchers(HttpMethod.GET,"/listarAtrativos").hasRole("ADMIN").antMatchers(HttpMethod.POST,"/userADD").permitAll().antMatchers(HttpMethod.GET,"/userADD")
+		.antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll().antMatchers(HttpMethod.GET,"/listarAtrativos","/listarMunicipios","/del_rest_municipiodel/{id}","/users","/userdel{id}","/user/{id}","/del_rest_atrativoTuristicodel/{id}").hasRole("ADMIN").antMatchers(HttpMethod.POST,"/userADD").permitAll().antMatchers(HttpMethod.GET,"/userADD")
 		.permitAll().antMatchers(HttpMethod.GET,"/rest_municipios").permitAll().antMatchers(HttpMethod.GET,"/rest_atrativosTuristicos").permitAll().antMatchers(HttpMethod.GET, "/")
 		.permitAll().anyRequest().authenticated()
-		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().logout()
+		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().logout().addLogoutHandler(myLogoutSucessHandler())
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
+	}
+	
+	@Bean
+	public  MyLogoutSucessHandler myLogoutSucessHandler() {
+		return new MyLogoutSucessHandler();
 	}
 	
 	 @Bean
