@@ -81,6 +81,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * inclusive arquivos html,css,javascrript; jpg etc;
 		 * 
 		 */
-		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**","/templates/fragments/**");
+		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**","/templates/fragments/**","/utils/**");
 	}
 }

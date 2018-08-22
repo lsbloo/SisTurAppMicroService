@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+	  
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <meta charset="UTF-8"/>
+      <script type="text/javascript" src="materialize/css/jquery-3.3.1.js"></script>
+	  <script type="text/javascript" src="materialize/css/jquery.mask.min.js"></script>
+	 
+	  <script type="text/javascript">
+	  $(document).ready(function(){
+		  //alert("OK");
+		  
+		  $("#phone").mask("(000)-000000000");
+		  $("#phone1").mask("(000)-000000000");
+		  $("#phone2").mask("(000)-000000000");
+		 
+		 
+		  
+		  $("#latitude").mask("w0x.00000000", {
+			  translation: {
+				  'w': {
+					  pattern: /[-]/, optional: true
+				  },
+		  		'x': {
+		  			pattern: /[0-9]/, optional: true
+		  		}
+			  }
+		  },{reverse: true});
+		  $("#longitude").mask("w0x.00000000", {
+			  translation: {
+				  'w': {
+					  pattern: /[-]/, optional: true
+				  },
+		  		'x': {
+		  			pattern: /[0-9]/, optional: true
+		  		}
+			  }
+		  },{reverse: true})
+	  });
+	 
+	
+	  
+	  </script>
+		
+     			
+</head>
+<body >
+	<div class="grid-container">
+			<header class="content-item">
+					<nav>
+						<div class="new-wrapper">
+								<h1><a href ="/" class="brand-logo">   SisTur</a></h1>
+						</div>
+						<div>
+							<!--JavaScript at end of body for optimized loading-->
+					      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+						</div>
+					</nav>
+			</header>
+			<section class="content-item">
+			<form method="post" name="formulario_cad" onsubmit="return validaForm(this);">
+				<div>
+        			<div class="input-field col s6">
+      				    <i class="material-icons prefix">account_circle</i>
+      				    <input id="nome" type="text" required class="validate" name="nomecidade" maxlength="30">
+         			    <label for="icon_prefix">Nome do Municipio</label>
+      				 </div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">https</i>
+          					<input id="codValidacao" type="text" required class="validate" name="codValidacao" maxlength="10">
+         						 <label for="https">Codigo de Validação</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">linked_camera</i>
+          					<input id="imgUrl" type="text" class="validate" name="imgUrl">
+         						 <label for="linked_camera">Link Imagem(URL)</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">live_help</i>
+          					<input id="comoChegar" type="text" required class="validate" name="areaTerritorial">
+         						 <label for="live_help">Área territorial do municipio</label>
+        			</div>
+        			
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">description</i>
+          					<input id="description" type="text" required class="validate" name="descricao">
+         						 <label for="description">Descrição do Municipio</label>
+        			</div>
+        			
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_on</i>
+          					<input id="latitude" type="text" required maxlength="11" class="validate" name="latitude" >
+         						 <label for="location_on">Latitude</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_on</i>
+          					<input id="longitude" type="text" required  maxlength="11" class="validate" name="longitude" >
+         						 <label for="location_on">Longitude</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">link</i>
+          					<input id="site" type="text" class="validate" name="site">
+         						 <label for="link">Site do Local</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_city</i>
+          					<input id="location_city" type="number" required class="validate" name="populacao">
+         						 <label for="location_city">Número de Habitantes</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">location_on</i>
+          					<input id="location_on" required type="text" required class="validate" name="estado">
+         						 <label for="location_on">Estado</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">info</i>
+          					<input id="info" type="text" class="validate" required name="informacoesRelevantes">
+         						 <label for="info">Informações Relevantes do Municipio</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">contact_mail</i>
+          					<input id="contact_mail" required type="email" required class="validate" name="email_responsavel">
+         						 <label for="contact_mail">Email responsável pelo preenchimento</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">person</i>
+          					<input id="person" type="text"  class="validate" required name="nome_responsavel">
+         						 <label for="person">Nome completo do responsável pelo preenchimento</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">contact_phone</i>
+          					<input id="phone2" required type="tel" required class="validate" maxlength="12" name="contatos_responsavel">
+         						 <label for="contact_phone">Contato do responsavel pelo preenchimento</label>
+        			</div>
+        			<div class="input-field col s6">
+          				<i class="material-icons prefix">info</i>
+          					<input id="info" type="text" class="validate" name="fonte_informacoes">
+         						 <label for="info">Fonte das Informações</label>
+        			</div>
+        		
+        		
+        			 <button type="submit" class="waves-effect waves-light btn">Cadastrar Municipio!</button>
+        			 
+        			</div>
+     			</form>
+     			
+     		
+     			</section>
+  				</div>
+  				
+  				
+  			
+		
+		
+
+      <div th:fragment="footer">
+
+    <div class="container">
+
+        <footer>
+        <!-- this is footer -->
+            <span sec:authorize="isAuthenticated()">
+                Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/logout}">Sair do Sistema</a>
+            </span>
+
+        </footer>
+    </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

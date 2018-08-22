@@ -13,33 +13,38 @@
       <meta charset="UTF-8"/>
       <script type="text/javascript" src="materialize/css/jquery-3.3.1.js"></script>
 	  <script type="text/javascript" src="materialize/css/jquery.mask.min.js"></script>
-	  
+	 
 	  <script type="text/javascript">
-	  
 	  $(document).ready(function(){
-		  alert("OK");
+		  //alert("OK");
+		  
+		  $("#phone").mask("(000)-000000000");
+		  $("#phone1").mask("(000)-000000000");
+		  $("#phone2").mask("(000)-000000000");
+		 
+		 
 		  
 		  $("#latitude").mask("w0x.00000000", {
 			  translation: {
 				  'w': {
-					  pattern: /[+,-]/
-				  }
+					  pattern: /[-]/, optional: true
+				  },
 		  		'x': {
-		  			pattern: /[0-9]/
+		  			pattern: /[0-9]/, optional: true
 		  		}
 			  }
-		  },{reverse: true})
+		  },{reverse: true});
 		  $("#longitude").mask("w0x.00000000", {
 			  translation: {
 				  'w': {
-					  pattern: /[+,-]/
-				  }
+					  pattern: /[-]/, optional: true
+				  },
 		  		'x': {
-		  			pattern: /[0-9]/
+		  			pattern: /[0-9]/, optional: true
 		  		}
 			  }
 		  },{reverse: true})
-	  })
+	  });
 	 
 	
 	  
@@ -86,7 +91,7 @@
         			
         			<div class="input-field col s6">
           				<i class="material-icons prefix">description</i>
-          					<input id="description" type="text" class="validate" name="descricao">
+          					<input id="description" type="text" required class="validate" name="descricao">
          						 <label for="description">Descrição do Atrativo</label>
         			</div>
         			
@@ -94,7 +99,7 @@
         			
         			<div class="input-field col s6">
           				<i class="material-icons prefix">settings_phone</i>
-          					<input id="settings_phone" type="tel" class="validate" name="infoContato" maxlength="12">
+          					<input id="phone" type="tel" class="validate" name="infoContato" maxlength="12">
          						 <label for="settings_phone">Telefone do Estabelecimento(Atrativo)</label>
         			</div>
         			<div class="input-field col s6">
@@ -109,7 +114,7 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">link</i>
-          					<input id="link" type="text" class="validate" name="site">
+          					<input id="site" type="text" class="validate" name="site">
          						 <label for="link">Site do Local</label>
         			</div>
         			<div class="input-field col s6">
@@ -139,7 +144,7 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">contact_phone</i>
-          					<input id="contact_phone" required type="tel" class="validate" maxlength="12" name="contato_responsavel_preenchimento">
+          					<input id="phone2" required type="tel" class="validate" maxlength="12" name="contato_responsavel_preenchimento">
          						 <label for="contact_phone">Contato do responsavel pelo preenchimento</label>
         			</div>
         			<div class="input-field col s6">
@@ -149,7 +154,7 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">contact_phone</i>
-          					<input id="contact_phone" type="tel" class="validate" maxlength="12" name="contato_responsavel_atrativo">
+          					<input id="phone1" type="tel" class="validate" maxlength="12" name="contato_responsavel_atrativo">
          						 <label for="contact_phone">Contato do responsavel pelo atrativo</label>
         			</div>
         			<div class="input-field col s6">
@@ -164,11 +169,12 @@
         			</div>
         
         		
-        			 <button type="submit" class="waves-effect waves-light btn">Cadastrar Municipio!</button>
+        			 <button type="submit" class="waves-effect waves-light btn">Cadastrar Atrativo</button>
         			 
         			</div>
      			</form>
      			
+     		
      			</section>
   				</div>
   				

@@ -8,12 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.apps4society.model.Municipios;
 import com.apps4society.repository.MunicipioRepository;
+import com.apps4society.utilidades.MyCalendar;
 
 @Controller
 public class MunicipiosControlerWeb {
 	
 	@Autowired
 	private MunicipioRepository cityRepository;
+	
+	private MyCalendar mycalendar;
 	
 	
 	
@@ -28,6 +31,22 @@ public class MunicipiosControlerWeb {
 		
 	}
 	
+	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.GET)
+	public String cadMun() {
+		return "/eventos/cadcity";
+	}
+	
+	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.POST)
+	public String cadMunpost(Municipios mun) {
+		mycalendar = new MyCalendar();
+		System.err.println("XDXD lala" + mun.getNomecidade());
+		mun.setDate(mycalendar.returnData());
+		
+		cityRepository.save(mun);
+		
+		return "TUDOBEM";
+		
+	}
 	
 
 }
