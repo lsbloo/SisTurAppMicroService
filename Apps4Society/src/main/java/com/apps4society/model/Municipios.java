@@ -25,29 +25,29 @@ public class Municipios {
 	}
 	
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String date; // 0
 	
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String imgUrl; // 1
 	
 	@NotNull
-	@Column(columnDefinition="text")
+	
 
 	private String codValidacao; // 2
 	
 	@NotNull
-	@Column(columnDefinition="text")
+
 	
 	private String nome_cidade; // 3
 	
 	@NotNull
-	@Column(columnDefinition="text")
+	
 
 	private String descricao; // 4
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	
 	
 	private String areaTerritorial; // 5
@@ -57,28 +57,28 @@ public class Municipios {
 	@NotNull
 	private double longitude; // 7
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String estado; // 8
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private int populacao; // 9 
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String site; // 10
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String informacoesRelevantes; // 11
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String email_responsavel_preenchimento; // 12
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String nome_responsavel_preenchimento; // 13
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String contatos_responsavel_preenchimento; // 14
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String fonte_informacoes; // 15
 	
 	

@@ -23,7 +23,7 @@ public class indexControler {
 	}
 	@RequestMapping(value="/acessUSER", method=RequestMethod.GET)
 	public String acessUser() {
-		return "/eventos/painel_user";
+		return "eventos/painel_user";
 	}
 	@RequestMapping(value="/acessADMIN",method=RequestMethod.GET)
 	public String acessADMIN() {
@@ -48,7 +48,7 @@ public class indexControler {
     @RequestMapping(value="/login",method=RequestMethod.GET)
     public String login() {
 
-        return "/fragments/login";
+        return "fragments/login";
     }
     
 

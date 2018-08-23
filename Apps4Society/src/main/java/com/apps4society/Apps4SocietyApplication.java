@@ -18,13 +18,6 @@ public class Apps4SocietyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Apps4SocietyApplication.class, args);
 		
-	
-		
 	}
-	
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder app) {
-		return app.sources(Apps4SocietyApplication.class);
-	}
-	
 	
 }

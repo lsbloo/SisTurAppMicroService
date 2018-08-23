@@ -40,19 +40,13 @@ public class AtrativoTuristicoControlerWeb {
 	@RequestMapping(value="/cadAtrativos",method=RequestMethod.POST)
 	public String cadAtrativo(AtratativoTuristico at) {
 		
-		try {
-			
-			
-		}catch(Exception e) {
-			
-		}
 		dataCad = new MyCalendar();
 		
 		at.setDate(dataCad.returnData());
 		
 		atRepository.save(at);
 		System.err.println("Cadastrado!");
-		return "cadastrado!";
+		return "eventos/painel_user";
 	}
 	
 

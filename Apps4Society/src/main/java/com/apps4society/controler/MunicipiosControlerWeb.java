@@ -33,7 +33,7 @@ public class MunicipiosControlerWeb {
 	
 	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.GET)
 	public String cadMun() {
-		return "/eventos/cadcity";
+		return "eventos/cadcity";
 	}
 	
 	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.POST)
@@ -44,7 +44,7 @@ public class MunicipiosControlerWeb {
 		
 		cityRepository.save(mun);
 		
-		return "TUDOBEM";
+		return "eventos/painel_user";
 		
 	}
 	

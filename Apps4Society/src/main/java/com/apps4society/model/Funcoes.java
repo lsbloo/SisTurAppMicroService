@@ -37,7 +37,7 @@ public class Funcoes implements GrantedAuthority{
 	 */
 
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String name;
 	
 	@ManyToMany(mappedBy="roles")

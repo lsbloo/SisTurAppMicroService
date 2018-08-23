@@ -34,25 +34,25 @@ public class AtratativoTuristico {
 	
 	private String date; // 0
 	
-	@Column(columnDefinition="text")
+
 	private String imgURL; // 1
 	
 
-	@Column(columnDefinition="text")
+
 	private String codValidacao; // 2
 	
 	
-	@Column(columnDefinition="text")
+	
 	private String nome_atrativo; // 3
 	
 	
-	@Column(columnDefinition="text")
+	
 	private String comoChegar; // 4
 	
-	@Column(columnDefinition="text")
+	
 	private String descricao; // 5
 
-	@Column(columnDefinition="text")
+
 	private String infoContato; // 6
 	
 
@@ -62,44 +62,42 @@ public class AtratativoTuristico {
 	
 	private String site; // 9
 	
-	@Column(columnDefinition="text")
+	
 	private String cidade; // 10
 	
 
-	@Column(columnDefinition="text")
+
 	private String estado; // 11
 	
 
-	@Column(columnDefinition="text")
+	
 	
 	private String informacoes_relevantes; // 12
 
-	@Column(columnDefinition="text")
 	
 	private String email_responsavel_preenchimento; // 13
 	
 
-	@Column(columnDefinition="text")
+
 	private String nome_responsavel_preenchimento; // 14
 	
 	
-	@Column(columnDefinition="text")
+
 	private String contato_responsavel_preenchimento; // 15
 	
-	
-	@Column(columnDefinition="text")
+
 	private String fonte_informacoes; // 16
 	
 
-	@Column(columnDefinition="text")
+	
 	private String nome_responsavel_atrativo; // 17
 	
 
-	@Column(columnDefinition="text")
+
 	private String contato_responsavel_atrativo; // 18
 	
 
-	@Column(columnDefinition="text")
+	
 	private String email_atrativo; // 19
 	
 	

@@ -6,9 +6,7 @@ spring:
       prefix: src/main/resources
       suffix: .html
   datasource:
-    url: jdbc:postgresql://localhost:5432/apps4Society
-    username: postgres
-    password: 6036236
+    url: jdbc:sqlserver://apps4society-2018.database.windows.net:1433;database=apps4Society;user=rootosvaldo@apps4society-2018;password=7154819osvaldo-;encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30
   jpa:
     hibernate:
       ddl-auto: update

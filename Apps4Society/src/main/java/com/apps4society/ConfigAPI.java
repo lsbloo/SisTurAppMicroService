@@ -48,7 +48,7 @@ public class ConfigAPI {
 }
     
     private springfox.documentation.service.Contact contato() {
-    	springfox.documentation.service.Contact cx = new springfox.documentation.service.Contact("OsvaldoAiron","osvaldo.airon@dce.ufpb.br", null);
+    	springfox.documentation.service.Contact cx = new springfox.documentation.service.Contact("OsvaldoAiron","www.github.com/lsbloo", null);
     	
     	return cx;
     }

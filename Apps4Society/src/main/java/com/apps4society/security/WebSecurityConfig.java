@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	/*
@@ -81,6 +80,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * inclusive arquivos html,css,javascrript; jpg etc;
 		 * 
 		 */
-		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**","/templates/fragments/**","/utils/**");
+		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**","/fragments/**","/utils/**");
 	}
 }

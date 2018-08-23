@@ -22,7 +22,7 @@ public class UserControllerWEB {
 	
 	@RequestMapping(value="/userADD",method=RequestMethod.GET)
 	public String createUsuarioGET() {
-		return "/eventos/caduser";
+		return "eventos/caduser";
 	}
 	
 	@RequestMapping(value="/userADD",method=RequestMethod.POST)

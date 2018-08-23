@@ -39,20 +39,20 @@ public class User implements UserDetails,Serializable{
 	private boolean expiracaoToken;
 	
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String nome; // 0
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String email; // 1
 	
 	
 	@NotNull
-	@Column(columnDefinition="text")
+	
 	private String login; // 3
 	
 	
 	@NotNull
-	@Column(columnDefinition="text")
+
 	private String pass; // 4
 	
 	
