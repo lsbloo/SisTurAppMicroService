@@ -1,2 +1,2 @@
-# SpringRest-Apps4Society
-SpringRest Api, carregamento de dados dos municipios do aplicativo apps4Society fase inicial
+# SisTurAppMicroService
+MicroServiço que tem como objetivo prover dados para um aplicativo(Android) do projeto apps4Society UFPB.
