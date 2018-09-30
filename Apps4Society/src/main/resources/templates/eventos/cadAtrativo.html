@@ -79,7 +79,7 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">linked_camera</i>
-          					<input id="imgUrl" type="text" class="validate" name="imgURL">
+          					<input id="imgUrl" type="text" required class="validate" name="imgURL">
          						 <label for="linked_camera">Link Imagem(URL)</label>
         			</div>
         			<div class="input-field col s6">
@@ -90,7 +90,7 @@
         			
         			<div class="input-field col s6">
           				<i class="material-icons prefix">description</i>
-          					<input id="description" type="text" required class="validate" name="descricao">
+          					<input id="description" type="text" required maxlength="240" class="validate" name="descricao">
          						 <label for="description">Descrição do Atrativo</label>
         			</div>
         			
@@ -99,7 +99,7 @@
         			<div class="input-field col s6">
           				<i class="material-icons prefix">settings_phone</i>
           					<input id="phone" type="tel" class="validate" name="infoContato" maxlength="12">
-         						 <label for="settings_phone">Telefone do Estabelecimento(Atrativo)</label>
+         						 <label for="settings_phone">Telefone(Celular) do Estabelecimento(Atrativo)</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">location_on</i>
@@ -123,12 +123,12 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">location_on</i>
-          					<input id="location_on" required type="text" class="validate" name="estado">
+          					<input id="location_on"  required type="text" class="validate" name="estado">
          						 <label for="location_on">Estado</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">info</i>
-          					<input id="info" type="text" class="validate" name="informacoes_relevantes">
+          					<input id="info" type="text" class="validate" maxlength="240" name="informacoes_relevantes">
          						 <label for="info">Informações Relevantes do Atrativo</label>
         			</div>
         			<div class="input-field col s6">
@@ -138,13 +138,13 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">person</i>
-          					<input id="person" type="text"  class="validate" name="nome_responsavel_preenchimento">
+          					<input id="person" type="text" required class="validate" name="nome_responsavel_preenchimento">
          						 <label for="person">Nome completo do responsável pelo preenchimento</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">contact_phone</i>
-          					<input id="phone2" required type="tel" class="validate" maxlength="12" name="contato_responsavel_preenchimento">
-         						 <label for="contact_phone">Contato do responsavel pelo preenchimento</label>
+          					<input id="phone2"  type="tel" class="validate" maxlength="12" name="contato_responsavel_preenchimento">
+         						 <label for="contact_phone">Contato(Celular) do responsavel pelo preenchimento</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">info</i>
@@ -154,16 +154,16 @@
         			<div class="input-field col s6">
           				<i class="material-icons prefix">contact_phone</i>
           					<input id="phone1" type="tel" class="validate" maxlength="12" name="contato_responsavel_atrativo">
-         						 <label for="contact_phone">Contato do responsavel pelo atrativo</label>
+         						 <label for="contact_phone">Contato(Celular) do responsavel pelo atrativo</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">contact_mail</i>
-          					<input id="contact_mail" type="email" required class="validate" name="email_reponsavel_atrativo">
+          					<input id="contact_mail" type="email" class="validate" name="email_reponsavel_atrativo">
          						 <label for="contact_mail">Email do responsável pelo atrativo</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">person_pin</i>
-          					<input id="person_pin" type="text" required class="validate" name="nome_responsavel_atrativo">
+          					<input id="person_pin" type="text" class="validate" name="nome_responsavel_atrativo">
          						 <label for="person_pin">Nome do responsável pelo atrativo</label>
         			</div>
         

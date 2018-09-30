@@ -7,9 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.io.Serializable;
 
 @Entity
-public class Privilege {
+public class Privilege implements Serializable{
 	
 	
 	@Id

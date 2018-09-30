@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +43,7 @@ public class AtrativoTuristicoControler {
 	}
 	@ApiOperation(value="Deleta um atrativo especifico pelo ID")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/del_rest_atrativoTuristicodel/{id}")
+	@RequestMapping(value="/del_rest_atrativoTuristicodel/{id}",method=RequestMethod.GET)
 	public boolean deleteAtratativoTuristico(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM atratativoTuristico PELO SEU ID

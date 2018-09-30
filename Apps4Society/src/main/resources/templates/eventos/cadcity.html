@@ -95,7 +95,7 @@
         			
         			<div class="input-field col s6">
           				<i class="material-icons prefix">description</i>
-          					<input id="description" type="text" required class="validate" name="descricao">
+          					<input id="description" type="text" required class="validate" maxLength="240" name="descricao">
          						 <label for="description">Descrição do Municipio</label>
         			</div>
         			
@@ -126,7 +126,7 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">info</i>
-          					<input id="info" type="text" class="validate" required name="informacoesRelevantes">
+          					<input id="info" type="text" class="validate" maxLength="240" required name="informacoesRelevantes">
          						 <label for="info">Informações Relevantes do Municipio</label>
         			</div>
         			<div class="input-field col s6">
@@ -141,12 +141,12 @@
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">contact_phone</i>
-          					<input id="phone2"  type="tel" required class="validate" maxlength="12" name="contatos_responsavel">
-         						 <label for="contact_phone">Contato do responsavel pelo preenchimento</label>
+          					<input id="phone2"  type="tel" class="validate" maxlength="12" name="contatos_responsavel">
+         						 <label for="contact_phone">Contato(Celular) do responsavel pelo preenchimento</label>
         			</div>
         			<div class="input-field col s6">
           				<i class="material-icons prefix">info</i>
-          					<input id="info" type="text" class="validate" name="fonte_informacoes">
+          					<input id="info" type="text" required class="validate" name="fonte_informacoes">
          						 <label for="info">Fonte das Informações</label>
         			</div>
         		

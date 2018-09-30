@@ -13,12 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import java.io.Serializable;
 import java.util.List;
 
 
 @Entity
 @Table(name="atrativosTuristicos")
-public class AtratativoTuristico {
+public class AtratativoTuristico implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;

@@ -12,14 +12,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apps4society.model.Municipios;
 import com.apps4society.model.User;
+import com.apps4society.repository.AtrativoTuristicoRepository;
 import com.apps4society.repository.MunicipioRepository;
 import com.apps4society.repository.UserRepository;
+import com.apps4society.model.AtratativoTuristico;
+import com.apps4society.exceptions.IndiceForaAlcance;
+import java.util.ArrayList;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,6 +36,8 @@ public class MunicipiosControler {
 	
 	@Autowired
 	private MunicipioRepository m;
+	@Autowired
+	private AtrativoTuristicoRepository at;
 	
 	
 	@ApiOperation(value="Retorna todos os municipios")
@@ -53,7 +60,7 @@ public class MunicipiosControler {
 	
 	@ApiOperation(value="Deleta um municipio pelo ID especifico")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/del_rest_municipiodel/{id}")
+	@RequestMapping(value="/del_rest_municipiodel/{id}",method=RequestMethod.GET)
 	public boolean deleteMunicipio(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * DELETA UM MUNICIPIO PELO SEU ID
@@ -61,10 +68,23 @@ public class MunicipiosControler {
 		m.deleteById(id);
 		return true;
 	}
-	//@PostMapping("/municipioadd")
-	//public Municipios createMunicipio(@RequestBody Municipios city) {
-		//return m.save(city);
-//	}
 	
-
+	
+	@ApiOperation(value="Pega todos os atrativos que tem em um municipio")
+	@ResponseStatus(value=HttpStatus.NO_CONTENT)
+	@RequestMapping(value="/rest_search_atrativo_name_city/{nome_city}",method=RequestMethod.GET)
+	public ArrayList<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city) throws IndiceForaAlcance
+	
+	{
+		/*
+		 * Pesquisa por todos os atrativos turisticos em um determinado municipio
+		 * 1 Municipio pode ter + de 1 atrativo turistico;
+		 */
+		System.out.println(nome_city);
+		
+		System.out.println(at.findByFiltro(nome_city).get(0).getCidade());
+		
+		
+		return at.findByFiltro(nome_city);
+	}
 }
