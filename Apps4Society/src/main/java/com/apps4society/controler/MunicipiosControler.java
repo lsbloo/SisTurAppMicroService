@@ -73,18 +73,45 @@ public class MunicipiosControler {
 	@ApiOperation(value="Pega todos os atrativos que tem em um municipio")
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
 	@RequestMapping(value="/rest_search_atrativo_name_city/{nome_city}",method=RequestMethod.GET)
-	public ArrayList<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city) throws IndiceForaAlcance
+	public ArrayList<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city)
 	
 	{
 		/*
 		 * Pesquisa por todos os atrativos turisticos em um determinado municipio
 		 * 1 Municipio pode ter + de 1 atrativo turistico;
+		 * Contudo um o municipio de um atrativo X, pode não esta na tabela de municipios
 		 */
-		System.out.println(nome_city);
+		try {
+			//System.out.println(nome_city);
+			
+			System.out.println(at.findByFiltro(nome_city).get(0).getComoChegar());
+			
+			if(at.findByFiltro(nome_city).size()>0) {
+				/*
+				 * Existe um atrativo naquele Municipio-
+				 */
+				int tamanho = at.findByFiltro(nome_city).size();
+				System.out.println(ExistAtrativoNoMuncipio(nome_city,tamanho));
+				return at.findByFiltro(nome_city);
+				
+				
+			}
+			
+		}catch(IndexOutOfBoundsException e) {
+			System.err.println(notExistsAtrativoNoMunicipio(nome_city));
+			throw new IndiceForaAlcance();
+			
+		}
+		return null;
 		
-		System.out.println(at.findByFiltro(nome_city).get(0).getCidade());
 		
-		
-		return at.findByFiltro(nome_city);
+	}
+	public String notExistsAtrativoNoMunicipio(String nome_city) {
+		String saida = "Não Existe um Atrativo no Municipio: "+nome_city;
+		return saida;
+	}
+	public static String ExistAtrativoNoMuncipio(String nome_city,int tamanho) {
+		String saida = "ArrayList de Atrativo retornado com sucesso no municipio: "+ nome_city +"\n"+ "Tamanho da Lista: "+tamanho;
+		return saida;
 	}
 }

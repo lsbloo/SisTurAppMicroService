@@ -1,8 +1,15 @@
 package com.apps4society.model;
 
 import java.io.Serializable;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +23,11 @@ public class AreaDeInteresseTuristico implements Serializable{
 	private long id;
 
 	
+	@OneToMany
+	@JoinTable(name="areaMunicipio", joinColumns= {@JoinColumn(name="areaInteresse_id" , 
+	referencedColumnName="id")},inverseJoinColumns= {@JoinColumn(name="area_id", 
+	referencedColumnName="id")})
+	private Collection<AreaMunicipio> areaInteresseList;
 	
 	@NotNull
 	private String nomeAreaTuristica;
