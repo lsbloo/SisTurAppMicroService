@@ -25,7 +25,7 @@ import java.util.Collection;
 @Entity
 @Table(name="municipios")
 
-public class Municipios implements Serializable{
+public class Municipios  implements Serializable{
 	
 	
 	

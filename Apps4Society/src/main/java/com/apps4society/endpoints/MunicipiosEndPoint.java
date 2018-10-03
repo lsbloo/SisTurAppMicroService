@@ -22,6 +22,8 @@ import com.apps4society.model.User;
 import com.apps4society.repository.AtrativoTuristicoRepository;
 import com.apps4society.repository.MunicipioRepository;
 import com.apps4society.repository.UserRepository;
+import com.apps4society.rolesmoldes.OperationFactory;
+import com.apps4society.utilidades.Contador;
 import com.apps4society.model.AtratativoTuristico;
 import com.apps4society.exceptions.IndiceForaAlcance;
 import java.util.ArrayList;
@@ -29,25 +31,38 @@ import java.util.ArrayList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8080")
 @Api(value="API REST Municipios")
 @RestController
-public class MunicipiosEndPoint {
+public class MunicipiosEndPoint implements OperationFactory{
 	
 	@Autowired
 	private MunicipioRepository m;
 	@Autowired
 	private AtrativoTuristicoRepository at;
 	
+	protected static String saida="";
+	protected static int[] result;
+	protected static int total;
+	
 	
 	@ApiOperation(value="Retorna todos os municipios")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@GetMapping("/rest_municipios")
-	public List<Municipios> getMunicipio() {
+	public List<Municipios> getMunicipio() throws InterruptedException {
 		/*OK
 		 * Retorna toda a lista de municipios
 		 */
-		return m.findAll();
+		List<Municipios> list_city = m.findAll();
+		validation("GetMunicipio");
+		if(list_city.size()!=0) {
+			System.out.print(" \n pass");
+		}else {
+			System.err.println("\n Nenhum municipio cadastrado!");
+		}
+		
+	
+		return list_city;
 	}
 	
 	@ApiOperation(value="Procura um minicipio pelo ID especifico")
@@ -75,7 +90,7 @@ public class MunicipiosEndPoint {
 	@ApiOperation(value="Pega todos os atrativos que tem em um municipio")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@RequestMapping(value="/rest_search_atrativo_name_city/{nome_city}",method=RequestMethod.GET)
-	public ArrayList<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city)
+	public List<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city) throws InterruptedException
 	
 	{
 		/*
@@ -94,7 +109,14 @@ public class MunicipiosEndPoint {
 				 */
 				int tamanho = at.findByFiltro(nome_city).size();
 				System.out.println(ExistAtrativoNoMuncipio(nome_city,tamanho));
-				return at.findByFiltro(nome_city);
+				List<AtratativoTuristico> list_ats = at.findByFiltro(nome_city);
+				validation("GetAtrativoBuscaPorMunicipio");
+				if(list_ats.size()!=0) {
+					System.out.print(" \n pass");
+					return list_ats;
+				}else {
+					System.err.println("\n Nenhum Atrativo Turistico retornado!");
+				}
 				
 				
 			}
@@ -109,11 +131,40 @@ public class MunicipiosEndPoint {
 		
 	}
 	public String notExistsAtrativoNoMunicipio(String nome_city) {
-		String saida = "Não Existe um Atrativo no Municipio: "+nome_city;
+		saida = "Não Existe um Atrativo no Municipio: "+nome_city;
 		return saida;
 	}
 	public static String ExistAtrativoNoMuncipio(String nome_city,int tamanho) {
-		String saida = "ArrayList de Atrativo retornado com sucesso no municipio: "+ nome_city +"\n"+ "Tamanho da Lista: "+tamanho;
+		saida = "ArrayList de Atrativo retornado com sucesso no municipio: "+ nome_city +"\n"+ "Tamanho da Lista: "+tamanho;
 		return saida;
 	}
+
+	@Override
+	public void validation(String method) throws InterruptedException {
+		// TODO Auto-generated method stub
+			/*
+			 * 
+			 */
+		Contador contador = new Contador(0,99);
+		contador.setName(method);
+		contador.sleep(3000);
+		contador.start();
+		try {
+			contador.join();
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Metodo: "+method + " \n xf: " +contador.getTotal()+"%");
+		
+		
+	}
+
+
+	
+	
+	
+
+
+	
+	
 }

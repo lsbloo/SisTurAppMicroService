@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apps4society.model.AtratativoTuristico;
 import com.apps4society.model.Municipios;
 import com.apps4society.repository.AtrativoTuristicoRepository;
+import com.apps4society.rolesmoldes.OperationFactory;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @Api(value="API REST Atrativos")
 @RestController
-public class AtrativoTuristicoEndPoint {
+public class AtrativoTuristicoEndPoint implements OperationFactory{
 	
 	@Autowired
 	AtrativoTuristicoRepository r;
@@ -53,5 +54,13 @@ public class AtrativoTuristicoEndPoint {
 		r.deleteById(id);
 		return true;
 	}
+
+	@Override
+	public void validation(String method) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

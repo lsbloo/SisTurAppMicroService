@@ -2,6 +2,8 @@ package com.apps4society.controler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,12 +28,19 @@ public class AreaInteresseController {
 		return "eventos/cadastrarAreaTuristica";
 	}
 	@RequestMapping(value="/cadastrarAreaTuristica",method=RequestMethod.POST)
-	public void cadastrarAreaTuristica(AreaDeInteresseTuristico area) {
+	public String cadastrarAreaTuristica(@ModelAttribute AreaDeInteresseTuristico area, BindingResult result) {
 		/*
 		 * Salva uma area de interesse 
 		 * que contem um nome e uma descrição;
 		 */
+		
+		if(result.hasErrors()) {
+			return "fragments/error";
+		}
+		
 		areaInteresseRepository.save(area);
+		
+		return "eventos/painel_user";
 	}
 	
 	
