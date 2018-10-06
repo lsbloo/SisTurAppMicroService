@@ -47,8 +47,8 @@ public class AtrativoTuristicoControlerWeb {
 		
 		dataCad = new MyCalendar();
 		
-		at.setDate(dataCad.returnData());
 		
+		at.setActived(true);
 		atRepository.save(at);
 		System.err.println("Cadastrado!");
 		return "eventos/painel_user";

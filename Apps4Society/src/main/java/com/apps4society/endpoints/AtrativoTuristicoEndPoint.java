@@ -3,6 +3,8 @@ package com.apps4society.endpoints;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,11 +19,13 @@ import com.apps4society.model.AtratativoTuristico;
 import com.apps4society.model.Municipios;
 import com.apps4society.repository.AtrativoTuristicoRepository;
 import com.apps4society.rolesmoldes.OperationFactory;
+import com.apps4society.utilidades.Contador;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @Api(value="API REST Atrativos")
+@Transactional
 @RestController
 public class AtrativoTuristicoEndPoint implements OperationFactory{
 	
@@ -31,8 +35,20 @@ public class AtrativoTuristicoEndPoint implements OperationFactory{
 	@ApiOperation(value="Retorna todos os Atrativos Turisticos Cadastrados")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@GetMapping("/rest_atrativosTuristicos")
-	public List<AtratativoTuristico> getAtratativoTuristico() {
-		return r.findAll();
+	public List<AtratativoTuristico> getAtratativoTuristico() throws InterruptedException {
+		
+		/*
+		 * Retorna todos os atrativos que estão ativados
+		 * usando uma query nativa;
+		 */
+		List<AtratativoTuristico> list_at = r.findByActived();
+		sleep("Get Atrativos Turisticos ALL");
+		if(list_at.size()>0) {
+			System.out.println("\n pass");
+		}else {
+			System.err.println(" \n nenhum atrativo turistico cadastrado ");
+		}
+		return list_at;
 	}
 	
 	@ApiOperation(value="Procura um atrativo especifico pelo ID")
@@ -49,17 +65,31 @@ public class AtrativoTuristicoEndPoint implements OperationFactory{
 	@RequestMapping(value="/del_rest_atrativoTuristicodel/{id}",method=RequestMethod.GET)
 	public boolean deleteAtratativoTuristico(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
-		 * DELETA UM atratativoTuristico PELO SEU ID
+		 * Desatica o atrativo turistico pelo seu ID;
+		 * usando uma query nativa
 		 */
-		r.deleteById(id);
+		r.desativeATId(id);
 		return true;
 	}
 
 	@Override
-	public void validation(String method) throws InterruptedException {
+	public void sleep(String method) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
-	}
+		/*
+		 * 
+		 */
+		Contador contador = new Contador(0,99);
+		contador.setName(method);
+		contador.sleep(3000);
+		contador.start();
+		try {
+			contador.join();
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Metodo: "+method + " \n xf: " +contador.getTotal()+"%");
+		}
 
 	
 

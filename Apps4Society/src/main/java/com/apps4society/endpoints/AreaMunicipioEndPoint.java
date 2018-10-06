@@ -50,7 +50,7 @@ public class AreaMunicipioEndPoint  implements OperationFactory{
 
 
 	@Override
-	public void validation(String method) throws InterruptedException {
+	public void sleep(String method) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
 	}

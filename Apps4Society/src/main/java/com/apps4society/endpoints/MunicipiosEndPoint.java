@@ -3,6 +3,8 @@ package com.apps4society.endpoints;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,8 +33,9 @@ import java.util.ArrayList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = "http://localhost:8080")
+
 @Api(value="API REST Municipios")
+@Transactional
 @RestController
 public class MunicipiosEndPoint implements OperationFactory{
 	
@@ -49,12 +52,12 @@ public class MunicipiosEndPoint implements OperationFactory{
 	@ApiOperation(value="Retorna todos os municipios")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@GetMapping("/rest_municipios")
-	public List<Municipios> getMunicipio() throws InterruptedException {
+	protected List<Municipios> getMunicipio() throws InterruptedException {
 		/*OK
-		 * Retorna toda a lista de municipios
+		 * Retorna toda a lista de municipios que estao ativadas;
 		 */
-		List<Municipios> list_city = m.findAll();
-		validation("GetMunicipio");
+		List<Municipios> list_city = m.findByActived();
+		sleep("GetMunicipio ALL");
 		if(list_city.size()!=0) {
 			System.out.print(" \n pass");
 		}else {
@@ -68,7 +71,7 @@ public class MunicipiosEndPoint implements OperationFactory{
 	@ApiOperation(value="Procura um minicipio pelo ID especifico")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@GetMapping("/rest_municipioSearch/{id}")
-	public Optional<Municipios> getCliente(@PathVariable Long id) {
+	protected Optional<Municipios> getCliente(@PathVariable Long id) {
 		/*OK
 		 * Procura um municipio especifico pelo ID
 		 */
@@ -78,11 +81,12 @@ public class MunicipiosEndPoint implements OperationFactory{
 	@ApiOperation(value="Deleta um municipio pelo ID especifico")
 	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	@RequestMapping(value="/del_rest_municipiodel/{id}",method=RequestMethod.GET)
-	public boolean deleteMunicipio(@PathVariable Long id) {
+	protected boolean deleteMunicipio(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
-		 * DELETA UM MUNICIPIO PELO SEU ID
+		 * Desativa o municipio pelo seu ID;
+		 * usando uma query nativa
 		 */
-		m.deleteById(id);
+		m.desableById(id);
 		return true;
 	}
 	
@@ -90,7 +94,7 @@ public class MunicipiosEndPoint implements OperationFactory{
 	@ApiOperation(value="Pega todos os atrativos que tem em um municipio")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@RequestMapping(value="/rest_search_atrativo_name_city/{nome_city}",method=RequestMethod.GET)
-	public List<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city) throws InterruptedException
+	protected List<AtratativoTuristico> pegaAtrativo (@PathVariable String nome_city) throws InterruptedException
 	
 	{
 		/*
@@ -110,7 +114,7 @@ public class MunicipiosEndPoint implements OperationFactory{
 				int tamanho = at.findByFiltro(nome_city).size();
 				System.out.println(ExistAtrativoNoMuncipio(nome_city,tamanho));
 				List<AtratativoTuristico> list_ats = at.findByFiltro(nome_city);
-				validation("GetAtrativoBuscaPorMunicipio");
+				sleep("GetAtrativoBuscaPorMunicipio");
 				if(list_ats.size()!=0) {
 					System.out.print(" \n pass");
 					return list_ats;
@@ -140,7 +144,7 @@ public class MunicipiosEndPoint implements OperationFactory{
 	}
 
 	@Override
-	public void validation(String method) throws InterruptedException {
+	public void sleep(String method) throws InterruptedException {
 		// TODO Auto-generated method stub
 			/*
 			 * 

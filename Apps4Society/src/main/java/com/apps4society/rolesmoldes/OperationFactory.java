@@ -9,7 +9,7 @@ public interface OperationFactory {
 	 * Criar uma fabrica de metodos para os EndpointsBase
 	 */
 	
-	void validation(String method) throws InterruptedException;
+	void sleep(String method) throws InterruptedException;
 	 
 	
 	

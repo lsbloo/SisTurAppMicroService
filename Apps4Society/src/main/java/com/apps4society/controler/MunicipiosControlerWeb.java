@@ -45,8 +45,8 @@ public class MunicipiosControlerWeb {
 		}
 		mycalendar = new MyCalendar();
 		System.err.println("XDXD lala" + mun.getNomecidade());
-		mun.setDate(mycalendar.returnData());
 		
+		mun.setActived(true);
 		cityRepository.save(mun);
 		
 		return "eventos/painel_user";

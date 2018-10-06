@@ -1,6 +1,7 @@
 package com.apps4society.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.JoinColumn;
@@ -24,13 +27,14 @@ import java.util.Collection;
 
 @Entity
 @Table(name="municipios")
-
 public class Municipios  implements Serializable{
 	
 	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GenericGenerator(name="native",strategy="native")
+	@Column(name="id")
 	private long id;
 	
 	public void setId(long id) {
@@ -46,71 +50,74 @@ public class Municipios  implements Serializable{
 	private Collection<AreaMunicipio> areaMunicipioList;
 	
 	
-	@NotNull
+	@Column(name="actived")
+	private boolean actived;
 	
-	private String date; // 0
+	@Column(name="date")
+	@CreationTimestamp
+	private Date date; // 0
 	
-	@NotNull
-	
+
+	@Column(name="imgUrl")
 	private String imgUrl; // 1
 	
-	@NotNull
-	
-
+		
+	@Column(name="codValidacao")
 	private String codValidacao; // 2
 	
-	@NotNull
-
 	
+
+	@Column(name="nome_cidade")
 	private String nome_cidade; // 3
 	
-	@NotNull
-	
 
+	
+	@Column(name="descricao")
 	private String descricao; // 4
-	@NotNull
-	
-	
-	
+
+	@Column(name="areaTerritorial")
 	private String areaTerritorial; // 5
 	
 	@NotNull
+	@Column(name="latitude")
 	private double latitude; // 6
+
 	@NotNull
+	@Column(name="longitude")
 	private double longitude; // 7
-	@NotNull
-	
+
+	@Column(name="estado")
 	private String estado; // 8
-	@NotNull
-	
+
+	@Column(name="populacao")
 	private int populacao; // 9 
-	@NotNull
-	
+
+	@Column(name="site")
 	private String site; // 10
-	@NotNull
 	
+	@Column(name="informacoesRelevantes")
 	private String informacoesRelevantes; // 11
-	@NotNull
-	
+
+	@Column(name="email_responsavel_preenchimento")
 	private String email_responsavel_preenchimento; // 12
-	@NotNull
 	
+	@Column(name="nome_responsavel_preenchimento")
 	private String nome_responsavel_preenchimento; // 13
-	@NotNull
 	
+	@Column(name="contatos_responsavel_preenchimento")
 	private String contatos_responsavel_preenchimento; // 14
-	@NotNull
 	
+	@Column(name="fonte_informacoes")
 	private String fonte_informacoes; // 15
 	
 	
 	
 	
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date=date;
 	}
 	
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	private String cep;
@@ -214,6 +221,12 @@ public class Municipios  implements Serializable{
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public boolean isActived() {
+		return actived;
+	}
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 
 }

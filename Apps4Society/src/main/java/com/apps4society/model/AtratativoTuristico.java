@@ -13,7 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -22,6 +26,8 @@ import java.util.List;
 public class AtratativoTuristico implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GenericGenerator(name="native",strategy="native")
+	@Column(name="id")
 	private long id;
 	
 	
@@ -31,83 +37,91 @@ public class AtratativoTuristico implements Serializable{
 	public Long getId() {
 		return id;
 	}
-
 	
-	private String date; // 0
-	
+	@Column(name="actived")
+	private boolean actived;
 
+	@Column(name="date")
+	@CreationTimestamp
+	private Date date; // 0
+	
+	@Column(name="imgURL")
 	private String imgURL; // 1
 	
 
-
+	@Column(name="codValidacao")
 	private String codValidacao; // 2
 	
 	
-	
+	@Column(name="nome_atrativo")
 	private String nome_atrativo; // 3
 	
 	
-	
+	@Column(name="comoChegar")
 	private String comoChegar; // 4
 	
-	
+	@Column(name="descricao")
 	private String descricao; // 5
 
-
+	@Column(name="infoContato")
 	private String infoContato; // 6
 	
-
+	@NotNull
+	@Column(name="latitude")
 	private double latitude; // 7
 
+	@NotNull
+	@Column(name="longitude")
 	private double longitude; // 8 
 	
+	@Column(name="site")
 	private String site; // 9
 	
-	
+	@Column(name="cidade")
 	private String cidade; // 10
 	
 
-
+	@Column(name="estado")
 	private String estado; // 11
 	
 
 	
-	
+	@Column(name="informacoes_relevantes")
 	private String informacoes_relevantes; // 12
 
-	
+	@Column(name="email_responsavel_preenchimento")
 	private String email_responsavel_preenchimento; // 13
 	
 
-
+	@Column(name="nome_responsavel_preenchimento")
 	private String nome_responsavel_preenchimento; // 14
 	
 	
-
+	@Column(name="contato_responsavel_preenchimento")
 	private String contato_responsavel_preenchimento; // 15
 	
-
+	@Column(name="fonte_informacoes")
 	private String fonte_informacoes; // 16
 	
-
 	
+	@Column(name="nome_responsavel_atrativo")
 	private String nome_responsavel_atrativo; // 17
 	
 
-
+	@Column(name="contato_responsavel_atrativo")
 	private String contato_responsavel_atrativo; // 18
 	
 
-	
+	@Column(name="email_atrativo")
 	private String email_atrativo; // 19
 	
 	
 	
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date=date;
 	}
 	
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	
@@ -231,6 +245,12 @@ public class AtratativoTuristico implements Serializable{
 	}
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
+	}
+	public boolean isActived() {
+		return actived;
+	}
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 	
 
