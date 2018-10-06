@@ -17,6 +17,12 @@ public interface MunicipioRepository extends JpaRepository<Municipios,Long>{
 	
 	
 	/*
+	 * Verifica se ja existe um municipio com nome (x);
+	 */
+	@Query(value="SELECT * FROM municipios WHERE actived = true and nome_cidade = ?1",nativeQuery=true)
+	List<Municipios> checkExist(@Param("nome_cidade") String nome_cidade);
+	
+	/*
 	 * Retorna todos os municipios que estao habilitados (actived);
 	 */
 	@Query(value="SELECT * FROM municipios WHERE actived = true",nativeQuery=true)

@@ -11,17 +11,24 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.apps4society.model.AtratativoTuristico;
+import java.util.List;
+
 
 @Repository
 public interface AtrativoTuristicoRepository extends JpaRepository<AtratativoTuristico,Long>{
 
-	
+	/*
+	 * Verifica se ja existe um atrativo com nome (x) , no municipio(x);
+	 */
+	@Query(value="SELECT * FROM atrativos_turisticos WHERE nome_atrativo = ?1 and actived = true and cidade = ?2",nativeQuery=true)
+	List<AtratativoTuristico> checkExist(@Param("nome_atrativo") String nome_atrativo
+			,@Param("nome_city") String nome_city);
 	
 	/*
 	 * Cria uma Query Nativa no banco de dados e retorna uma Lista de atrativos
 	 * que esta presente no municipio (x), passado pelo filtro;
 	 */
-	@Query(value="SELECT * FROM atrativos_turisticos WHERE cidade= ?1",nativeQuery=true)
+	@Query(value="SELECT * FROM atrativos_turisticos WHERE cidade= ?1 and actived = true",nativeQuery=true)
 	ArrayList<AtratativoTuristico> findByFiltro(@Param("nome_city")String nome_city);
 	
 	

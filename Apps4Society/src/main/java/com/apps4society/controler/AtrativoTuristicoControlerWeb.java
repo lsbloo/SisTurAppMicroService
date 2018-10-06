@@ -45,14 +45,24 @@ public class AtrativoTuristicoControlerWeb {
 		if(resultado.hasErrors()) {
 			return "fragments/error";
 		}
+		List<AtratativoTuristico> list_at = atRepository.checkExist(at.getNome(),at.getCidade());
+		System.out.println(at.getNome());
+		System.out.println(at.getCidade());
 		
-		dataCad = new MyCalendar();
+		if(list_at.size()>1) {
+			System.err.println("Atrativo Turistico ja Inserido");
+			/*
+			 * TEM Q TROCAR A VIEW
+			 */
+			return "index";
+		}else {
+			dataCad = new MyCalendar();
+			at.setActived(true);
+			atRepository.save(at);
+			System.err.println("Cadastrado!");
+			return "eventos/painel_user";
+		}
 		
-		
-		at.setActived(true);
-		atRepository.save(at);
-		System.err.println("Cadastrado!");
-		return "eventos/painel_user";
 	}
 	
 
