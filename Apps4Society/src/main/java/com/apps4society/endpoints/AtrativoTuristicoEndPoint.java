@@ -35,7 +35,7 @@ public class AtrativoTuristicoEndPoint implements OperationFactory{
 	@ApiOperation(value="Retorna todos os Atrativos Turisticos Cadastrados")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@GetMapping("/rest_atrativosTuristicos")
-	public List<AtratativoTuristico> getAtratativoTuristico() throws InterruptedException {
+	protected List<AtratativoTuristico> getAtratativoTuristico() throws InterruptedException {
 		
 		/*
 		 * Retorna todos os atrativos que estão ativados
@@ -54,7 +54,7 @@ public class AtrativoTuristicoEndPoint implements OperationFactory{
 	@ApiOperation(value="Procura um atrativo especifico pelo ID")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@GetMapping("/rest_atrativoTuristicoSearch/{id}")
-	public Optional<AtratativoTuristico> getAtratativoTuristico(@PathVariable Long id) {
+	protected Optional<AtratativoTuristico> getAtratativoTuristico(@PathVariable Long id) {
 		/*OK
 		 * Procura um atratativoTuristico especifico pelo ID
 		 */
@@ -63,7 +63,7 @@ public class AtrativoTuristicoEndPoint implements OperationFactory{
 	@ApiOperation(value="Deleta um atrativo especifico pelo ID")
 	@ResponseStatus(value=HttpStatus.ACCEPTED)
 	@RequestMapping(value="/del_rest_atrativoTuristicodel/{id}",method=RequestMethod.GET)
-	public boolean deleteAtratativoTuristico(@PathVariable Long id) {
+	protected boolean deleteAtratativoTuristico(@PathVariable Long id) {
 		/* requisao do metodo = DELETE;
 		 * Desatica o atrativo turistico pelo seu ID;
 		 * usando uma query nativa

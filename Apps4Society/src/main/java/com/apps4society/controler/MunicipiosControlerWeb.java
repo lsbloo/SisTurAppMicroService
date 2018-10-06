@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.apps4society.annotations.AutenticadoUser;
 import com.apps4society.model.Municipios;
 import com.apps4society.repository.MunicipioRepository;
 import com.apps4society.utilidades.MyCalendar;
@@ -39,7 +40,7 @@ public class MunicipiosControlerWeb {
 	}
 	
 	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.POST)
-	public String cadMunpost(@ModelAttribute Municipios mun, BindingResult resultado) {
+	public String cadMunpost(@AutenticadoUser @ModelAttribute Municipios mun, BindingResult resultado) {
 		if(resultado.hasErrors()) {
 			return "fragments/error";
 		}

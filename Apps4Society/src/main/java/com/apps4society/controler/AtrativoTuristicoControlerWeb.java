@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.apps4society.annotations.AutenticadoUser;
 import com.apps4society.model.AtratativoTuristico;
 import com.apps4society.utilidades.MyCalendar;
 
@@ -40,7 +41,7 @@ public class AtrativoTuristicoControlerWeb {
 	}
 	
 	@RequestMapping(value="/cadAtrativos",method=RequestMethod.POST)
-	public String cadAtrativo(@ModelAttribute AtratativoTuristico at, BindingResult resultado) {
+	public String cadAtrativo(@AutenticadoUser @ModelAttribute AtratativoTuristico at, BindingResult resultado) {
 		if(resultado.hasErrors()) {
 			return "fragments/error";
 		}
