@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import java.util.Collection;
 import java.util.List;
@@ -46,6 +47,22 @@ public class AreaMunicipio implements Serializable{
 	private Collection<Municipios> municipios;
 	
 	
+	
+	@Column(name="actived")
+	@NotNull
+	private boolean actived;
+
+
+
+	public boolean isActived() {
+		return actived;
+	}
+
+
+
+	public void setActived(boolean actived) {
+		this.actived = actived;
+	}
 	
 	
 	

@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +20,11 @@ import javax.persistence.GenerationType;
 @Entity
 public class AreaDeInteresseTuristico implements Serializable{
 	
+	
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private long id;
 
 	
@@ -28,11 +33,19 @@ public class AreaDeInteresseTuristico implements Serializable{
 	referencedColumnName="id")},inverseJoinColumns= {@JoinColumn(name="area_id", 
 	referencedColumnName="id")})
 	private Collection<AreaMunicipio> areaInteresseList;
+
+	
 	
 	@NotNull
+	@Column(name="actived")
+	private boolean actived;
+	
+	@NotBlank
+	@Column(name="nomeAreaTuristica")
 	private String nomeAreaTuristica;
 	
-	@NotNull
+	@NotBlank
+	@Column(name="descricaoAreaTuristica")
 	private String descricaoAreaTuristica;
 
 	public String getNomeAreaTuristica() {
@@ -48,6 +61,14 @@ public class AreaDeInteresseTuristico implements Serializable{
 	}
 	public String getDescricaoAreaTuristica() {
 		return descricaoAreaTuristica;
+	}
+
+	public boolean isActived() {
+		return actived;
+	}
+
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 	
 }
