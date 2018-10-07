@@ -104,10 +104,10 @@ public class SucessHandlerUser implements AuthenticationSuccessHandler{
         	 * seja redirecionado a partir do sucessHandler()
         	 */
         	
-        	return "/acessUSER";
+        	return "/acessoUsuario";
         } else if (isAdmin) {
         	
-        	return "/acessADMIN";
+        	return "/acessoAdministrador";
         } else {
             throw new IllegalStateException();
         }

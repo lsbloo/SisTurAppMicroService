@@ -151,7 +151,7 @@ public class MunicipiosEndPoint implements OperationFactory{
 			 */
 		Contador contador = new Contador(0,99);
 		contador.setName(method);
-		contador.sleep(3000);
+		contador.sleep(2000);
 		contador.start();
 		try {
 			contador.join();

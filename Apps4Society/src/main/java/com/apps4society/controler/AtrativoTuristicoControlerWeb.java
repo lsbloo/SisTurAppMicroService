@@ -4,6 +4,8 @@ import com.apps4society.repository.AtrativoTuristicoRepository;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -41,9 +43,9 @@ public class AtrativoTuristicoControlerWeb {
 	}
 	
 	@RequestMapping(value="/cadAtrativos",method=RequestMethod.POST)
-	public String cadAtrativo(@AutenticadoUser @ModelAttribute AtratativoTuristico at, BindingResult resultado) {
+	public String cadAtrativo(@AutenticadoUser @Valid @ModelAttribute AtratativoTuristico at, BindingResult resultado) {
 		if(resultado.hasErrors()) {
-			return "fragments/error";
+			return "fragments/error.html";
 		}
 		List<AtratativoTuristico> list_at = atRepository.checkExist(at.getNome(),at.getCidade());
 		System.out.println(at.getNome());

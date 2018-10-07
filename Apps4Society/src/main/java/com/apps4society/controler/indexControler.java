@@ -21,11 +21,11 @@ public class indexControler {
 		System.err.println("APSKAPSPSK LOGOUT");
 		return "/";
 	}
-	@RequestMapping(value="/acessUSER", method=RequestMethod.GET)
+	@RequestMapping(value="/acessoUsuario", method=RequestMethod.GET)
 	public String acessUser() {
 		return "eventos/painel_user";
 	}
-	@RequestMapping(value="/acessADMIN",method=RequestMethod.GET)
+	@RequestMapping(value="/acessoAdministrador",method=RequestMethod.GET)
 	public String acessADMIN() {
 		return "console";
 	}

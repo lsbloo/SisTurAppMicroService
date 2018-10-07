@@ -11,6 +11,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -77,10 +78,11 @@ public class AtratativoTuristico implements Serializable{
 	@Column(name="site")
 	private String site; // 9
 	
+	@NotBlank
 	@Column(name="cidade")
 	private String cidade; // 10
 	
-
+	@NotBlank
 	@Column(name="estado")
 	private String estado; // 11
 	

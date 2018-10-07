@@ -2,6 +2,8 @@ package com.apps4society.controler;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -43,9 +45,9 @@ public class MunicipiosControlerWeb {
 	}
 	
 	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.POST)
-	public String cadMunpost(@AutenticadoUser @ModelAttribute Municipios mun,BindingResult resultado) {
+	public String cadMunpost(@AutenticadoUser @Valid @ModelAttribute Municipios mun,BindingResult resultado) {
 		if(resultado.hasErrors()) {
-			return "fragments/error";
+			return "fragments/error.html";
 		}
 		System.out.println(mun.getNomecidade());
 		List<Municipios> list = cityRepository.checkExist(mun.getNomecidade());

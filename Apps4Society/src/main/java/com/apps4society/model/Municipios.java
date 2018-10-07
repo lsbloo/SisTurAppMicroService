@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -66,7 +68,7 @@ public class Municipios  implements Serializable{
 	private String codValidacao; // 2
 	
 	
-
+	@NotBlank
 	@Column(name="nome_cidade")
 	private String nome_cidade; // 3
 	
@@ -86,6 +88,7 @@ public class Municipios  implements Serializable{
 	@Column(name="longitude")
 	private double longitude; // 7
 
+	@NotBlank
 	@Column(name="estado")
 	private String estado; // 8
 
