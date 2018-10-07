@@ -62,10 +62,10 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
       
       
       
-      //User user = new User();
-      //user.setNome("Osvaldo");
-      //user.setLogin("lsbloo");
-      //user.setPass(new BCryptPasswordEncoder().encode("6036236"));
+     // User user = new User();
+     // user.setNome("Osvaldo");
+     // user.setLogin("lsbloo");
+     // user.setPass(new BCryptPasswordEncoder().encode("6036236"));
      // user.setEmail("osvaldo.airon@dce.ufpb.br");
      // user.setRoles(Arrays.asList(adminRole));
      // userRepository.save(user);

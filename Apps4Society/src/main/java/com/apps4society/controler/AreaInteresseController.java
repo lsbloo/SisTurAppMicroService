@@ -1,5 +1,9 @@
 package com.apps4society.controler;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,7 +32,7 @@ public class AreaInteresseController {
 		return "eventos/cadastrarAreaTuristica";
 	}
 	@RequestMapping(value="/cadastrarAreaTuristica",method=RequestMethod.POST)
-	public String cadastrarAreaTuristica(@ModelAttribute AreaDeInteresseTuristico area, BindingResult result) {
+	public String cadastrarAreaTuristica(@ModelAttribute @Valid AreaDeInteresseTuristico area, BindingResult result) {
 		/*
 		 * Salva uma area de interesse 
 		 * que contem um nome e uma descrição;
@@ -37,11 +41,17 @@ public class AreaInteresseController {
 		if(result.hasErrors()) {
 			return "fragments/error";
 		}
+		List<AreaDeInteresseTuristico> lst = areaInteresseRepository.checkExist(area.getNomeAreaTuristica());
+		if(lst.size()>1){
+			System.err.println("Area de Interesse ja cadastrada!");
+			return "index";
+		}else {
+			area.setActived(true);
+			areaInteresseRepository.save(area);
+			return "eventos/painel_user";
+		}
 		
-		areaInteresseRepository.save(area);
-		
-		return "eventos/painel_user";
-	}
+	}	
 	
 	
 }

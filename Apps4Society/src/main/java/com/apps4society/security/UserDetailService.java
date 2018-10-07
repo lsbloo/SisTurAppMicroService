@@ -54,7 +54,13 @@ public class UserDetailService implements UserDetailsService{
 		
 		//return new User(u.getLogin(),u.getPass(),true,true,true,true,u.getAuthorities());
 		return new User(
-		          u.getEmail(), u.getPass(), u.isEnabled(), true, true, 
+				/*
+				 * EU TROQUEI O PARAMETRO ENABLED DA CLASSE USER -(USERDETAILS)
+				 * POR MEU ATRIBUTO U.ISACTIVED() PQ? - PQ OS DOIS NESSA LOGICA SAO A MESMA COISA
+				 * SE O USUARIO NAO ESTA HABILITADO ENTAO ELE NAO PODE REALIZAR LOGIN
+				 * JA EVITA UMA CONSULTA NO BANCO;
+				 */
+		          u.getEmail(), u.getPass(), u.isActived(), true, true, 
 		          true, getAuthorities(u.getRoles()));
 	}
 	
@@ -102,12 +108,12 @@ public class UserDetailService implements UserDetailsService{
 		    }
 		 
 		    private List<GrantedAuthority> getGrantedAuthorities(List<String> privileges) {
-		    	//System.err.println("DISGRAÇAAAAAAAAAAAAA "+privileges.get(0));
+		    
 		        List<GrantedAuthority> authorities = new ArrayList<>();
 		        for (String privilege : privileges) {
 		            authorities.add(new SimpleGrantedAuthority(privilege));
 		        }
-		        System.err.println("KKKKKKKKKKKKKKKKKKK" + authorities);
+		       // System.err.println("KKKKKKKKKKKKKKKKKKK" + authorities);
 		        return authorities;
 		    }
 

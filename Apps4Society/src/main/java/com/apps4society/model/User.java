@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -23,8 +24,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name="usuarios")
 public class User implements UserDetails,Serializable{
 	
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private long id;
 
 	
@@ -36,23 +40,36 @@ public class User implements UserDetails,Serializable{
 	
 	
 	
+	
+	
+	@NotNull
+	@Column(name="actived")
+	private boolean actived;
+	
+	
+	
+	@Column(name="experacaoToken")
 	private boolean expiracaoToken;
 	
-	@NotNull
 	
+	@NotBlank
+	@Column(name="nome")
 	private String nome; // 0
-	@NotNull
 	
+	@NotBlank
+	@Column(name="email")
 	private String email; // 1
 	
 	
-	@NotNull
-	
+
+	@NotBlank
+	@Column(name="login")
 	private String login; // 3
 	
 	
-	@NotNull
 
+	@NotBlank
+	@Column(name="password")
 	private String pass; // 4
 	
 	
@@ -133,6 +150,12 @@ public class User implements UserDetails,Serializable{
 	}
 	public void setExpiracaoToken(boolean expiracaoToken) {
 		this.expiracaoToken = expiracaoToken;
+	}
+	public boolean isActived() {
+		return actived;
+	}
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 	
 	

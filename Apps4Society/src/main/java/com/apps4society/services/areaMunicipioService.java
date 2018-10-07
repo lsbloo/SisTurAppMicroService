@@ -75,7 +75,7 @@ public class areaMunicipioService implements AmService{
 	@Override
 	public List<AreaDeInteresseTuristico> searchAreaInteresse(String nameAreaInteresse)throws ValidatorNullPointer {
 		// TODO Auto-generated method stub
-		List<AreaDeInteresseTuristico> areaInter = areaInteresseRepository.searchAreaName();
+		List<AreaDeInteresseTuristico> areaInter = areaInteresseRepository.searchAreaName(nameAreaInteresse);
 		return areaInter;
 	}
 	
@@ -97,10 +97,5 @@ public class areaMunicipioService implements AmService{
 		
 	}
 
-
-	
-	
-	
-	
 }
 

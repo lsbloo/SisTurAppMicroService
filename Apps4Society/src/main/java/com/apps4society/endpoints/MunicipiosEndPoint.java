@@ -37,6 +37,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="API REST Municipios")
 @Transactional
 @RestController
+@RequestMapping("/endpointMunicipios")
 public class MunicipiosEndPoint implements OperationFactory{
 	
 	@Autowired

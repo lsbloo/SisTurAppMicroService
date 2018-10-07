@@ -12,13 +12,13 @@ public class indexControler {
 	
 	@RequestMapping(value="/", method= RequestMethod.GET)	
 	public String indexHTML() {
-		System.out.println("oks.");
+	
 		return "index";
 	}
 	
 	@RequestMapping(value="/logout",method=RequestMethod.POST)
 	public String redirectLogout() {
-		System.err.println("APSKAPSPSK LOGOUT");
+		
 		return "/";
 	}
 	@RequestMapping(value="/acessoUsuario", method=RequestMethod.GET)
@@ -29,22 +29,6 @@ public class indexControler {
 	public String acessADMIN() {
 		return "console";
 	}
-	/*
-	 *   @GetMapping("/home")
-    public String home() {
-        return "/home";
-    }
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "/admin";
-    }
-
-    @GetMapping("/user")
-    public String user() {
-        return "/user";
-    }
-	 */
     @RequestMapping(value="/login",method=RequestMethod.GET)
     public String login() {
 

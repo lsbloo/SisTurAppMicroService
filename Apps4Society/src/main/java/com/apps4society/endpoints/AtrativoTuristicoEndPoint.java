@@ -27,6 +27,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="API REST Atrativos")
 @Transactional
 @RestController
+@RequestMapping("/endpointAtrativos")
 public class AtrativoTuristicoEndPoint implements OperationFactory{
 	
 	@Autowired

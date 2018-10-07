@@ -42,11 +42,37 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * e redirecinonamento de pagina
 		 *  ÇÇ ainda nao esta completamente implementado;
 		 */
-		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login").permitAll().antMatchers(HttpMethod.POST,"swagger-ui#/**").permitAll()
-		.antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll().antMatchers(HttpMethod.GET,"/listarAtrativos","/listarMunicipios","/del_rest_municipiodel/{id}","/users","/userdel/{id}","/user/{id}","/del_rest_atrativoTuristicodel/{id}").hasRole("ADMIN").antMatchers(HttpMethod.POST,"/userADD").permitAll().antMatchers(HttpMethod.GET,"/userADD")
-		.permitAll().antMatchers(HttpMethod.GET,"/rest_municipios").permitAll().antMatchers(HttpMethod.GET,"/rest_atrativosTuristicos").permitAll().antMatchers(HttpMethod.GET, "/")
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login").
+		permitAll().
+		antMatchers(HttpMethod.GET,
+				"/swagger-ui/**",
+				"/swagger-ui.html#/",
+				"/listarAtrativos",
+				"/listarMunicipios",
+				"/endpointUsers/attrUser",
+				"endpointUsers/user/{id}",
+				"/endpointMunicipios/del_rest_municipiodel/{id}",
+				"/endpointUsers/users",
+				"/endpointUsers/userdel/{id}",
+				"/endpointUsers/user/{id}",
+				"endpointUsers/adicionarUsuarioAdmin",
+				"/endpointAtrativos/del_rest_atrativoTuristicodel/{id}")
+		.hasRole("ADMIN").antMatchers(HttpMethod.POST,"swagger-ui#/**")
+		.hasRole("ADMIN")
+		
+		.antMatchers(HttpMethod.POST,"/userADD").
+		permitAll().antMatchers(HttpMethod.GET,"/userADD")
+		.permitAll().antMatchers(HttpMethod.GET,"/endpointMunicipios/rest_municipios",
+				"/endpointAreaMunicipio/listarMunicipiosPorArea/{id}",
+				"/endpointAtrativos/rest_atrativoTuristicoSearch/{id}",
+				"/endpointMunicipios/rest_search_atrativo_name_city/{nome_city}",
+				"/endpointMunicipios/rest_municipioSearch/{id}").
+		
+		permitAll().antMatchers(HttpMethod.GET,"/endpointAtrativos/rest_atrativosTuristicos").
+		permitAll().antMatchers(HttpMethod.GET, "/")
 		.permitAll().anyRequest().authenticated()
-		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().logout().addLogoutHandler(myLogoutSucessHandler())
+		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().
+		logout().addLogoutHandler(myLogoutSucessHandler())
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
 	}

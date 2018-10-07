@@ -1,9 +1,12 @@
 package com.apps4society.endpoints;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apps4society.repository.AreaInteresseRepository;
@@ -17,45 +20,26 @@ import com.apps4society.repository.MunicipioRepository;
 import com.apps4society.rolesmoldes.OperationFactory;
 import com.apps4society.services.areaMunicipioService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@RequestMapping("/endpointAreaMunicipio")
 public class AreaMunicipioEndPoint  implements OperationFactory{
 
 	
+	/*
+	 * Injetando o service; no EndPoint;
+	 */
 	@Autowired
 	protected areaMunicipioService myservice;
-	/*
-	 * areaMunicipioRepository
-	 */
-	@Autowired
-	protected AreaMunicipioRepository areaMunicipioRepository;
-	
-	/*
-	 * areaInteresseRepository
-	 */
-	@Autowired
-	protected AreaInteresseRepository areaInteresseRepository;
-	
-	/*
-	 * municipioRepository
-	 */
-	@Autowired
-	protected MunicipioRepository municipioRepository;
-	
-	/*
-	 * atrativoRepository
-	 */
-	@Autowired
-	protected AtrativoTuristicoRepository atrativoRepository;
 	
 	
-	
-	
-	
-	
-	@GetMapping(value="/listAreaMunicipio")
-	public List<AreaMunicipio> listAreaMunicipio(){
-		
-		return (List<AreaMunicipio>) myservice.searchAllAreas();
+
+	@ApiOperation(value="Retorna todos os municipios de uma area de Interesse")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	@GetMapping(value="/listarMunicipiosPorArea/{id}")
+	public List<AreaMunicipio> listAreaMunicipio(@PathVariable("id") Long id){
+		return (List<AreaMunicipio>) myservice.searchAllMunicipiosArea(id);
 	}
 	
 	
