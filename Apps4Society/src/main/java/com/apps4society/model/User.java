@@ -29,7 +29,7 @@ public class User implements UserDetails,Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private long id;
+	public long id;
 
 	
 	@ManyToMany
@@ -44,33 +44,33 @@ public class User implements UserDetails,Serializable{
 	
 	@NotNull
 	@Column(name="actived")
-	private boolean actived;
+	public boolean actived;
 	
 	
 	
 	@Column(name="experacaoToken")
-	private boolean expiracaoToken;
+	public boolean expiracaoToken;
 	
 	
-	@NotBlank
+	@NotBlank(message="Nome é obrigatório")
 	@Column(name="nome")
-	private String nome; // 0
+	public String nome; // 0
 	
-	@NotBlank
+	@NotBlank(message="Email é obrigatório")
 	@Column(name="email")
-	private String email; // 1
+	public String email; // 1
 	
 	
 
-	@NotBlank
+	@NotBlank(message="Login é obrigatório")
 	@Column(name="login")
-	private String login; // 3
+	public String login; // 3
 	
 	
 
-	@NotBlank
+	@NotBlank(message="Senha é obrigatório")
 	@Column(name="password")
-	private String pass; // 4
+	public String pass; // 4
 	
 	
 	

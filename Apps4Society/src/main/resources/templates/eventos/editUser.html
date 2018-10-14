@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Editar Usuário</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+	<div class="panel-body">
+			<div class="table-responsive">
+				
+ 					<!--  th:action="@{editClientpost}" -->
+    				<form  th:object="${user}" method="post">
+        					<p>Nome: <input type="text" th:field="*{nome}" /></p>
+        					<p>Password: <input type="text" th:field="*{pass}" /></p>
+        					<p>Login: <input type="text" th:field="*{login}" /></p>
+        					<p>Email: <input type="text" th:field="*{email}" /></p>
+        					<p>Actived: <input type="text" th:field="*{actived}" /></p>
+       						
+       						
+       						<div class="panel-footer">
+       						<button type="submit">Editar!</button>
+       						</div>
+   					 </form>
+		
+		</div>
+		</div>
+	
+</body>
+</html>

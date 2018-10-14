@@ -91,6 +91,7 @@ public class SucessHandlerUser implements AuthenticationSuccessHandler{
         	
             if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
                 isUser = true;
+                
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;

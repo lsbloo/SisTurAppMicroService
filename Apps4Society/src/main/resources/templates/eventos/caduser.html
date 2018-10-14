@@ -16,7 +16,7 @@
 			<header class="content-item">
 					<nav>
 						<div class="new-wrapper">
-								<h1><a href ="/" class="brand-logo">   SisTur Cadastro</a></h1>
+								<h1><a href ="/" class="brand-logo">   SisTur </a></h1>
 						</div>
 						<div>
 							<!--JavaScript at end of body for optimized loading-->
@@ -25,11 +25,18 @@
 					</nav>
 			</header>
 			<section class="content-item">
-				<form class="container" method="post">
-						Nome: <input type="text" required value="" name="nome"/>
-						Email: <input type="email" required value="" name="email">
-						Login: <input type="text" required value="" name="login"/>
-						Senha: <input type="password" required value="" name="pass">
+				<div	th:each="erro : ${#fields.detailedErrors('${user.*}')}">
+					<span th:text="${erro.message}"> </span>
+				</div>
+				<form class="container" method="post" th:object="${user}">
+						
+						
+						<span th:text="${mensagem}">Erro !</span>
+						
+						Nome: <input type="text" required value="" th:field="*{nome}"/>
+						Email: <input type="email" required value="" th:field="*{email}">
+						Login: <input type="text" required value="" th:field="*{login}"/>
+						Senha: <input type="password" required value="" th:field="*{pass}">
 					<button type="submit" class="waves-effect waves-light btn">Cadastrar!</button>
 				</form>	
 			</section>

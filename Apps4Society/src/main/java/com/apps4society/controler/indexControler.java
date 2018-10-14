@@ -27,7 +27,7 @@ public class indexControler {
 	}
 	@RequestMapping(value="/acessoAdministrador",method=RequestMethod.GET)
 	public String acessADMIN() {
-		return "console";
+		return "painel_administrador";
 	}
     @RequestMapping(value="/login",method=RequestMethod.GET)
     public String login() {

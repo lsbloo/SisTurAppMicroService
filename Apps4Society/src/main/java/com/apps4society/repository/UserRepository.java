@@ -17,12 +17,36 @@ public interface UserRepository extends CrudRepository<User,Long>{
 	User findByLogin(String login);
 	
 	
+	@Query(nativeQuery=true,value="SELECT * FROM usuarios where id=?1")
+	public User getUserId(@Param("id") Long id); 
+	
 	
 	
 	@Modifying
 	@Transactional
 	@Query(value="update User u set u.actived = false where u.id=:id")
 	public void desativeUser(@Param("id") Long id);
+	
+	
+	/**
+	 * Query of Edit User:
+	 * Permission ADMIN;
+	 */
+	@Modifying
+	@Transactional
+	@Query(value="update User u set u.actived=?1, u.login=?2, u.nome=?3, "
+			+ "u.pass=?4, u.email=?5 where u.id=?6 ")
+	public void 
+	editUser(
+			@Param("actived") 
+			boolean actived ,
+			@Param("login") String login,
+			@Param("nome") String nome,
+			@Param("pass") String pass,
+			@Param("email") String email, 
+			@Param("id") Long id
+			
+			);
 	
 	
 	@Query(value="SELECT * FROM usuarios where login = ?1 ",nativeQuery=true)

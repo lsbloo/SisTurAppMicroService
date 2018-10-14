@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -60,7 +61,6 @@ public class UserEndPoint {
 		return (List<User>) c.findAll();
 	}
 
-	
 	@ApiOperation(value="Retorna um usuario especifico pelo ID")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	@GetMapping("/user/{id}")

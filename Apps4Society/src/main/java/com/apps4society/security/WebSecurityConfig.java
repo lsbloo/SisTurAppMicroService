@@ -56,6 +56,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/endpointUsers/userdel/{id}",
 				"/endpointUsers/user/{id}",
 				"endpointUsers/adicionarUsuarioAdmin",
+				"/listUsers",
+				"useredit/{id}",
+				"userdel/{id}",
 				"/endpointAtrativos/del_rest_atrativoTuristicodel/{id}")
 		.hasRole("ADMIN").antMatchers(HttpMethod.POST,"swagger-ui#/**")
 		.hasRole("ADMIN")
@@ -106,6 +109,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * inclusive arquivos html,css,javascrript; jpg etc;
 		 * 
 		 */
-		web.ignoring().antMatchers("/materialize/**","/eventos/**","/imagens/**","/fragments/**","/utils/**");
+		web.ignoring().antMatchers("/layout/**","/materialize/**","/eventos/**","/imagens/**","/fragments/**","/utils/**");
 	}
 }
