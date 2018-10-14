@@ -7,8 +7,10 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,16 +26,55 @@ public class MunicipiosControlerWeb {
 	@Autowired
 	private MunicipioRepository cityRepository;
 	
-	private MyCalendar mycalendar;
 	
 	
+	
+	
+	
+	@GetMapping(value="municipioedit/{id}")
+	public ModelAndView  municipioedit(@PathVariable Long id) {
+		ModelAndView view = new ModelAndView("eventos/municipioedit");
+		view.addObject("municipio",cityRepository.findByPraMim(id));
+		return view;
+	}
+	
+	@PostMapping(value="municipioedit/{id}")
+	public String municipioeditpost(@PathVariable Long id, @AutenticadoUser @Valid @ModelAttribute Municipios mun,BindingResult result) {
+		if(result.hasErrors()) {
+			return "fragments/error";
+		}
+		cityRepository.updateMunicipio
+		(
+				mun.getNome_cidade(), 
+				mun.getCodValidacao(), 
+				mun.getAreaTerritorial(), 
+				mun.getDescricao(), 
+				mun.getEstado(), 
+				mun.getEmail_responsavel_preenchimento(), 
+				mun.getImgUrl(), 
+				mun.getInformacoesRelevantes(), 
+				mun.getLatitude(), 
+				mun.getLongitude(), 
+				mun.getNome_responsavel_preenchimento(), 
+				mun.getPopulacao(), 
+				mun.getSite(), 
+				mun.getFonte_informacoes(), 
+				mun.isActived(), 
+				mun.getContatos_responsavel_preenchimento(), 
+				id
+		
+				);
+		
+		return "redirect:/listarMunicipios";
+		
+	}
 	
 	
 	@RequestMapping(value="/listarMunicipios",method=RequestMethod.GET)
 	public ModelAndView listCity() {
 		ModelAndView mv = new ModelAndView("eventos/listarMunicipios");
-		Iterable<Municipios> citys = cityRepository.findAll();
-		System.out.println(citys);
+		List<Municipios> citys = cityRepository.findAll();
+		System.out.println(citys.get(0).getNome_responsavel_preenchimento());
 		mv.addObject("municipios",citys);
 		return mv;
 		
@@ -49,8 +90,8 @@ public class MunicipiosControlerWeb {
 		if(resultado.hasErrors()) {
 			return "fragments/error.html";
 		}
-		System.out.println(mun.getNomecidade());
-		List<Municipios> list = cityRepository.checkExist(mun.getNomecidade());
+		System.out.println(mun.getNome_cidade());
+		List<Municipios> list = cityRepository.checkExist(mun.getNome_cidade());
 		if(list.size()>1) {
 			System.err.println("Municipio Já ADD");
 			/*
@@ -59,8 +100,8 @@ public class MunicipiosControlerWeb {
 			 */
 			return "index";
 		}else {
-			mycalendar = new MyCalendar();
-			System.err.println("XDXD lala" + mun.getNomecidade());
+			
+			System.err.println("XDXD lala" + mun.getNome_cidade());
 			
 			mun.setActived(true);
 			cityRepository.save(mun);

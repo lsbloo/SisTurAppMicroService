@@ -4,43 +4,67 @@
 
 <head>
 	<meta charset="UTF-8"/>
-	<!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" type="text/css" href="mycss/caduser.css">
+      <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body >
-		<div class="grid-container">
-			<header class="content-item">
-					<nav>
-						<div class="new-wrapper">
-								<h1><a href ="/" class="brand-logo">   SisTur </a></h1>
-						</div>
-						<div>
-							<!--JavaScript at end of body for optimized loading-->
-					      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-						</div>
-					</nav>
-			</header>
-			<section class="content-item">
-				<div	th:each="erro : ${#fields.detailedErrors('${user.*}')}">
+
+
+<body>
+		<div id="form-container">
+		<div class="panel" id="form-box">
+         <form th:object="${user}" method="post">
+         <fieldset>
+             <h1 class="text-center">Cadastre-se</h1>
+
+             <div class="form-group">
+                 <label class="sr-only" for="login">Usuário</label>
+                 <div class="input-group">                     
+                     	<div	th:each="erro : ${#fields.detailedErrors('${user.*}')}">
 					<span th:text="${erro.message}"> </span>
 				</div>
-				<form class="container" method="post" th:object="${user}">
-						
 						
 						<span th:text="${mensagem}">Erro !</span>
 						
-						Nome: <input type="text" required value="" th:field="*{nome}"/>
-						Email: <input type="email" required value="" th:field="*{email}">
-						Login: <input type="text" required value="" th:field="*{login}"/>
-						Senha: <input type="password" required value="" th:field="*{pass}">
-					<button type="submit" class="waves-effect waves-light btn">Cadastrar!</button>
-				</form>	
-			</section>
-		</div>
-	
+						<div class="input-group">
+							<div class="input-group-addon">
+                         		<span class="glyphicon glyphicon-user"></span>
+                         	Nome: <input type="text" required value="" th:field="*{nome}"/>
+                     	</div>
+						</div>
+						<div class="input-group">
+							<div class="input-group-addon">
+                         		<span class="glyphicon glyphicon-info-sign"></span>
+                         	Email: <input type="email" required value="" th:field="*{email}"/>
+                     	</div>
+						</div>
+						<div class="input-group">
+							<div class="input-group-addon">
+                         		<span class="glyphicon glyphicon-user"></span>
+                         	Login: <input type="text" required value="" th:field="*{login}"/>
+                     	</div>
+						</div>
+						<div class="input-group">
+							<div class="input-group-addon">
+                         		<span class="glyphicon glyphicon-lock"></span>
+                         	Senha: <input type="password" required value="" th:field="*{pass}"/>
+                     	</div>
+						</div>
+						
+						
+						
+				</div>
+				</div>
+
+             <div class="form-group">
+                 <input type="submit" value="Cadastrar" class="btn btn-success form-control">
+             </div>
+ 
+             </fieldset>
+         </form>
+     </div>
+ </div>
 </body>
 </html>

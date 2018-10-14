@@ -13,7 +13,7 @@ public class indexControler {
 	@RequestMapping(value="/", method= RequestMethod.GET)	
 	public String indexHTML() {
 	
-		return "index";
+		return "fragments/login";
 	}
 	
 	@RequestMapping(value="/logout",method=RequestMethod.POST)

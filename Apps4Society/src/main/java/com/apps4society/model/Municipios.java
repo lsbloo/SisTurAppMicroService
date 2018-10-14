@@ -33,11 +33,17 @@ public class Municipios  implements Serializable{
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@GenericGenerator(name="native",strategy="native")
 	@Column(name="id")
-	private long id;
+	public long id;
 	
 	public void setId(long id) {
 		this.id=id;
@@ -53,65 +59,65 @@ public class Municipios  implements Serializable{
 	
 	
 	@Column(name="actived")
-	private boolean actived;
+	public boolean actived;
 	
 	@Column(name="date")
 	@CreationTimestamp
-	private Date date; // 0
+	public Date date; // 0
 	
 
 	@Column(name="imgUrl")
-	private String imgUrl; // 1
+	public String imgUrl; // 1
 	
 		
 	@Column(name="codValidacao")
-	private String codValidacao; // 2
+	public String codValidacao; // 2
 	
 	
 	@NotBlank
 	@Column(name="nome_cidade")
-	private String nome_cidade; // 3
+	public String nome_cidade; // 3
 	
 
 	
 	@Column(name="descricao")
-	private String descricao; // 4
+	public String descricao; // 4
 
 	@Column(name="areaTerritorial")
-	private String areaTerritorial; // 5
+	public String areaTerritorial; // 5
 	
 	@NotNull
 	@Column(name="latitude")
-	private double latitude; // 6
+	public double latitude; // 6
 
 	@NotNull
 	@Column(name="longitude")
-	private double longitude; // 7
+	public double longitude; // 7
 
 	@NotBlank
 	@Column(name="estado")
-	private String estado; // 8
+	public String estado; // 8
 
 	@Column(name="populacao")
-	private int populacao; // 9 
+	public int populacao; // 9 
 
 	@Column(name="site")
-	private String site; // 10
+	public String site; // 10
 	
 	@Column(name="informacoesRelevantes")
-	private String informacoesRelevantes; // 11
+	public String informacoesRelevantes; // 11
 
 	@Column(name="email_responsavel_preenchimento")
-	private String email_responsavel_preenchimento; // 12
+	public String email_responsavel_preenchimento; // 12
 	
 	@Column(name="nome_responsavel_preenchimento")
-	private String nome_responsavel_preenchimento; // 13
+	public String nome_responsavel_preenchimento; // 13
 	
 	@Column(name="contatos_responsavel_preenchimento")
-	private String contatos_responsavel_preenchimento; // 14
+	public String contatos_responsavel_preenchimento; // 14
 	
 	@Column(name="fonte_informacoes")
-	private String fonte_informacoes; // 15
+	public String fonte_informacoes; // 15
 	
 	
 	
@@ -133,11 +139,11 @@ public class Municipios  implements Serializable{
 	}
 	
 	
-	public String getNomecidade() {
+	public String getNome_cidade() {
 		return nome_cidade;
 	}
-	public void setNomecidade(String nome) {
-		this.nome_cidade = nome;
+	public void setNome_cidade(String nome_cidade) {
+		this.nome_cidade = nome_cidade;
 	}
 	public int getPopulacao() {
 		return populacao;
@@ -170,7 +176,11 @@ public class Municipios  implements Serializable{
 		this.longitude = longitude;
 	}
 	
-	public Municipios() {}
+	public Municipios() {
+		
+	}
+	
+	
 	public String getAreaTerritorial() {
 		return areaTerritorial;
 	}
@@ -183,16 +193,16 @@ public class Municipios  implements Serializable{
 	public void setInformacoesRelevantes(String informacoesRelevantes) {
 		this.informacoesRelevantes = informacoesRelevantes;
 	}
-	public String getEmail_responsavel() {
+	public String getEmail_responsavel_preenchimento() {
 		return email_responsavel_preenchimento;
 	}
-	public void setEmail_responsavel(String email_responsavel) {
+	public void setEmail_responsavel_preenchimento(String email_responsavel) {
 		this.email_responsavel_preenchimento = email_responsavel;
 	}
-	public String getNome_responsavel() {
+	public String getNome_responsavel_preenchimento() {
 		return nome_responsavel_preenchimento;
 	}
-	public void setNome_responsavel(String nome_responsavel) {
+	public void setNome_responsavel_preenchimento(String nome_responsavel) {
 		this.nome_responsavel_preenchimento = nome_responsavel;
 	}
 	public String getFonte_informacoes() {
@@ -201,10 +211,10 @@ public class Municipios  implements Serializable{
 	public void setFonte_informacoes(String fonte_informacoes) {
 		this.fonte_informacoes = fonte_informacoes;
 	}
-	public String getContatos_responsavel() {
+	public String getContatos_responsavel_preenchimento() {
 		return contatos_responsavel_preenchimento;
 	}
-	public void setContatos_responsavel(String contatos_responsavel) {
+	public void setContatos_responsavel_preenchimento(String contatos_responsavel) {
 		this.contatos_responsavel_preenchimento = contatos_responsavel;
 	}
 	public String getImgUrl() {

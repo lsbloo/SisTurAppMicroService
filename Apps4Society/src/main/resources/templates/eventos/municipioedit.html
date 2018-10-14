@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Editar Municipio</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+	<div class="panel-body">
+			<div class="table-responsive">
+				
+ 					<!--  th:action="@{editClientpost}" -->
+    				<form  th:object="${municipio}" method="post">
+        					<p>Nome do Municipio: <input type="text" th:field="*{nome_cidade}" /></p>
+        					<p>Codigo de Validação: <input type="text" th:field="*{codValidacao}" /></p>
+        					<p>Link Imagem(url): <input type="text" th:field="*{imgUrl}" /></p>
+        					<p>Area Territorial: <input type="text" th:field="*{areaTerritorial}" /></p>
+        					<p>Descrição: <input type="text" th:field="*{descricao}" /></p>
+        					<p>Latitude: <input type="text" th:field="*{latitude}" /></p>
+        					<p>Longitude: <input type="text" th:field="*{longitude}" /></p>
+        					<p>Site: <input type="text" th:field="*{site}" /></p>
+        					<p>População: <input type="text" th:field="*{populacao}" /></p>
+        					<p>Estado: <input type="text" th:field="*{estado}" /></p>
+        					<p>Informacoes Relevantes: <input type="text" th:field="*{informacoesRelevantes}" /></p>
+        					<p>Email do Responsavel: <input type="text" th:field="*{email_responsavel_preenchimento}" /></p>
+        					<p>Nome do Responsavel: <input type="text" th:field="*{nome_responsavel_preenchimento}" /></p>
+        					<p>Contato do responsavel: <input type="text" th:field="*{contatos_responsavel_preenchimento}" /></p>
+        					<p>Fonte de informações: <input type="text" th:field="*{fonte_informacoes}" /></p>
+        					<p>Ativação: <input type="text" th:field="*{actived}" /></p>
+       						
+       						
+       						<div class="panel-footer">
+       						<button type="submit">Editar!</button>
+       						</div>
+   					 </form>
+		
+		</div>
+		</div>
+	
+</body>
+</html>

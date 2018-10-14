@@ -1,59 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
-<link rel="sylesheet" type="text/css" href="styleindex.css"/>
-
-<!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Usuários</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h3>Informações dos Municipios</h3>
-	<br>
-	<div class="container">
-	<table class="striped"  >
-		<thead>
-			<tr>
-				<th>Nome do Municipio</th>
-				<th>Estado</th>
-				<th>Codigo de Validação</th>
-				<th>Descrição</th>
-				<th>Latitude</th>
-				<th>Longitude</th>
-				<th>População</th>
-				<th>Informações</th>
-				<th>Fonte de Informações</th>
-				<th>Email do responsavel preenchimento</th>
-				<th>Site</th>	
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="municipio : ${municipios}">
-			<td><span th:text="${municipio.nomecidade}" ></span></td>
-			<td><span th:text="${municipio.estado}" ></span></td>
-			<td><span th:text="${municipio.codValidacao}" ></span></td>
-			<td><span th:text="${municipio.descricao}" ></span></td>
-			<td><span th:text="${municipio.latitude}" ></span></td>
-			<td><span th:text="${municipio.longitude}" ></span></td>
-			<td><span th:text="${municipio.populacao}" ></span></td>
-			<td><span th:text="${municipio.informacoesRelevantes}" ></span></td>
-			<td><span th:text="${municipio.fonte_informacoes}" ></span></td>
-			<td><span th:text="${municipio.email_responsavel}" ></span></td>
-			<td><span th:text="${municipio.site}" ></span></td>
-			</tr>
-		</tbody>
-	
-	</table>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Municipios</strong>
+		</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-sm table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Data</th>
+							<th>imgUrl</th>
+							<th>códigoValidação</th>
+							<th>Cidade</th>
+							<th>Descrição</th>
+							<th>Area Territorial</th>
+							<th>Latitude</th>
+							<th>Longitude</th>
+							<th>Estado</th>
+							<th>População</th>
+							<th>Site</th>
+							<th>Informações Relevantes</th>
+							<th>Email do Responsavel pelo preenchimento</th>
+							<th>Nome do Responsavel pelo preenchimento</th>
+							<th>Contato do Responsavel pelo preenchimento</th>
+							<th>Fonte de informações</th>
+							<th>Ativação</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="city : ${municipios}">
+							<td th:text="${city.id}"></td>
+							<td th:text="${city.date}"></td>
+							<td th:text="${city.imgUrl}"></td>
+							<td th:text="${city.codValidacao}"></td>
+							<td th:text="${city.nome_cidade}"></td>
+							<td th:text="${city.descricao}"></td>
+							<td th:text="${city.areaTerritorial}"></td>
+							<td th:text="${city.latitude}"></td>
+							<td th:text="${city.longitude}"></td>
+							<td th:text="${city.estado}"></td>
+							<td th:text="${city.populacao}"></td>
+							<td th:text="${city.site}"></td>
+							<td th:text="${city.informacoesRelevantes}"></td>
+							<td th:text="${city.email_responsavel_preenchimento}"></td>
+							<td th:text="${city.nome_responsavel_preenchimento}"></td>
+							<td th:text="${city.contatos_responsavel_preenchimento}"></td>
+							<td th:text="${city.fonte_informacoes}"></td>
+							<td th:text="${city.actived}"></td>
+							
+							<td>
+								<div class="btn-group pull-right">
+							   		<a class="btn btn-sm btn-primary" th:href="@{/municipioedit/{id}(id=${city.id})}" >Editar</a>
+							   		<a class="delete btn btn-sm btn-danger" th:href="@{/municipiodel/{id}(id=${city.id})}">Excluir</a>
+							   </div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<a class="btn btn-sm btn-success" th:href="@{/acessoAdministrador}" >Voltar</a>
+		</div>
+		
 	</div>
- <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
-
 </html>

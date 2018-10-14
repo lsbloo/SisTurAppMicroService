@@ -4,42 +4,22 @@
 
 <head>
 	<meta charset="UTF-8"/>
-<!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
-
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" type="text/css" href="mycss/login.css">
+      <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 
 <body>
-
-<div class="grid-container">
-			<header class="content-item">
-					<nav>
-						<div class="new-wrapper">
-								<h1><a href ="/" class="brand-logo">   SisTur</a></h1>
-						</div>
-						<div>
-							<!--JavaScript at end of body for optimized loading-->
-					      	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-						</div>
-					</nav>
-			</header>
-			<section class="content-item">
-					<div class="container">
-
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form  th:action="@{/login}" method="post" >
-                <fieldset>
-                    <h1>Por favor insira a senha!</h1>
-					
-                    <div th:if="${param.error}">
+		<div id="form-container">
+		<div class="panel" id="form-box">
+         <form th:action="@{/login}" method="post">
+         <fieldset>
+         			<div th:if="${param.error}">
                         <div class="alert alert-danger">
-                            Login ou senha erradas!
+                            Login ou senha errados!
                         </div>
                     </div>
                     <div th:if="${param.logout}">
@@ -47,36 +27,37 @@
                             Você saiu do sistema.
                         </div>
                     </div>
+             <h1 class="text-center">SisTurInfo</h1>
 
-                    <div class="form-group">
-                    
-                        <input type="text" name="username" id="username" class="form-control input-lg"
-                               placeholder="UserName" required="true" autofocus="true"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-lg"
-                               placeholder="Password" required="true"/>
-                    </div>
+             <div class="form-group">
+                 <label class="sr-only" for="login">Usuário</label>
+                 <div class="input-group">                     <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                     </div>
+                     <input type="text" name="username" id="username" class="form-control" placeholder="Seu login de usuário">
+                 </div>
+             </div>
 
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Entrar"/>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div th:replace="fragments/footer :: footer"/></div>
-    </div>
-    
-			</section>
+             <div class="form-group">
+                              <label class="sr-only" for="senha">Senha</label>
+                 <div class="input-group">
+                     <div class="input-group-addon">
+                         <span class="glyphicon glyphicon-lock"></span>
+                     </div>
+                     <input type="password" name="password" required="true" class="form-control" placeholder="Digite sua senha">
+                 </div>
+             </div>
 
-
-</div>
-
-<!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+             <div class="form-group">
+                 <input type="submit" value="Entrar" class="btn btn-success form-control">
+             </div>
+ 
+             <div class="form-group">
+                 Não é registrado? <a href="/userADD">Crie uma conta</a>.
+             </div>
+             </fieldset>
+         </form>
+     </div>
+ </div>
 </body>
 </html>
