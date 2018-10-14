@@ -35,6 +35,12 @@ public class indexControler {
         return "fragments/login";
     }
     
+    
+    @GetMapping(value="/errorcad")
+    public String errorCad() {
+    	return "fragments/error-cad";
+    }
+    
 
  
 

@@ -31,6 +31,12 @@ public class MunicipiosControlerWeb {
 	
 	
 	
+	@GetMapping(value="municipiodel/{id}")
+	public String municipiodel(@PathVariable Long id) {
+		cityRepository.desableById(id);
+		return "redirect:/listarMunicipios";
+	}
+	
 	@GetMapping(value="municipioedit/{id}")
 	public ModelAndView  municipioedit(@PathVariable Long id) {
 		ModelAndView view = new ModelAndView("eventos/municipioedit");

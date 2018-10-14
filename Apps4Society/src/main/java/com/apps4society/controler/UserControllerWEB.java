@@ -86,9 +86,9 @@ public class UserControllerWEB {
 			return createUsuarioGET(user);
 		}
 		List<User> list = (List<User>) c.checkExist(user.getLogin());
-		if(list.size()>1) {
+		if(list.size()>=1) {
 			System.out.println("Usuario ja Existe!");
-			return "index";
+			return "fragments/error-cad";
 		}else{
 			String pass = user.getPass();
 			//System.out.println("SENHA FODA!"+pass);
