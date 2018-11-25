@@ -93,22 +93,13 @@ public class MunicipiosControlerWeb {
 	
 	@RequestMapping(value="/cadastrarMunicipio",method=RequestMethod.POST)
 	public String cadMunpost(@AutenticadoUser @Valid @ModelAttribute Municipios mun,BindingResult resultado) {
-		if(resultado.hasErrors()) {
-			return "fragments/error.html";
-		}
+		
 		System.out.println(mun.getNome_cidade());
 		List<Municipios> list = cityRepository.checkExist(mun.getNome_cidade());
 		if(list.size()>1) {
 			System.err.println("Municipio Já ADD");
-			/*
-			 * SE JA EXISTIR UM MUNICIPIO RETORNA PRA UMA VIEW DIFERENTE
-			 * coloquei index, mas dps troco
-			 */
 			return "index";
 		}else {
-			
-			System.err.println("XDXD lala" + mun.getNome_cidade());
-			
 			mun.setActived(true);
 			cityRepository.save(mun);
 			return "eventos/painel_user";

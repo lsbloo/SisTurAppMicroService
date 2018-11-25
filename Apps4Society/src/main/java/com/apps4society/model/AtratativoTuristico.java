@@ -27,7 +27,6 @@ import java.util.List;
 public class AtratativoTuristico implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	//@GenericGenerator(name="native",strategy="native")
 	@Column(name="id")
 	private long id;
 	

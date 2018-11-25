@@ -15,8 +15,6 @@ import java.util.Collection;
 import java.util.List;
 import com.apps4society.model.Municipios;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
@@ -36,8 +34,7 @@ public class AreaMunicipio implements Serializable{
 
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="native")
-	@GenericGenerator(name="native",strategy="native")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
 	
@@ -62,6 +59,30 @@ public class AreaMunicipio implements Serializable{
 
 	public void setActived(boolean actived) {
 		this.actived = actived;
+	}
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public Collection<Municipios> getMunicipios() {
+		return municipios;
+	}
+
+
+
+	public void setMunicipios(Collection<Municipios> municipios) {
+		this.municipios = municipios;
 	}
 	
 	

@@ -46,7 +46,6 @@ import com.apps4society.model.User;
 @RequestMapping("/endpointUsers")
 public class UserEndPoint {
 	private static Map<Integer,User> users;
-	private static BCryptPasswordEncoder encoder;
 	protected final String ROLE_USER="ROLE_USER";
 	
 	@Autowired

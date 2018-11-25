@@ -41,27 +41,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>
-		io.springfox
-		</groupId>
-		<artifactId>
-		springfox-swagger2
-		</artifactId>
-		<version>
-		2.7.0
-		</version>
-		</dependency>
+	    <groupId>io.springfox</groupId>
+	    <artifactId>springfox-swagger2</artifactId>
+	    <version>2.6.0</version>
+	    <scope>compile</scope>
+	</dependency>
+	<dependency>
+	    <groupId>io.springfox</groupId>
+	    <artifactId>springfox-swagger-ui</artifactId>
+	    <version>2.6.0</version>
+	    <scope>compile</scope>
+	</dependency> 
+				
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.3.7.Final</version>
+</dependency>
+      
 		<dependency>
-		<groupId>
-		io.springfox
-		</groupId>
-		<artifactId>
-		springfox-swagger-ui
-		</artifactId>
-		<version>
-		2.7.0
-		</version>
-		</dependency>
+    <groupId>javassist</groupId>
+    <artifactId>javassist</artifactId>
+    <version>3.12.1.GA</version>
+	</dependency>
+	
 		
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>

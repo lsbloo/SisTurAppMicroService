@@ -23,21 +23,8 @@ public class Funcoes implements GrantedAuthority{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	/*
-	 * Estabelece uma funcao para um usuario "role". regra de permissão de acesso
-	 * é necessario na criação de um usuario estabelecer o mesmo.
-	 * 
-	 * @Manytomany = muitos para muitos -- um usuario pode ter mais de uma funcao
-	 * exxemplo osvaldo(admin,user)
-	 * !
-	 * o JPA realiza essas configurações implicitamente na criação do BD
-	 * é necessario tomar cuidado nesses relacionamentos
-	 * (Pesquisar M).
-	 * 
-	 */
 
 	@NotNull
-	
 	private String name;
 	
 	@ManyToMany(mappedBy="roles")
@@ -85,6 +72,12 @@ public class Funcoes implements GrantedAuthority{
 	public Collection<? extends Privilege> getPrivileges() {
 		// TODO Auto-generated method stub
 		return privileges;
+	}
+	public Collection<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Collection<User> users) {
+		this.users = users;
 	}
 	
 	

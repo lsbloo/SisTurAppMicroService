@@ -39,6 +39,18 @@ public class Privilege implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Collection<Funcoes> getFuncoes() {
+		return funcoes;
+	}
+	public void setFuncoes(Collection<Funcoes> funcoes) {
+		this.funcoes = funcoes;
+	}
 	
 
 }

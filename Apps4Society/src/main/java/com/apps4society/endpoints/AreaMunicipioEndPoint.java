@@ -21,6 +21,10 @@ import com.apps4society.rolesmoldes.OperationFactory;
 import com.apps4society.services.areaMunicipioService;
 
 import io.swagger.annotations.ApiOperation;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 @RestController
 @RequestMapping("/endpointAreaMunicipio")
@@ -33,7 +37,7 @@ public class AreaMunicipioEndPoint  implements OperationFactory{
 	@Autowired
 	protected areaMunicipioService myservice;
 	
-	
+
 
 	@ApiOperation(value="Retorna todos os municipios de uma area de Interesse")
 	@ResponseStatus(HttpStatus.ACCEPTED)

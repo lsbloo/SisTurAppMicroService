@@ -91,10 +91,6 @@ public class UserControllerWEB {
 			return "fragments/error-cad";
 		}else{
 			String pass = user.getPass();
-			//System.out.println("SENHA FODA!"+pass);
-			//System.out.println("Login"+user.getLogin());
-			//System.out.println(user.getNome());
-			//System.out.println(user.getEmail());
 			user.setRoles(Arrays.asList(funcoesRepository.findByName(ROLE_USER)));
 			user.setPass(new BCryptPasswordEncoder().encode(pass)); 
 			user.setActived(true);

@@ -30,22 +30,10 @@ public class ConfigAPI {
                 .apis(RequestHandlerSelectors.basePackage("com.apps4society"))
                 .paths(PathSelectors.regex("/endpoint.*"))
                 .build()
-                .apiInfo(metaInfo());
+                ;
     }
 	
-    private ApiInfo metaInfo() {
-
-        ApiInfo apiInfo = new ApiInfo(
-                "SisTur API REST",
-                "API REST de cadastro de municipios e atrativos Turisticos",
-                "1.0",
-                "Terms of Service",contato(),
-                "Apache License Version 2.0",
-                "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()
-        );
-
-        return apiInfo;
-}
+   
     
     private springfox.documentation.service.Contact contato() {
     	springfox.documentation.service.Contact cx = new springfox.documentation.service.Contact("OsvaldoAiron","www.github.com/lsbloo", null);

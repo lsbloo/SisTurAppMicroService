@@ -5,13 +5,6 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.PathVariable;
 public interface OperationFactory {
-	/*
-	 * Criar uma fabrica de metodos para os EndpointsBase
-	 */
-	
 	void sleep(String method) throws InterruptedException;
-	 
-	
-	
 
 }

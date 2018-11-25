@@ -41,7 +41,6 @@ public class Municipios  implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	//@GenericGenerator(name="native",strategy="native")
 	@Column(name="id")
 	public long id;
 	
@@ -51,6 +50,7 @@ public class Municipios  implements Serializable{
 	public long getId() {
 		return id;
 	}
+	
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="areaMunicipio",joinColumns= {@JoinColumn(name="municipio_id",referencedColumnName="id")},
@@ -240,6 +240,12 @@ public class Municipios  implements Serializable{
 	}
 	public void setActived(boolean actived) {
 		this.actived = actived;
+	}
+	public Collection<AreaMunicipio> getAreaMunicipioList() {
+		return areaMunicipioList;
+	}
+	public void setAreaMunicipioList(Collection<AreaMunicipio> areaMunicipioList) {
+		this.areaMunicipioList = areaMunicipioList;
 	}
 
 }
