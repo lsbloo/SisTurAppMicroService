@@ -41,7 +41,6 @@ public class UserDetailService implements UserDetailsService{
 		System.out.println(u.getAuthorities());
 		
 		try {
-			//User u = repository.findByLogin(login);
 			if(u==null) {
 				
 				return new User(" "," ",true,true,true,true,getAuthorities(Arrays.asList(funcoesRepository.findByName("ROLE_USER"))));
@@ -52,14 +51,9 @@ public class UserDetailService implements UserDetailsService{
 			senhaErrada();
 		}
 		
-		//return new User(u.getLogin(),u.getPass(),true,true,true,true,u.getAuthorities());
+	
 		return new User(
-				/*
-				 * EU TROQUEI O PARAMETRO ENABLED DA CLASSE USER -(USERDETAILS)
-				 * POR MEU ATRIBUTO U.ISACTIVED() PQ? - PQ OS DOIS NESSA LOGICA SAO A MESMA COISA
-				 * SE O USUARIO NAO ESTA HABILITADO ENTAO ELE NAO PODE REALIZAR LOGIN
-				 * JA EVITA UMA CONSULTA NO BANCO;
-				 */
+				
 		          u.getEmail(), u.getPass(), u.isActived(), true, true, 
 		          true, getAuthorities(u.getRoles()));
 	}
@@ -67,38 +61,26 @@ public class UserDetailService implements UserDetailsService{
 	private Collection<? extends GrantedAuthority> getAuthorities(
 		      Collection<Funcoes> roles) {
 		  
-				/*
-				 * Pego o privilegio com a role
-				 * e dps verifico se tem "authorities" metodo grantedauthories();
-				 * 
-				 */
+				
 		        return getGrantedAuthorities(getPrivileges(roles));
 		    }
 		 
 		    private List<String> getPrivileges(Collection<Funcoes> roles) {
-		    	/*
-		    	 * Mudei o get da role de priveleges para authority()
-		    	 * por algum motivo ele nao esttava pegando o "privilege". Mas mesmo
-		    	 * assim continuava retornando o AUTHORITY que é o que eu precisava
-		    	 * a ideia do algoritmo é a mesma. 
-		    	 * 
-		    	 */
+		    	
 		  
 		        List<String> privileges = new ArrayList<>();
 		       
 		        List<String> collection = new ArrayList<>();
-		        //System.out.print("COLECCTIONS: "+collection.get(0));
+		      
 		        for (Funcoes role : roles) {
-		        	/*
-		        	 * recolhe as authoritys
-		        	 */
+		        	
 		            collection.add(role.getAuthority());
 		        }
 		        if(collection!=null) {
 		        	
 		        	
 		        	for(int i =0 ; i<collection.size();i++) {
-		        		//System.out.println("NAO POSSO DESISTIR "+collection.get(i));
+		        		
 		        		privileges.add(collection.get(i));
 		        	}
 		        	
@@ -113,7 +95,7 @@ public class UserDetailService implements UserDetailsService{
 		        for (String privilege : privileges) {
 		            authorities.add(new SimpleGrantedAuthority(privilege));
 		        }
-		       // System.err.println("KKKKKKKKKKKKKKKKKKK" + authorities);
+		      
 		        return authorities;
 		    }
 

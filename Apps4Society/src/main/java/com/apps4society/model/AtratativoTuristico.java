@@ -42,39 +42,37 @@ public class AtratativoTuristico implements Serializable{
 	private boolean actived;
 
 	@Column(name="date")
-	@CreationTimestamp
-	private Date date; // 0
+	private String date; // 0
 	
-	@Column(name="imgURL")
+	@Column(name="imgURL", length=1024)	
 	private String imgURL; // 1
 	
 
-	@Column(name="codValidacao")
+	@Column(name="codValidacao", length=1024)
 	private String codValidacao; // 2
 	
 	
-	@Column(name="nome_atrativo")
+	@Column(name="nome_atrativo", length=1024)
 	private String nome_atrativo; // 3
 	
 	
-	@Column(name="comoChegar")
+	@Column(name="comoChegar", length=1024)
 	private String comoChegar; // 4
 	
-	@Column(name="descricao")
+	@Column(name="descricao", length=1024)
 	private String descricao; // 5
-
-	@Column(name="infoContato")
+	@Column(name="infoContato", length=1024)
 	private String infoContato; // 6
 	
 	@NotNull
-	@Column(name="latitude")
-	private double latitude; // 7
+	@Column(name="latitude", length=1024)
+	private String latitude; // 7
 
 	@NotNull
-	@Column(name="longitude")
-	private double longitude; // 8 
+	@Column(name="longitude", length=1024)
+	private String longitude; // 8 
 	
-	@Column(name="site")
+	@Column(name="site", length=1024)
 	private String site; // 9
 	
 	@NotBlank
@@ -82,12 +80,17 @@ public class AtratativoTuristico implements Serializable{
 	private String cidade; // 10
 	
 	@NotBlank
+	@Column(name="link_maps", length=1024)
+	private String link_maps;
+	
+	
+	
+	@NotBlank
 	@Column(name="estado")
 	private String estado; // 11
 	
 
-	
-	@Column(name="informacoes_relevantes")
+	@Column(name="informacoes_relevantes", length=1024)
 	private String informacoes_relevantes; // 12
 
 	@Column(name="email_responsavel_preenchimento")
@@ -101,7 +104,7 @@ public class AtratativoTuristico implements Serializable{
 	@Column(name="contato_responsavel_preenchimento")
 	private String contato_responsavel_preenchimento; // 15
 	
-	@Column(name="fonte_informacoes")
+	@Column(name="fonte_informacoes", length=1024)
 	private String fonte_informacoes; // 16
 	
 	
@@ -118,11 +121,11 @@ public class AtratativoTuristico implements Serializable{
 	
 	
 	
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date=date;
 	}
 	
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 	
@@ -133,17 +136,17 @@ public class AtratativoTuristico implements Serializable{
 		this.nome_atrativo = nome;
 	}
 
-	public double getLatitude() {
+	public String getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(double latitude) {
+	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 
-	public double getLongitude() {
+	public String getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(double longitude) {
+	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 	public String getComoChegar() {
@@ -252,6 +255,12 @@ public class AtratativoTuristico implements Serializable{
 	}
 	public void setActived(boolean actived) {
 		this.actived = actived;
+	}
+	public String getLink_maps() {
+		return link_maps;
+	}
+	public void setLink_maps(String link_maps) {
+		this.link_maps = link_maps;
 	}
 	
 

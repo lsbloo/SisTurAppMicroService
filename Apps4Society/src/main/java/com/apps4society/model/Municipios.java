@@ -62,15 +62,14 @@ public class Municipios  implements Serializable{
 	public boolean actived;
 	
 	@Column(name="date")
-	@CreationTimestamp
-	public Date date; // 0
+	public String date; // 0
 	
 
-	@Column(name="imgUrl")
+	@Column(name="imgUrl", length=1024)
 	public String imgUrl; // 1
 	
 		
-	@Column(name="codValidacao")
+	@Column(name="codValidacao", length=1024)
 	public String codValidacao; // 2
 	
 	
@@ -80,7 +79,7 @@ public class Municipios  implements Serializable{
 	
 
 	
-	@Column(name="descricao")
+	@Column(name="descricao", length=1024)
 	public String descricao; // 4
 
 	@Column(name="areaTerritorial")
@@ -88,23 +87,23 @@ public class Municipios  implements Serializable{
 	
 	@NotNull
 	@Column(name="latitude")
-	public double latitude; // 6
+	public String latitude; // 6
 
 	@NotNull
 	@Column(name="longitude")
-	public double longitude; // 7
+	public String longitude; // 7
 
 	@NotBlank
 	@Column(name="estado")
 	public String estado; // 8
 
 	@Column(name="populacao")
-	public int populacao; // 9 
+	public String populacao; // 9 
 
 	@Column(name="site")
 	public String site; // 10
 	
-	@Column(name="informacoesRelevantes")
+	@Column(name="informacoesRelevantes", length=1024)
 	public String informacoesRelevantes; // 11
 
 	@Column(name="email_responsavel_preenchimento")
@@ -116,17 +115,17 @@ public class Municipios  implements Serializable{
 	@Column(name="contatos_responsavel_preenchimento")
 	public String contatos_responsavel_preenchimento; // 14
 	
-	@Column(name="fonte_informacoes")
+	@Column(name="fonte_informacoes", length=1024)
 	public String fonte_informacoes; // 15
 	
 	
 	
 	
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date=date;
 	}
 	
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 	private String cep;
@@ -145,16 +144,16 @@ public class Municipios  implements Serializable{
 	public void setNome_cidade(String nome_cidade) {
 		this.nome_cidade = nome_cidade;
 	}
-	public int getPopulacao() {
+	public String getPopulacao() {
 		return populacao;
 	}
-	public void setPopulacao(int populacao) {
+	public void setPopulacao(String populacao) {
 		this.populacao = populacao;
 	}
-	public double getLatitude() {
+	public String getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(double latitude) {
+	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 	public String getEstado() {
@@ -169,10 +168,10 @@ public class Municipios  implements Serializable{
 	public void setSite(String site) {
 		this.site = site;
 	}
-	public double getLongitude() {
+	public String getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(double longitude) {
+	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 	
