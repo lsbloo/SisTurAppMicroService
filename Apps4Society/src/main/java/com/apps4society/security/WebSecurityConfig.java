@@ -48,11 +48,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/sisturinfo/endpoints/municipios",
 				"/sisturinfo/endpoints/municipios/list",
 				"/sisturinfo/endpoints/municipios/search/{id}",
-				"/sisturinfo/endpoints/municipios/delete/{id}",
 				"/sisturinfo/endpoints/atrativo",
 				"/sisturinfo/endpoints/atrativo/list",
-				"/sisturinfo/endpoints/atrativo/search/{id}",
-				"/sisturinfo/endpoints/atrativo/delete/{id}").
+				"/sisturinfo/endpoints/atrativo/search/{id}"
+				).
 		permitAll().
 		antMatchers(HttpMethod.GET,
 				"/swagger-ui/**",

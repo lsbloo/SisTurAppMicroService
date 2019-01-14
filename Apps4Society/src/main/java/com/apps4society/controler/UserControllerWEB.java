@@ -21,8 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.apps4society.services.UserService;
 
-
-
 @Controller
 @RequestMapping("/sisturinfo/users")
 public class UserControllerWEB {

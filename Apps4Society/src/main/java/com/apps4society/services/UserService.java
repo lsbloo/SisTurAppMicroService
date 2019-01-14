@@ -13,6 +13,7 @@ import com.apps4society.repository.FunctionRepository;
 import com.apps4society.repository.PrivilegeRepository;
 import com.apps4society.repository.UserRepository;
 import com.apps4society.model.Functions;
+import com.apps4society.model.Privilege;
 import com.apps4society.model.User;
 
 @Service
@@ -33,6 +34,8 @@ public class UserService {
 	 * PrivilegeRepository
 	 */
 	private final PrivilegeRepository privilegeRepository;
+	
+	
 
 	
 	@Autowired
@@ -42,6 +45,17 @@ public class UserService {
 		this.privilegeRepository=privilegeRepository;
 	}
 	
+	
+	
+	public void saveRole(Functions functions) {
+		this.functionRepository.save(functions);
+	}
+	public void savePrivilege(Privilege privilege) {
+		this.privilegeRepository.save(privilege);
+	}
+	public Privilege getPrivilegeByName(String name) {
+		return this.privilegeRepository.findByName(name);
+	}
 	
 	public List<User> findAllUser(){
 		return this.userRepository.findAllUserActived();

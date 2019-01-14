@@ -15,33 +15,18 @@ public class indexControler {
 	
 		return "fragments/login";
 	}
-	
 	@RequestMapping(value="/logout",method=RequestMethod.POST)
-	public String redirectLogout() {
-		
+	public String redirectLogout() {	
 		return "/";
 	}
-	@RequestMapping(value="/acessoUsuario", method=RequestMethod.GET)
-	public String acessUser() {
-		return "eventos/painel_user";
-	}
-	@RequestMapping(value="/acessoAdministrador",method=RequestMethod.GET)
+	
+	@RequestMapping(value="/admin",method=RequestMethod.GET)
 	public String acessADMIN() {
 		return "painel_administrador";
 	}
     @RequestMapping(value="/login",method=RequestMethod.GET)
     public String login() {
-
         return "fragments/login";
     }
-    
-    
-    @GetMapping(value="/errorcad")
-    public String errorCad() {
-    	return "fragments/error-cad";
-    }
-    
-
- 
 
 }

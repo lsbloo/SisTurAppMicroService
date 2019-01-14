@@ -28,7 +28,7 @@ public class ConfigAPI {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.apps4society"))
-                .paths(PathSelectors.regex("/endpoint.*"))
+                .paths(PathSelectors.regex("/sisturinfo/endpoints.*"))
                 .build()
                 ;
     }

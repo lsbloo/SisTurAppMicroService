@@ -19,6 +19,7 @@ import com.apps4society.model.User;
 import com.apps4society.repository.FunctionRepository;
 import com.apps4society.repository.PrivilegeRepository;
 import com.apps4society.repository.UserRepository;
+import com.apps4society.services.UserService;
 
 import antlr.collections.List;
 
@@ -27,18 +28,17 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 
 	boolean alreadySetup =false;
 	
-	@Autowired
-	private UserRepository userRepository;
+	
+	/**
+	 * UserSERVICE
+	 */
+	private final UserService userService;
 	
 	@Autowired
-	private FunctionRepository funcoesRepository;
-	
-	@Autowired
-	private PrivilegeRepository privilegeRepository;
-	
-	//@Autowired
-	//private PasswordEncoder passwordEncoder;
-	
+	public InitialDataLoader(UserService userService) {
+		
+		this.userService=userService;
+	}
 	
 	
 	
@@ -58,20 +58,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
       createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
       createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
 
-      Functions adminRole = funcoesRepository.findByName("ROLE_ADMIN");
-      
-      
-      
-     //User user = new User();
-     //user.setNome("Osvaldo");
-     //user.setLogin("admin");
-     //user.setActived(true);
-     //user.setPass(new BCryptPasswordEncoder().encode("admin"));
-     //user.setEmail("osvaldo.airon@dce.ufpb.br");
-     //user.setRoles(Arrays.asList(adminRole));
-     //userRepository.save(user);
-       
-       
+      Functions adminRole = this.userService.getFunctionByName("ROLE_ADMIN");
       
 
       alreadySetup = true;
@@ -81,10 +68,10 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 	@Transactional
     private Privilege createPrivilegeIfNotFound(String name) {
   
-        Privilege privilege = privilegeRepository.findByName(name);
+        Privilege privilege = this.userService.getPrivilegeByName(name);
         if (privilege == null) {
             privilege = new Privilege(name);
-            privilegeRepository.save(privilege);
+            this.userService.savePrivilege(privilege);
         }
         return privilege;
     }
@@ -92,11 +79,11 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
     private Functions createRoleIfNotFound(
       String name, Collection<Privilege> privileges) {
   
-        Functions role = funcoesRepository.findByName(name);
+        Functions role = this.userService.getFunctionByName("ROLE_ADMIN");
         if (role == null) {
             role = new Functions(name);
             role.setPrivileges(privileges);
-           funcoesRepository.save(role);
+           this.userService.saveRole(role);
         }
         return role;
     }

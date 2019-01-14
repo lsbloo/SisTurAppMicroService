@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apps4society.repository.AreaInteresseRepository;
 import com.apps4society.repository.AtrativoTuristicoRepository;
 import com.apps4society.model.AtrativoTuristico;
 @Service
@@ -19,9 +20,16 @@ public class AtrativoService {
 	
 	private final AtrativoTuristicoRepository atratativoRepository;
 	
+	/**
+	 * Area de Interesse Repository
+	 */
+	private final AreaInteresseRepository areaInteresseRepository;
+	
 	@Autowired
-	public AtrativoService(AtrativoTuristicoRepository atratativoRepository) {
+	public AtrativoService(AtrativoTuristicoRepository atratativoRepository
+			, AreaInteresseRepository areaInteresseRepository) {
 		this.atratativoRepository=atratativoRepository;
+		this.areaInteresseRepository=areaInteresseRepository;
 	}
 
 	

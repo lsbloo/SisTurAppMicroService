@@ -13,45 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.apps4society.model.AreaDeInteresseTuristico;
 import com.apps4society.repository.AreaInteresseRepository;
+import com.apps4society.services.AtrativoService;
 
 @Controller
 public class AreaInteresseController {
 	
-	/*
-	 * Cadastra areas de interesse Turistico
-	 * Exemplo> Litoral Norte
-	 * 
+	
+	 
+	/**
+	 * AtrativoService
 	 */
+	private final AtrativoService atrativoService;
 	
 	@Autowired
-	private AreaInteresseRepository areaInteresseRepository;
-
-	
-	@RequestMapping(value="/cadastrarAreaTuristica",method=RequestMethod.GET)
-	public String getCadastrar() {
-		return "eventos/cadastrarAreaTuristica";
+	public AreaInteresseController(AtrativoService atrativoService) {
+		this.atrativoService=atrativoService;
 	}
-	@RequestMapping(value="/cadastrarAreaTuristica",method=RequestMethod.POST)
-	public String cadastrarAreaTuristica(@ModelAttribute @Valid AreaDeInteresseTuristico area, BindingResult result) {
-		/*
-		 * Salva uma area de interesse 
-		 * que contem um nome e uma descrição;
-		 */
-		
-		if(result.hasErrors()) {
-			return "fragments/error";
-		}
-		List<AreaDeInteresseTuristico> lst = areaInteresseRepository.checkExist(area.getNomeAreaTuristica());
-		if(lst.size()>1){
-			System.err.println("Area de Interesse ja cadastrada!");
-			return "index";
-		}else {
-			area.setActived(true);
-			areaInteresseRepository.save(area);
-			return "eventos/painel_user";
-		}
-		
-	}	
-	
-	
 }
