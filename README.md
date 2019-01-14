@@ -1,5 +1,6 @@
 # SisTurAppMicroService
-MicroServiço que tem como objetivo prover dados para um aplicativo(Android) do projeto apps4Society UFPB.
+MicroServiço que tem como objetivo prover dados referentes a municipios e atrativos turisticos.
+# projeto apps4Society UFPB.
 
 
 Pre-requisitos:
