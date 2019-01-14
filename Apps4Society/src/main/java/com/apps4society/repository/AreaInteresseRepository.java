@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.apps4society.model.AreaDeInteresseTuristico;
-import com.apps4society.model.AtratativoTuristico;
+import com.apps4society.model.AtrativoTuristico;
 
 import java.util.List;
 

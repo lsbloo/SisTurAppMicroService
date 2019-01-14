@@ -19,7 +19,7 @@ import com.apps4society.rolesmoldes.AmService;
 
 @Service
 @Transactional
-public class areaMunicipioService implements AmService{
+public class AreaMunicipioService implements AmService{
 	/*
 	 * Responsavel por realizar todas as operacoes de mapeamento(relacionamento) entre
 	 * os repositorios injetados abaixo;
@@ -55,7 +55,7 @@ public class areaMunicipioService implements AmService{
 	 */
 	
 	@Autowired
-	public areaMunicipioService(AreaMunicipioRepository areaMunicipioRepository, AreaInteresseRepository areaInteresseRepository,
+	public AreaMunicipioService(AreaMunicipioRepository areaMunicipioRepository, AreaInteresseRepository areaInteresseRepository,
 			MunicipioRepository municipioRepository) {
 		this.areaInteresseRepository=areaInteresseRepository;
 		this.areaMunicipioRepository=areaMunicipioRepository;

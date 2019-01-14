@@ -1,6 +1,6 @@
 package com.apps4society.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,27 +16,24 @@ public interface UserRepository extends CrudRepository<User,Long>{
 
 	User findByLogin(String login);
 	
+	@Query(value="select * from usuarios where actived=true",nativeQuery=true)
+	List<User> findAllUserActived();
 	
 	@Query(nativeQuery=true,value="SELECT * FROM usuarios where id=?1")
-	public User getUserId(@Param("id") Long id); 
-	
+	User findUserById(@Param("id") Long id); 
 	
 	
 	@Modifying
 	@Transactional
 	@Query(value="update User u set u.actived = false where u.id=:id")
-	public void desativeUser(@Param("id") Long id);
+	void desativeUser(@Param("id") Long id);
 	
 	
-	/**
-	 * Query of Edit User:
-	 * Permission ADMIN;
-	 */
 	@Modifying
 	@Transactional
 	@Query(value="update User u set u.actived=?1, u.login=?2, u.nome=?3, "
 			+ "u.pass=?4, u.email=?5 where u.id=?6 ")
-	public void 
+	void 
 	editUser(
 			@Param("actived") 
 			boolean actived ,

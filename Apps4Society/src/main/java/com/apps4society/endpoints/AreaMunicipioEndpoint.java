@@ -17,8 +17,7 @@ import com.apps4society.model.Municipios;
 import java.util.List;
 import com.apps4society.model.AreaDeInteresseTuristico;
 import com.apps4society.repository.MunicipioRepository;
-import com.apps4society.rolesmoldes.OperationFactory;
-import com.apps4society.services.areaMunicipioService;
+import com.apps4society.services.AreaMunicipioService;
 
 import io.swagger.annotations.ApiOperation;
 import springfox.documentation.builders.PathSelectors;
@@ -28,31 +27,26 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @RestController
 @RequestMapping("/endpointAreaMunicipio")
-public class AreaMunicipioEndPoint  implements OperationFactory{
+public class AreaMunicipioEndpoint{
 
 	
 	/*
 	 * Injetando o service; no EndPoint;
 	 */
-	@Autowired
-	protected areaMunicipioService myservice;
 	
-
+	private final AreaMunicipioService areaMunicipioService;
+	
+	public AreaMunicipioEndpoint(AreaMunicipioService areaMunicipioService) {
+		this.areaMunicipioService=areaMunicipioService;
+	}
 
 	@ApiOperation(value="Retorna todos os municipios de uma area de Interesse")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	@GetMapping(value="/listarMunicipiosPorArea/{id}")
 	public List<AreaMunicipio> listAreaMunicipio(@PathVariable("id") Long id){
-		return (List<AreaMunicipio>) myservice.searchAllMunicipiosArea(id);
+		return (List<AreaMunicipio>) areaMunicipioService.searchAllMunicipiosArea(id);
 	}
 	
-	
-
-	@Override
-	public void sleep(String method) throws InterruptedException {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	

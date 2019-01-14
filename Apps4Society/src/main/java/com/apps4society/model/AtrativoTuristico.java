@@ -24,7 +24,7 @@ import java.util.List;
 
 @Entity
 @Table(name="atrativosTuristicos")
-public class AtratativoTuristico implements Serializable{
+public class AtrativoTuristico implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -169,7 +169,7 @@ public class AtratativoTuristico implements Serializable{
 	}
 	
 
-	public AtratativoTuristico() {
+	public AtrativoTuristico() {
 		
 	}
 	public String getDescricao() {

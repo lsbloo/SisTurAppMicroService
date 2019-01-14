@@ -42,7 +42,7 @@ public class User implements UserDetails,Serializable{
 	@JoinTable(name="usuarios_role",joinColumns= @JoinColumn(
 			name="usuarios_id", referencedColumnName="id"),
 	inverseJoinColumns = @JoinColumn(name="role_id" , referencedColumnName = "id"))
-	private Collection<Funcoes> roles;
+	private Collection<Functions> roles;
 	
 	
 	
@@ -145,10 +145,10 @@ public class User implements UserDetails,Serializable{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	public List<Funcoes> getRoles() {
-		return (List<Funcoes>) roles;
+	public List<Functions> getRoles() {
+		return (List<Functions>) roles;
 	}
-	public void setRoles(List<Funcoes> roles) {
+	public void setRoles(List<Functions> roles) {
 		this.roles = roles;
 	}
 	public boolean isExpiracaoToken() {

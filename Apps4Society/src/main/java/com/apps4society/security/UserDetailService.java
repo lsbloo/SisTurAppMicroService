@@ -20,30 +20,35 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
-import com.apps4society.model.Funcoes;
+import com.apps4society.model.Functions;
 import com.apps4society.model.Privilege;
-import com.apps4society.repository.FuncoesRepository;
+import com.apps4society.repository.FunctionRepository;
 import com.apps4society.repository.UserRepository;
+import com.apps4society.services.UserService;
 
 @Repository
 @Transactional
 public class UserDetailService implements UserDetailsService{
 
-	@Autowired
-	private UserRepository repository;
+	/**
+	 * UserService
+	 */
+	private final UserService userService;
+	
 	
 	@Autowired
-	private FuncoesRepository funcoesRepository;
+	public UserDetailService(UserService userService) {
+		this.userService = userService;
+	}
+	
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		com.apps4society.model.User u = repository.findByLogin(login);
-		System.out.println(u.getAuthorities());
-		
+		com.apps4society.model.User u = this.userService.findByLogin(login);
 		try {
 			if(u==null) {
 				
-				return new User(" "," ",true,true,true,true,getAuthorities(Arrays.asList(funcoesRepository.findByName("ROLE_USER"))));
+				return new User(" "," ",true,true,true,true,getAuthorities(Arrays.asList(this.userService.getFunctionByName("ROLE_USER"))));
 				
 			}
 			
@@ -59,20 +64,20 @@ public class UserDetailService implements UserDetailsService{
 	}
 	
 	private Collection<? extends GrantedAuthority> getAuthorities(
-		      Collection<Funcoes> roles) {
+		      Collection<Functions> roles) {
 		  
 				
 		        return getGrantedAuthorities(getPrivileges(roles));
 		    }
 		 
-		    private List<String> getPrivileges(Collection<Funcoes> roles) {
+		    private List<String> getPrivileges(Collection<Functions> roles) {
 		    	
 		  
 		        List<String> privileges = new ArrayList<>();
 		       
 		        List<String> collection = new ArrayList<>();
 		      
-		        for (Funcoes role : roles) {
+		        for (Functions role : roles) {
 		        	
 		            collection.add(role.getAuthority());
 		        }
@@ -88,7 +93,6 @@ public class UserDetailService implements UserDetailsService{
 		        return privileges;
 		        
 		    }
-		 
 		    private List<GrantedAuthority> getGrantedAuthorities(List<String> privileges) {
 		    
 		        List<GrantedAuthority> authorities = new ArrayList<>();
@@ -98,8 +102,6 @@ public class UserDetailService implements UserDetailsService{
 		      
 		        return authorities;
 		    }
-
-
 	public String senhaErrada() {
 		return "eventos/senhaErrada";
 	}

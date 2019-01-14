@@ -22,7 +22,7 @@ public class Privilege implements Serializable{
 	private String name;
 	
 	@ManyToMany(mappedBy="privileges")
-	private Collection<Funcoes> funcoes;
+	private Collection<Functions> funcoes;
 
 	public Privilege(String name2) {
 		// TODO Auto-generated constructor stub
@@ -45,10 +45,10 @@ public class Privilege implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Collection<Funcoes> getFuncoes() {
+	public Collection<Functions> getFuncoes() {
 		return funcoes;
 	}
-	public void setFuncoes(Collection<Funcoes> funcoes) {
+	public void setFuncoes(Collection<Functions> funcoes) {
 		this.funcoes = funcoes;
 	}
 	

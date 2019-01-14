@@ -1,71 +1,53 @@
 package com.apps4society.controler;
 
-import com.apps4society.repository.AtrativoTuristicoRepository;
+import com.apps4society.services.AtrativoService;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.servlet.ModelAndView;
 
-import com.apps4society.annotations.AutenticadoUser;
-import com.apps4society.model.AtratativoTuristico;
-import com.apps4society.utilidades.MyCalendar;
+
 
 
 @Controller
+@RequestMapping("/sisturinfo/atrativoturistico")
 public class AtrativoTuristicoControlerWeb {
-	private MyCalendar dataCad;
+	
+	
+	/**
+	 * AtrativoService
+	 */
+	private final AtrativoService atrativoService;
+	
 	
 	@Autowired
-	private AtrativoTuristicoRepository atRepository;
-	
-	
-	
-	@RequestMapping(value="/listarAtrativos",method=RequestMethod.GET)
-	public ModelAndView listarAtrativos() {
-		ModelAndView mv = new ModelAndView("eventos/listarAtrativosTuristicos");
-		Iterable<AtratativoTuristico> ats = atRepository.findAll();
-		
-		mv.addObject("atrativos",ats);
-		return mv;
+	public AtrativoTuristicoControlerWeb(AtrativoService atrativoService) {
+		this.atrativoService=atrativoService;
 	}
 	
-	@RequestMapping(value="/cadAtrativos",method=RequestMethod.GET)
-	public String cadAtRedirect() {
-		return "eventos/cadAtrativo";
+	
+	@GetMapping("/edit/{identifier}")
+	public ModelAndView enterEdit(@PathVariable Integer identifier) {
+		ModelAndView v=null;
+		
+		return v;
 	}
 	
-	@RequestMapping(value="/cadAtrativos",method=RequestMethod.POST)
-	public String cadAtrativo(@AutenticadoUser @Valid @ModelAttribute AtratativoTuristico at, BindingResult resultado) {
-		if(resultado.hasErrors()) {
-			return "fragments/error.html";
-		}
-		List<AtratativoTuristico> list_at = atRepository.checkExist(at.getNome(),at.getCidade());
-		System.out.println(at.getNome());
-		System.out.println(at.getCidade());
+	@GetMapping("/delete/{identifier}")
+	public ModelAndView enterDelete(@PathVariable Integer identifier) {
+		ModelAndView v=null;
 		
-		if(list_at.size()>1) {
-			System.err.println("Atrativo Turistico ja Inserido");
-			/*
-			 * TEM Q TROCAR A VIEW
-			 */
-			return "index";
-		}else {
-			dataCad = new MyCalendar();
-			at.setActived(true);
-			atRepository.save(at);
-			System.err.println("Cadastrado!");
-			return "eventos/painel_user";
-		}
-		
+		return v;
 	}
 	
-
+	
 }

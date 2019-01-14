@@ -13,10 +13,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Component;
 
-import com.apps4society.model.Funcoes;
+import com.apps4society.model.Functions;
 import com.apps4society.model.Privilege;
 import com.apps4society.model.User;
-import com.apps4society.repository.FuncoesRepository;
+import com.apps4society.repository.FunctionRepository;
 import com.apps4society.repository.PrivilegeRepository;
 import com.apps4society.repository.UserRepository;
 
@@ -31,7 +31,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 	private UserRepository userRepository;
 	
 	@Autowired
-	private FuncoesRepository funcoesRepository;
+	private FunctionRepository funcoesRepository;
 	
 	@Autowired
 	private PrivilegeRepository privilegeRepository;
@@ -58,7 +58,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
       createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
       createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
 
-      Funcoes adminRole = funcoesRepository.findByName("ROLE_ADMIN");
+      Functions adminRole = funcoesRepository.findByName("ROLE_ADMIN");
       
       
       
@@ -89,12 +89,12 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
         return privilege;
     }
 	@Transactional
-    private Funcoes createRoleIfNotFound(
+    private Functions createRoleIfNotFound(
       String name, Collection<Privilege> privileges) {
   
-        Funcoes role = funcoesRepository.findByName(name);
+        Functions role = funcoesRepository.findByName(name);
         if (role == null) {
-            role = new Funcoes(name);
+            role = new Functions(name);
             role.setPrivileges(privileges);
            funcoesRepository.save(role);
         }

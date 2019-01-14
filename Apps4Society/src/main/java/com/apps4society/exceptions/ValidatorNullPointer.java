@@ -6,11 +6,10 @@ public class ValidatorNullPointer extends NullPointerException{
 	
 	
 	public ValidatorNullPointer(String msg) {
-		super("Nenhum dado foi retornado de:" +msg);
+		super(msg);
 		this.msg=msg;
 		
 	}
-	
 	
 	public String getMsg() {
 		return msg;

@@ -17,7 +17,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 
 @Entity
-public class Funcoes implements GrantedAuthority{
+public class Functions implements GrantedAuthority{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -37,10 +37,10 @@ public class Funcoes implements GrantedAuthority{
 	private Collection<Privilege> privileges;
 	
 	
-	public Funcoes() {
+	public Functions() {
 		
 	}
-	public Funcoes(String name) {
+	public Functions(String name) {
 		
 		setNomeFuncoes(name);
 	}

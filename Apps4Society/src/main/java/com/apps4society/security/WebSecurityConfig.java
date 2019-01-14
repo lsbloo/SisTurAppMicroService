@@ -42,41 +42,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * e redirecinonamento de pagina
 		 *  ÇÇ ainda nao esta completamente implementado;
 		 */
-		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login").
+		
+		
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET,"/login",
+				"/sisturinfo/endpoints/municipios",
+				"/sisturinfo/endpoints/municipios/list",
+				"/sisturinfo/endpoints/municipios/search/{id}",
+				"/sisturinfo/endpoints/municipios/delete/{id}",
+				"/sisturinfo/endpoints/atrativo",
+				"/sisturinfo/endpoints/atrativo/list",
+				"/sisturinfo/endpoints/atrativo/search/{id}",
+				"/sisturinfo/endpoints/atrativo/delete/{id}").
 		permitAll().
 		antMatchers(HttpMethod.GET,
 				"/swagger-ui/**",
-				"/swagger-ui.html#/",
-				"/listarAtrativos",
-				"/listarMunicipios",
-				"/endpointUsers/attrUser",
-				"endpointUsers/user/{id}",
-				"/endpointMunicipios/del_rest_municipiodel/{id}",
-				"/endpointUsers/users",
-				"/endpointUsers/userdel/{id}",
-				"/endpointUsers/user/{id}",
-				"endpointUsers/adicionarUsuarioAdmin",
-				"/listUsers",
-				"useredit/{id}",
-				"userdel/{id}",
-				"/endpointAtrativos/del_rest_atrativoTuristicodel/{id}")
+				"/swagger-ui.html#/"
+				)
 		.hasRole("ADMIN").antMatchers(HttpMethod.POST,"swagger-ui#/**")
 		.hasRole("ADMIN")
-		
-		.antMatchers(HttpMethod.POST,"/userADD").
-		permitAll().antMatchers(HttpMethod.GET,"/userADD")
-		.permitAll().antMatchers(HttpMethod.GET,"/endpointMunicipios/rest_municipios",
-				"/endpointAreaMunicipio/listarMunicipiosPorArea/{id}",
-				"/endpointAtrativos/rest_atrativoTuristicoSearch/{id}",
-				"/endpointMunicipios/rest_search_atrativo_name_city/{nome_city}",
-				"/endpointMunicipios/rest_municipioSearch/{id}").
-		
-		permitAll().antMatchers(HttpMethod.GET,"/endpointAtrativos/rest_atrativosTuristicos").
-		permitAll().antMatchers(HttpMethod.GET, "/")
-		.permitAll().anyRequest().authenticated()
+		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler()).and().
 		logout().addLogoutHandler(myLogoutSucessHandler())
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		
+		
 
 	}
 	

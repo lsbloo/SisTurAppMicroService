@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.apps4society.model.AtratativoTuristico;
+import com.apps4society.model.AtrativoTuristico;
 import com.apps4society.model.Municipios;
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface MunicipioRepository extends JpaRepository<Municipios,Long>{
 	
 	
 	@Query(nativeQuery=true,value="SELECT * FROM municipios WHERE id=?1")
-	Municipios findByPraMim(@Param("id") Long id);
+	Municipios findActivedById(@Param("id") Long id);
 	
 	/*
 	 * Verifica se ja existe um municipio com nome (x);
@@ -29,14 +29,7 @@ public interface MunicipioRepository extends JpaRepository<Municipios,Long>{
 	 * Retorna todos os municipios que estao habilitados (actived);
 	 */
 	@Query(value="SELECT * FROM municipios WHERE actived = true",nativeQuery=true)
-	List<Municipios> findByActived();
-	
-	
-	
-	/**
-	 * 
-	 * @param id
-	 */
+	List<Municipios> findAllByActived();
 	
 	/*
 	 * a ideia é desativar um municipio caso o administrador queira "deletar" da aplicação
@@ -63,10 +56,10 @@ public interface MunicipioRepository extends JpaRepository<Municipios,Long>{
 	 * @param email_responsavel_preenchimento
 	 * @param img_url
 	 * @param informacoes_relevantes
-	 * @param latitude
-	 * @param longitude
+	 * @param string
+	 * @param string2
 	 * @param nome_responsavel_preenchimento
-	 * @param populacao
+	 * @param string3
 	 * @param site
 	 * @param fonte_informacoes
 	 * @param actived
@@ -90,10 +83,10 @@ public interface MunicipioRepository extends JpaRepository<Municipios,Long>{
 			@Param("email_responsavel_preenchimento") String email_responsavel_preenchimento,  // 6
 			@Param("img_url") String img_url, // 7
 			@Param("informacoes_relevantes") String informacoes_relevantes, //8
-			@Param("latitude") double latitude , //9
-			@Param("longitude") double longitude, //10
+			@Param("latitude") String string , //9
+			@Param("longitude") String string2, //10
 			@Param("nome_responsavel_preenchimento") String nome_responsavel_preenchimento, // 11
-			@Param("populacao") int populacao,  // 12
+			@Param("populacao") String string3,  // 12
 			@Param("site") String site , // 13
 			@Param("fonte_informacoes") String fonte_informacoes, // 14
 			@Param("actived") boolean actived , // 15
